@@ -42,10 +42,10 @@ public class ZombieBehavior : MonoBehaviour
         b = b / -1;
         followz = slope * mplayer.playerx + b;
         followx = mplayer.playerz - b / slope;
-        Debug.Log(followx);
         relPos = new Vector3(followx, zombieObject.transform.position.y, followz);
+        Debug.Log(relPos);
         //so zombie follows player
-        //zombieObject.transform.SetPositionAndRotation(relPos, Quaternion.Euler(0, 0, 0));
+        zombieObject.transform.SetPositionAndRotation(relPos, Quaternion.Euler(0, 0, 0));
 
     }
 
