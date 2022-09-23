@@ -47,46 +47,7 @@ public class ZombieBehavior : MonoBehaviour
         Debug.Log(run);
         //so zombie follows player
         GetComponent<Rigidbody>().velocity = (relPos - zombieBody.transform.position) * speed;
-        // zombieObject.transform.SetPositionAndRotation(relPos, Quaternion.Euler(0, 0, 0));
-
     }
-
-    //sort of functional movement
-    //void zombieMovement() //change it so the zombie gameobject is being rotated. currently only the original is
-    //{
-
-    //    x1 = (zombieBody.position.x) - (mplayer.playerx);
-    //    z1 = (mplayer.playerz) - (zombieBody.position.z);
-    //    rotationangle = (Mathf.Atan(z1 / x1)) * (180 / fpi);
-
-    //    if (zombieObject.transform.position.x > mplayer.playerx) //bottom left
-    //    {
-    //        zombieBody.velocity = new Vector3(-speed, zombieBody.velocity.y, zombieBody.velocity.z);
-
-    //    }
-    //    else if (zombieObject.transform.position.x < mplayer.playerx) //bottom right
-    //    {
-    //        zombieBody.velocity = new Vector3(speed, zombieBody.velocity.y, zombieBody.velocity.z);
-    //       // zombie.zombieBody.SetRotation(-rotationangle);
-    //    }
-    //    if (zombieObject.transform.position.z > mplayer.playerz)
-    //    {
-    //        zombieBody.velocity = new Vector3(zombieBody.velocity.x, zombieBody.velocity.y, -speed);
-    //    }
-    //    else if (zombieObject.transform.position.z < mplayer.playerz)
-    //    {
-    //        zombieBody.velocity = new Vector3(zombieBody.velocity.x, zombieBody.velocity.y, speed);
-    //    }
-    //    if (zombieObject.transform.position.y > mplayer.playery)
-    //    {
-    //        zombieBody.velocity = new Vector3(zombieBody.velocity.x, -speed, zombieBody.velocity.z);
-    //    }
-    //    else if (zombieObject.transform.position.z < mplayer.playerz)
-    //    {
-    //        zombieBody.velocity = new Vector3(zombieBody.velocity.x, speed, zombieBody.velocity.z);
-    //    }
-
-    //}
 
     // Update is called once per frame
     void Update()
