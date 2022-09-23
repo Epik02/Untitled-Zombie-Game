@@ -36,6 +36,7 @@ public class ZombieBehavior : MonoBehaviour
     {
         rise = (mplayer.playerz) - (zombieObject.transform.position.z);
         run = (mplayer.playerx) - (zombieObject.transform.position.x);
+
         slope = rise / run;
         //y = mx + b
         b = slope * mplayer.playerx - mplayer.playerz;
@@ -43,9 +44,10 @@ public class ZombieBehavior : MonoBehaviour
         followz = slope * mplayer.playerx + b;
         followx = mplayer.playerz - b / slope;
         relPos = new Vector3(followx, zombieObject.transform.position.y, followz);
-        Debug.Log(relPos);
+        Debug.Log(run);
         //so zombie follows player
-        zombieObject.transform.SetPositionAndRotation(relPos, Quaternion.Euler(0, 0, 0));
+        GetComponent<Rigidbody>().velocity = (relPos - zombieBody.transform.position) * speed;
+        // zombieObject.transform.SetPositionAndRotation(relPos, Quaternion.Euler(0, 0, 0));
 
     }
 
