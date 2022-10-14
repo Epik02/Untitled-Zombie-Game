@@ -6,14 +6,11 @@ using System;
 public class ZombieBehavior : MonoBehaviour
 {
     //public Movement playerpos;
-    private float playerx;
-    private float playery;
     public Rigidbody zombieBody;
     public ZombieBehavior zombie;
     public float speed = 1;
-    public GameObject zombieObject;
+    public float strafeSpeed = 1;
 
-    public Vector2 mmovement;
     public Movement mplayer;
 
     public float rotationangle, x1 = 1, z1 = 1;
@@ -21,52 +18,25 @@ public class ZombieBehavior : MonoBehaviour
 
     private GameObject zombieClone;
 
-    //new shit
     public float rise = 0;
     public float run = 0;
     float slope = 0;
     float b = 0;
     float followx = 0;
     float followz = 0;
-    float test = 0;
-    //new shit
-
     Vector3 relPos;
+    float avoidDirection = 0;
 
-    //void zombieMovement() //change it so the zombie gameobject is being rotated. currently only the original is
-    //{
-    //    rise = (mplayer.playerz) - (zombieObject.transform.position.z);
-    //    run = (mplayer.playerx) - (zombieObject.transform.position.x);
+    public Vector3 strafe;
+    public bool NoObstacles = true;
 
-    //    slope = rise / run;
-    //    //y = mx + b
-    //    b = slope * mplayer.playerx - mplayer.playerz;
-    //    b = b / -1;
+    float frontSensorStart = 1;
+    public float sensorLength = 5;
 
-    //    followz = slope * mplayer.playerz + b;
-    //    followx = mplayer.playerx - b / slope;
-    //    relPos = new Vector3(0, zombieObject.transform.position.y, followz);
-
-    //    Debug.Log("Rise:" + rise + "\n");
-    //    Debug.Log("Run:" + run + "\n");
-    //    Debug.Log("Slope:" + slope + "\n");
-    //    Debug.Log("b:" + b + "\n");
-    //    Debug.Log("Followx:" + followx + "\n");
-    //    Debug.Log("followz:" + followz + "\n");
-
-    //    //so zombie follows player
-    //    GetComponent<Rigidbody>().velocity = (relPos - zombieBody.transform.position) * speed;
-
-    //    //Vector3 zombPos = zombieBody.transform.position;
-    //    //Vector3 playerPos = mplayer.transform.position;
-    //    //zombieObject.transform.position = Vector3.MoveTowards(zombPos, playerPos, 0.005f);
-    //}
-    void zombieMovement()
+    void zombieMovement() //BEDMAS is not built into C# you need to use brackets
     {
         rise = (zombieBody.transform.position.z) - (mplayer.playerz);
         run = (zombieBody.transform.position.x) - (mplayer.playerx);
-        //rise = (mplayer.playerz) - (zombieObject.transform.position.z);
-        //run = (mplayer.playerx) - (zombieObject.transform.position.x);
 
         slope = rise / run;
         b = mplayer.transform.position.z - slope * mplayer.transform.position.x;
@@ -75,20 +45,60 @@ public class ZombieBehavior : MonoBehaviour
         followx = (mplayer.transform.position.z - b) / slope; //slope should not be able to equal 0 
         relPos = new Vector3(followx, zombieBody.transform.position.y, followz);
 
-        Debug.Log("rise:" + rise + "\n");
-        Debug.Log("run:" + run + "\n");
-        Debug.Log("followx:" + followx + "\n");
-        Debug.Log("followz:" + followz + "\n");
-        Debug.Log("pos:" + mplayer.transform.position.z + "\n");
-        Debug.Log("slope:" + slope + "\n");
-        Debug.Log("b:" + b + "\n");
+        if (NoObstacles)
+        {
+            GetComponent<Rigidbody>().velocity = (relPos - zombieBody.transform.position) * speed;
+        }
+        else
+        {
+            //Actual Zombie Movement
+            if (avoidDirection == -1)
+            {
+                GetComponent<Rigidbody>().velocity = -transform.right * strafeSpeed;
+            }
+            else
+            {
+                GetComponent<Rigidbody>().velocity = transform.right * strafeSpeed;
+            }
+        }
+    }
 
-        GetComponent<Rigidbody>().velocity = (relPos - zombieBody.transform.position) * speed;
+    void collisionAvoidance()
+    {
+        RaycastHit hit;
+        Vector3 sensorPos = transform.position + (transform.forward * frontSensorStart);
+        if (Physics.Raycast(sensorPos, transform.forward, out hit, sensorLength) || Physics.Raycast(sensorPos, -transform.right, out hit, sensorLength) || Physics.Raycast(sensorPos, transform.right, out hit, sensorLength))
+        {
+            if(hit.normal.x < 0)
+            {
+                avoidDirection = -1;
+                NoObstacles = false;
+                //GetComponent<Rigidbody>().velocity = (transform.forward + -transform.right + strafe) * speed;
+            }
+            else if(hit.normal.x > 0)
+            {
+                avoidDirection = 1;
+                strafe.x = strafe.x * avoidDirection;
+                NoObstacles = false;
+                //GetComponent<Rigidbody>().velocity = (transform.forward + transform.right + strafe) * strafeSpeed;
+            }
+            Debug.DrawLine(transform.position, hit.point, Color.red);
+            Debug.Log(avoidDirection);
+        }
+        else if (NoObstacles == false) {
+            NoObstacles = true;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        zombieMovement();
+       zombieMovement();
+       collisionAvoidance();
+
+        //Rotates the zombie towards the player (required for collision avoidance)
+        Vector3 direction = mplayer.transform.position - transform.position;
+        Quaternion rotateTowardsPlayer = Quaternion.LookRotation(direction);
+        transform.rotation = rotateTowardsPlayer;
     }
 }
