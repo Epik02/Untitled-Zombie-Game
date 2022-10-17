@@ -9,6 +9,17 @@ public class GunShoot : MonoBehaviour
 
     public GameObject projectile;
     public Transform projectilePos;
+
+    private void OnEnable()
+    {
+        inputAction.Enable();
+    }
+
+    private void OnDisable()
+    {
+        inputAction.Disable();
+    }
+
 private void Awake()
     {
         inputAction = new PlayerAction();

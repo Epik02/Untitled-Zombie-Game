@@ -19,11 +19,59 @@
                 {
                     "name": "",
                     "id": "b6cbc9a1-cf40-446b-8808-e045fefa3fbb",
-                    "path": "<Keyboard>/k",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Player",
+            "id": "8294e36f-ce8a-4f12-b001-c6b3c8560e9f",
+            "actions": [
+                {
+                    "name": "Pick",
+                    "type": "Button",
+                    "id": "6f21f65f-355b-4117-92ed-e8cc90c7e266",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Drop",
+                    "type": "Button",
+                    "id": "51ee2d10-67bd-4cca-99af-3cb1b2ea8e9e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "80c19f56-7ce6-459e-8e70-edb444f2e4a7",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "281b06d5-051b-404d-ad6e-9b30a3bebdb7",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Drop",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
