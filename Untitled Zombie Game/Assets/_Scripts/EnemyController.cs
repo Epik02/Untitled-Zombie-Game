@@ -1,16 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
+    public GameObject EnemyHealth;
     public int damages = 10;
-    public float maxHealth = 100;
-    public float health = 0;
+    public int maxHealth = 100;
+    public int health = 0;
 
-    private void Start()
+    public EnemyHealthSlider healthBar;
+
+    void Awake()
     {
+        EnemyHealth.SetActive(true);
         health = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
 
     private void OnCollisionEnter(Collision other)
@@ -22,6 +28,7 @@ public class EnemyController : MonoBehaviour
     public void TakeDamages(int damage)
     {
         health -= damage;
+        healthBar.SetHealth(health);
         Debug.Log(health);
 
         if (health <= 0)
