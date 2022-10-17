@@ -16,4 +16,9 @@ public class Bullet : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
+
+    private void Update()
+    {
+        Destroy(gameObject, 5);
+    }
 }
