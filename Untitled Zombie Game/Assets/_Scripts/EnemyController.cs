@@ -4,26 +4,33 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public static EnemyController instance;
+   // public GameObject gameObjects;
+   // public static EnemyController instance;
+    public int damages = 10;
+   // public float health = 100;
 
-    public float health;
+    //void Awake()
+    //{
+    //    if (!instance)
+    //    {
+    //        instance = this;
+    //    }
+    //}
 
-    void Awake()
+    private void OnCollisionEnter(Collision other)
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
+        if(other.collider.tag == "Player")
+            Movement.instance.TakeDamage(damages);
+
     }
 
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
+    //public void TakeDamages(int damage)
+    //{
+    //    health -= damage;
 
-        if (health <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
-    }
-    private void DestroyEnemy()
-    {
-        Destroy(gameObject);
-    }
+    //    if (health <= 0)
+    //    {
+    //        Destroy(gameObjects);
+    //    }
+    //}
 }

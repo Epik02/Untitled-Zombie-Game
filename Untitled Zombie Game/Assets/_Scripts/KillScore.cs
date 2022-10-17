@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class KillScore : MonoBehaviour
 {
+    public int damages = 0;
+
     private void OnCollisionEnter(Collision other)
     {
         if (other.collider.tag == "Bullet")
         {
             ScoreManager.instance.ChangeScore(1);
+        }
+        if (other.collider.tag == "Player")
+        {
+            Movement.instance.TakeDamage(damages);
         }
     }
 }

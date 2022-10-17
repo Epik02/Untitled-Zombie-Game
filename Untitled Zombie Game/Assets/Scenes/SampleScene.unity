@@ -1088,6 +1088,7 @@ MonoBehaviour:
   Character: {fileID: 838367509}
   maxHealth: 100
   currentHealth: 0
+  damages: 20
   healthBar: {fileID: 255554247}
   player: {fileID: 838367517}
   playerx: 0
@@ -1734,6 +1735,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5393215578589016642, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_Name
       value: PlayerCapsule

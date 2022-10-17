@@ -13,13 +13,13 @@ public class Bullet : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         } else if(other.collider.tag == "Enemy")
         {
-            //EnemyController.instance.TakeDamage(20);
+            //EnemyController.instance.TakeDamages(25);
             Destroy(other.gameObject);
         }
     }
 
     private void Update()
     {
-        Destroy(gameObject, 5);
+        Destroy(gameObject, 3);
     }
 }

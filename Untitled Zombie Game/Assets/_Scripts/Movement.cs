@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class Movement : MonoBehaviour
 {
+    public static Movement instance;
     // Input Action Testing
     public PlayerAction inputAction;
     public GameObject Character;
@@ -14,6 +15,7 @@ public class Movement : MonoBehaviour
     //Health Testing
     public int maxHealth = 100;
     public int currentHealth;
+    public int damages = 0;
 
     public HealthBar healthBar;
     
@@ -36,18 +38,24 @@ public class Movement : MonoBehaviour
 
     void Awake()
     {
+        //instance awake
+        if (!instance)
+        {
+            instance = this;
+        }
+
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
 
         inputAction = new PlayerAction();
 
         inputAction.Player.ReloadScene.performed += cntxt => Reload();
-        inputAction.Player.Damage.performed += cntxt => TakeDamage();
+        inputAction.Player.Damage.performed += cntxt => TakeDamage(damages);
     }
-
-    public void TakeDamage()
+    //taking damage
+    public void TakeDamage(int damage)
     {
-        currentHealth -= 20;
+        currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
     }
 
@@ -64,6 +72,11 @@ public class Movement : MonoBehaviour
         playerz = player.transform.position.z;
 
         if (Character.transform.position.y < -2)
+        {
+            SceneManager.LoadScene(0);
+        }
+
+        if (healthBar.GetHealth() <= 0)
         {
             SceneManager.LoadScene(0);
         }
