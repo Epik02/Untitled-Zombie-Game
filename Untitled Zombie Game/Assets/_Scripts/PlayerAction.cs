@@ -81,6 +81,15 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Damage"",
+                    ""type"": ""Button"",
+                    ""id"": ""88dae6f4-cbfb-490d-81f5-88e17108df9e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -116,6 +125,17 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                     ""action"": ""ReloadScene"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c696650e-60e2-4411-8810-0b424151025f"",
+                    ""path"": ""<Keyboard>/b"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Damage"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -130,6 +150,7 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         m_Player_Pick = m_Player.FindAction("Pick", throwIfNotFound: true);
         m_Player_Drop = m_Player.FindAction("Drop", throwIfNotFound: true);
         m_Player_ReloadScene = m_Player.FindAction("ReloadScene", throwIfNotFound: true);
+        m_Player_Damage = m_Player.FindAction("Damage", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -225,6 +246,7 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Pick;
     private readonly InputAction m_Player_Drop;
     private readonly InputAction m_Player_ReloadScene;
+    private readonly InputAction m_Player_Damage;
     public struct PlayerActions
     {
         private @PlayerAction m_Wrapper;
@@ -232,6 +254,7 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         public InputAction @Pick => m_Wrapper.m_Player_Pick;
         public InputAction @Drop => m_Wrapper.m_Player_Drop;
         public InputAction @ReloadScene => m_Wrapper.m_Player_ReloadScene;
+        public InputAction @Damage => m_Wrapper.m_Player_Damage;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -250,6 +273,9 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 @ReloadScene.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReloadScene;
                 @ReloadScene.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReloadScene;
                 @ReloadScene.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReloadScene;
+                @Damage.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDamage;
+                @Damage.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDamage;
+                @Damage.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDamage;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -263,6 +289,9 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 @ReloadScene.started += instance.OnReloadScene;
                 @ReloadScene.performed += instance.OnReloadScene;
                 @ReloadScene.canceled += instance.OnReloadScene;
+                @Damage.started += instance.OnDamage;
+                @Damage.performed += instance.OnDamage;
+                @Damage.canceled += instance.OnDamage;
             }
         }
     }
@@ -276,5 +305,6 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         void OnPick(InputAction.CallbackContext context);
         void OnDrop(InputAction.CallbackContext context);
         void OnReloadScene(InputAction.CallbackContext context);
+        void OnDamage(InputAction.CallbackContext context);
     }
 }
