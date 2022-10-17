@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
-    //public Projectilegun gunScript;
+    public GameObject gunScript;
     public Rigidbody rb;
     public BoxCollider coll;
     public Transform player, gunContainer, fpsCam;
@@ -24,13 +24,13 @@ public class PickUp : MonoBehaviour
         // Setup
         if(!equipped)
         {
-            //gunScript.enabled = false;
+            gunScript.SetActive(false);
             rb.isKinematic = false;
             coll.isTrigger = false;
         }
         if (equipped)
         {
-            //gunScript.enable = true;
+            gunScript.SetActive(true);
             rb.isKinematic = true;
             coll.isTrigger = true;
             slotFull = true;
@@ -63,7 +63,7 @@ public class PickUp : MonoBehaviour
         coll.isTrigger = true;
 
         //Enable script
-        //gunScript.enabled = true;
+        gunScript.SetActive(true);
 
     }
 
@@ -91,7 +91,7 @@ public class PickUp : MonoBehaviour
 
 
         //Enable script
-        //gunScript.enabled = false;
+        gunScript.SetActive(false);
     }
 }
 
