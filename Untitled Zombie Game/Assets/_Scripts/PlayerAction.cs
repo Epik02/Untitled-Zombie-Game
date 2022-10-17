@@ -72,6 +72,15 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ReloadScene"",
+                    ""type"": ""Button"",
+                    ""id"": ""8c8fcb32-1b52-4b7b-99d4-2a27e3bed3be"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -96,6 +105,17 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                     ""action"": ""Drop"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6baf7e1c-c899-4b96-910e-e2df695707e1"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ReloadScene"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -109,6 +129,7 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Pick = m_Player.FindAction("Pick", throwIfNotFound: true);
         m_Player_Drop = m_Player.FindAction("Drop", throwIfNotFound: true);
+        m_Player_ReloadScene = m_Player.FindAction("ReloadScene", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -203,12 +224,14 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Pick;
     private readonly InputAction m_Player_Drop;
+    private readonly InputAction m_Player_ReloadScene;
     public struct PlayerActions
     {
         private @PlayerAction m_Wrapper;
         public PlayerActions(@PlayerAction wrapper) { m_Wrapper = wrapper; }
         public InputAction @Pick => m_Wrapper.m_Player_Pick;
         public InputAction @Drop => m_Wrapper.m_Player_Drop;
+        public InputAction @ReloadScene => m_Wrapper.m_Player_ReloadScene;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -224,6 +247,9 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 @Drop.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDrop;
                 @Drop.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDrop;
                 @Drop.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDrop;
+                @ReloadScene.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReloadScene;
+                @ReloadScene.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReloadScene;
+                @ReloadScene.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReloadScene;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -234,6 +260,9 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 @Drop.started += instance.OnDrop;
                 @Drop.performed += instance.OnDrop;
                 @Drop.canceled += instance.OnDrop;
+                @ReloadScene.started += instance.OnReloadScene;
+                @ReloadScene.performed += instance.OnReloadScene;
+                @ReloadScene.canceled += instance.OnReloadScene;
             }
         }
     }
@@ -246,5 +275,6 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
     {
         void OnPick(InputAction.CallbackContext context);
         void OnDrop(InputAction.CallbackContext context);
+        void OnReloadScene(InputAction.CallbackContext context);
     }
 }

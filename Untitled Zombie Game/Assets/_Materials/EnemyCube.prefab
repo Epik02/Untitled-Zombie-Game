@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6596282390311375181}
   - component: {fileID: 6596282390311375178}
   - component: {fileID: 6596282390311375179}
+  - component: {fileID: 7881647242362542641}
   m_Layer: 0
   m_Name: EnemyCube
   m_TagString: Enemy
@@ -32,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6596282390311375181
 MeshFilter:
@@ -97,3 +98,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7881647242362542641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6596282390311375176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7137c1bdc69ae1469d54f14191aa010, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
