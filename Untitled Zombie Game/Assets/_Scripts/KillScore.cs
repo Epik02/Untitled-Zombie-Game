@@ -12,9 +12,5 @@ public class KillScore : MonoBehaviour
         {
             ScoreManager.instance.ChangeScore(1);
         }
-        if (other.collider.tag == "Player")
-        {
-            Movement.instance.TakeDamage(damages);
-        }
     }
 }

@@ -236,6 +236,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 306791582}
     m_Modifications:
+    - target: {fileID: 5652334997101331393, guid: 1f8add5774ffc5245b9d8bfe81e8498a, type: 3}
+      propertyPath: m_Constraints
+      value: 120
+      objectReference: {fileID: 0}
     - target: {fileID: 8863631402175366273, guid: 1f8add5774ffc5245b9d8bfe81e8498a, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -2501,6 +2505,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 306791582}
     m_Modifications:
+    - target: {fileID: 514914200837974421, guid: 65498e82dccf7fe42923caaab7e28d15, type: 3}
+      propertyPath: health
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6596282390311375176, guid: 65498e82dccf7fe42923caaab7e28d15, type: 3}
       propertyPath: m_Name
       value: EnemyCube (1)
