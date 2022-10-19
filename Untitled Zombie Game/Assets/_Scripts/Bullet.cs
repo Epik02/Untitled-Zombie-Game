@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Bullet : MonoBehaviour
 {
+    [SerializeField] int damage = 25;
     private void OnCollisionEnter(Collision other) {
         Destroy(gameObject);
 
@@ -13,7 +14,13 @@ public class Bullet : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         } else if(other.collider.tag == "Enemy")
         {
-            other.gameObject.GetComponent<EnemyController>().TakeDamages(25);
+            Health health = other.gameObject.GetComponent<Health>();
+            health?.TakeDamage(damage);
+            if (health.currentHealth <= 0)
+            {
+                ScoreManager.instance.ChangeScore(1);
+            }
+            //other.gameObject.GetComponent<EnemyController>().OnTakeDamages(25);
             //Destroy(other.gameObject);
         }
     }
