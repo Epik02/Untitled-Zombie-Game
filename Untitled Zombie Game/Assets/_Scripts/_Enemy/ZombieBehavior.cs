@@ -11,10 +11,12 @@ public class ZombieBehavior : MonoBehaviour
     public float speed = 1;
     public float strafeSpeed = 1;
 
-    public Movement mplayer;
+    public GameObject mplayer;
 
     public float rotationangle, x1 = 1, z1 = 1;
     public float fpi = Mathf.PI;
+
+    private GameObject zombieClone;
 
     public float rise = 0;
     public float run = 0;
@@ -24,29 +26,22 @@ public class ZombieBehavior : MonoBehaviour
     float followz = 0;
     Vector3 relPos;
     float avoidDirection = 0;
-    Vector3 tempPlayerCoords;
 
     public Vector3 strafe;
     public bool NoObstacles = true;
 
     float frontSensorStart = 1;
     public float sensorLength = 5;
-    public GameObject testObstacle;
+
+    private void Start()
+    {
+        mplayer = GameObject.FindWithTag("Player");
+    }
 
     void zombieMovement() //BEDMAS is not built into C# you need to use brackets
     {
-        //Gives player position from a few seconds ago so zombies trail around the player like in COD zombies
-        float countdown = 0.0f;
-        float countdown2 = 0.4f;
-        if (Time.time > countdown)
-        {
-            countdown += countdown2;
-            tempPlayerCoords = zombieBody.transform.position;
-        }
-        //Debug.Log(tempPlayerCoords);
-
-        rise = (zombieBody.transform.position.z) - (mplayer.playerz);
-        run = (zombieBody.transform.position.x) - (mplayer.playerx);
+        rise = (zombieBody.transform.position.z) - (mplayer.transform.position.z);
+        run = (zombieBody.transform.position.x) - (mplayer.transform.position.x);
 
         slope = rise / run;
         b = mplayer.transform.position.z - slope * mplayer.transform.position.x;
@@ -64,13 +59,11 @@ public class ZombieBehavior : MonoBehaviour
             //Actual Zombie Movement
             if (avoidDirection == -1)
             {
-                transform.Translate(Vector3.left * Time.deltaTime * strafeSpeed, Space.Self);
-                //GetComponent<Rigidbody>().velocity = transform.right * strafeSpeed;
+                GetComponent<Rigidbody>().velocity = -transform.right * strafeSpeed;
             }
             else
             {
-                transform.Translate(Vector3.right * Time.deltaTime * strafeSpeed, Space.Self);
-                //GetComponent<Rigidbody>().velocity = -transform.right * strafeSpeed;
+                GetComponent<Rigidbody>().velocity = transform.right * strafeSpeed;
             }
         }
     }
