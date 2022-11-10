@@ -25,6 +25,16 @@ public class ScoreManager : MonoBehaviour
         Debug.Log(score);
     }
 
+    public void DecreaseScore(int decrease)
+    {
+        score -= decrease;
+        Debug.Log(score);
+    }
+    public int GetScore()
+    {
+        return score;
+    }
+
     public void Update()
     {
         ChangingText.text = score.ToString();
