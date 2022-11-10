@@ -13,8 +13,6 @@ public class WeaponSwitch : MonoBehaviour
 
     public GunShoot ThrowScript;
 
-    public Transform GunContainer;
-
     void Start()
     {
         totalWeapons = weaponHolder.transform.childCount;
@@ -33,7 +31,6 @@ public class WeaponSwitch : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            ThrowScript.ThrowReset();
             Swap();
         }
     }
@@ -52,6 +49,7 @@ public class WeaponSwitch : MonoBehaviour
     {
         if (currentWeaponIndex < totalWeapons - 1)
         {
+            ThrowScript = guns[currentWeaponIndex].GetComponent<GunShoot>();
             Debug.Log("1");
             guns[currentWeaponIndex].SetActive(false);
             currentWeaponIndex += 1;
@@ -60,16 +58,24 @@ public class WeaponSwitch : MonoBehaviour
         //previous Weapon
         else if (currentWeaponIndex > 0)
         {
+            ThrowScript = guns[currentWeaponIndex].GetComponent<GunShoot>();
             Debug.Log("0");
             guns[currentWeaponIndex].SetActive(false);
             currentWeaponIndex -= 1;
             guns[currentWeaponIndex].SetActive(true);
         }
+        ThrowScript.ThrowReset();
         currentGun = guns[currentWeaponIndex];
     }
 
     public void SetCurrent(int index)
     {
         guns[index].SetActive(true);
+    }
+
+    public void Setvalue(int other)
+    {
+        Debug.Log(other);
+        ThrowScript.SetValue(other);
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] int damage = 25;
+    [SerializeField] int damage;
     private void OnCollisionEnter(Collision other) {
         Destroy(gameObject);
 

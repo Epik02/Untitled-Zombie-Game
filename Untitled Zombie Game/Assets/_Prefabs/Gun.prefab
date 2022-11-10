@@ -68,7 +68,7 @@ Transform:
   - {fileID: 4040350716916905188}
   - {fileID: 8167796472510757318}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6180304175192997666
 MeshFilter:
@@ -162,6 +162,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunScript: {fileID: 7942417294495242147}
+  GunHolder: {fileID: 0}
+  ThrowScript: {fileID: 0}
+  swichy: {fileID: 0}
   rb: {fileID: 4645070279013774328}
   coll: {fileID: 6180304175192997664}
   player: {fileID: 0}
@@ -312,5 +315,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7504c3d5ab35077419b99d7b51e088f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 2369002665294184600, guid: 8f8b07b7600fac442b908c1710e813c5, type: 3}
+  projectile:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  SmallBullet: {fileID: 2369002665294184600, guid: 8f8b07b7600fac442b908c1710e813c5, type: 3}
+  BigBullet: {fileID: 2369002665294184600, guid: 6bd328cbdbf658c4aae06d40f7d0a571, type: 3}
   projectilePos: {fileID: 4040350716916905188}
+  value: 0
+  maxAmmo: 15
+  TotalAmmo: 120
+  reloadTime: 2
+  isReloading: 0
+  AmmoDone: 0
+  ChangingAmmo: {fileID: 0}
+  ChangingTotalAmmo: {fileID: 0}

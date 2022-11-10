@@ -131,6 +131,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 423840744}
     m_Modifications:
+    - target: {fileID: 4040350716916905188, guid: 1f173750cb10d8e4c889ad89f40f7865, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.54
+      objectReference: {fileID: 0}
     - target: {fileID: 4645070279013774328, guid: 1f173750cb10d8e4c889ad89f40f7865, type: 3}
       propertyPath: m_Constraints
       value: 0
@@ -144,9 +148,17 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5385386720221043083, guid: 1f173750cb10d8e4c889ad89f40f7865, type: 3}
+      propertyPath: value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5385386720221043083, guid: 1f173750cb10d8e4c889ad89f40f7865, type: 3}
       propertyPath: maxAmmo
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 5385386720221043083, guid: 1f173750cb10d8e4c889ad89f40f7865, type: 3}
+      propertyPath: BigBullet
+      value: 
+      objectReference: {fileID: 2369002665294184600, guid: 6bd328cbdbf658c4aae06d40f7d0a571, type: 3}
     - target: {fileID: 5385386720221043083, guid: 1f173750cb10d8e4c889ad89f40f7865, type: 3}
       propertyPath: TotalAmmo
       value: 120
@@ -159,6 +171,10 @@ PrefabInstance:
       propertyPath: reloadTime
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5385386720221043083, guid: 1f173750cb10d8e4c889ad89f40f7865, type: 3}
+      propertyPath: SmallBullet
+      value: 
+      objectReference: {fileID: 2369002665294184600, guid: 8f8b07b7600fac442b908c1710e813c5, type: 3}
     - target: {fileID: 5385386720221043083, guid: 1f173750cb10d8e4c889ad89f40f7865, type: 3}
       propertyPath: projectilePos
       value: 
@@ -637,6 +653,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Object: {fileID: 289974771}
   decreaseScore: 100
+  GunThing: {fileID: 423840743}
+  ShootScript: {fileID: 0}
 --- !u!136 &289974770
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -872,7 +890,6 @@ MonoBehaviour:
   weaponHolder: {fileID: 423840743}
   currentGun: {fileID: 0}
   ThrowScript: {fileID: 410326102}
-  GunContainer: {fileID: 423840744}
 --- !u!1001 &492651538
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -881,6 +898,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 423840744}
     m_Modifications:
+    - target: {fileID: 4040350716916905188, guid: 1f173750cb10d8e4c889ad89f40f7865, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.52
+      objectReference: {fileID: 0}
     - target: {fileID: 4645070279013774328, guid: 1f173750cb10d8e4c889ad89f40f7865, type: 3}
       propertyPath: m_Constraints
       value: 0
@@ -894,9 +915,17 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5385386720221043083, guid: 1f173750cb10d8e4c889ad89f40f7865, type: 3}
+      propertyPath: value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5385386720221043083, guid: 1f173750cb10d8e4c889ad89f40f7865, type: 3}
       propertyPath: maxAmmo
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 5385386720221043083, guid: 1f173750cb10d8e4c889ad89f40f7865, type: 3}
+      propertyPath: BigBullet
+      value: 
+      objectReference: {fileID: 2369002665294184600, guid: 6bd328cbdbf658c4aae06d40f7d0a571, type: 3}
     - target: {fileID: 5385386720221043083, guid: 1f173750cb10d8e4c889ad89f40f7865, type: 3}
       propertyPath: TotalAmmo
       value: 120
@@ -909,6 +938,10 @@ PrefabInstance:
       propertyPath: reloadTime
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5385386720221043083, guid: 1f173750cb10d8e4c889ad89f40f7865, type: 3}
+      propertyPath: SmallBullet
+      value: 
+      objectReference: {fileID: 2369002665294184600, guid: 8f8b07b7600fac442b908c1710e813c5, type: 3}
     - target: {fileID: 5385386720221043083, guid: 1f173750cb10d8e4c889ad89f40f7865, type: 3}
       propertyPath: projectilePos
       value: 
@@ -2510,6 +2543,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4040350716916905188, guid: 1f173750cb10d8e4c889ad89f40f7865, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.69
+      objectReference: {fileID: 0}
     - target: {fileID: 4645070279013774328, guid: 1f173750cb10d8e4c889ad89f40f7865, type: 3}
       propertyPath: m_Constraints
       value: 0
@@ -2523,9 +2560,17 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5385386720221043083, guid: 1f173750cb10d8e4c889ad89f40f7865, type: 3}
+      propertyPath: value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5385386720221043083, guid: 1f173750cb10d8e4c889ad89f40f7865, type: 3}
       propertyPath: maxAmmo
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 5385386720221043083, guid: 1f173750cb10d8e4c889ad89f40f7865, type: 3}
+      propertyPath: BigBullet
+      value: 
+      objectReference: {fileID: 2369002665294184600, guid: 6bd328cbdbf658c4aae06d40f7d0a571, type: 3}
     - target: {fileID: 5385386720221043083, guid: 1f173750cb10d8e4c889ad89f40f7865, type: 3}
       propertyPath: TotalAmmo
       value: 120
@@ -2538,6 +2583,10 @@ PrefabInstance:
       propertyPath: reloadTime
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5385386720221043083, guid: 1f173750cb10d8e4c889ad89f40f7865, type: 3}
+      propertyPath: SmallBullet
+      value: 
+      objectReference: {fileID: 2369002665294184600, guid: 8f8b07b7600fac442b908c1710e813c5, type: 3}
     - target: {fileID: 5385386720221043083, guid: 1f173750cb10d8e4c889ad89f40f7865, type: 3}
       propertyPath: projectilePos
       value: 

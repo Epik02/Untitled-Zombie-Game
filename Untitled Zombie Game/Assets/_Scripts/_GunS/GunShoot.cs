@@ -8,9 +8,13 @@ public class GunShoot : MonoBehaviour
 {
     PlayerAction inputAction;
 
-    public GameObject projectile;
+    public GameObject[] projectile;
+    public GameObject SmallBullet;
+    public GameObject BigBullet;
+
     public Transform projectilePos;
 
+    public int value;
     public int maxAmmo = 15;
     private int currentAmmo;
     public int TotalAmmo = 120;
@@ -50,6 +54,9 @@ private void Awake()
 
         ChangingAmmo = GameObject.FindWithTag("CurrentAMMO").GetComponent<TMP_Text>();
         ChangingTotalAmmo = GameObject.FindWithTag("TotalAMMO").GetComponent<TMP_Text>();
+
+        projectile[0] = SmallBullet;
+        projectile[1] = BigBullet;
         
     }
 
@@ -75,10 +82,17 @@ private void Awake()
            return;
         }
         Debug.Log("Wow 3rd if statment incoming"); // if current ammo is greater than 0, player can shoot.
-        if (currentAmmo > 0 && AmmoDone == false)
+        if (currentAmmo > 0 && AmmoDone == false && value == 0)
         {
-            Debug.Log("Shoot Time");
-            inputAction.PlayerShoot.Shoot.performed += cntxt => Shoot();
+            Debug.Log("Shoot Time SMALL BULLET");
+            inputAction.PlayerShoot.Shoot.performed += cntxt => Shoot(0);
+        }
+
+        Debug.Log("Wow 4rd if statment incoming"); // if current ammo is greater than 0, player can shoot.
+        if (currentAmmo > 0 && AmmoDone == false && value == 1)
+        {
+            Debug.Log("Shoot Time BIG BULLET");
+            inputAction.PlayerShoot.Shoot.performed += cntxt => Shoot(1);
         }
     }
 
@@ -98,16 +112,16 @@ private void Awake()
         isReloading = false;
     }
 
-    private void Shoot()
+    private void Shoot(int check)
     {
-        if (currentAmmo > 0) // decrease current ammo
+        if (currentAmmo > 0) // decrease current ammo by 1
         {
             currentAmmo--;
             Debug.Log("Wow Ammo Decrease");
         }
         ChangingAmmo.text = currentAmmo.ToString();
         Debug.Log("Ammo:" + currentAmmo);
-        Rigidbody bulletRb = Instantiate(projectile, projectilePos.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+        Rigidbody bulletRb = Instantiate(projectile[check], projectilePos.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
         bulletRb.AddForce(transform.forward * 32f, ForceMode.Impulse);
         bulletRb.AddForce(transform.up * 1f, ForceMode.Impulse);
     }
@@ -120,5 +134,11 @@ private void Awake()
     public void ThrowReset()
     {
         isReloading = false;
+    }
+
+    public void SetValue(int other)
+    {
+        Debug.Log("Actived");
+        value = other;
     }
 }
