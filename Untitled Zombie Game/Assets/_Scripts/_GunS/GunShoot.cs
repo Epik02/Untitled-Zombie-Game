@@ -46,35 +46,36 @@ private void Awake()
         currentAmmo = maxAmmo;
         TotalMaxAmmo = TotalAmmo;
 
+        isReloading = false;
+
         ChangingAmmo = GameObject.FindWithTag("CurrentAMMO").GetComponent<TMP_Text>();
         ChangingTotalAmmo = GameObject.FindWithTag("TotalAMMO").GetComponent<TMP_Text>();
         
     }
 
-    void Update()
+    private void Update()
     {
-        //isReloading = false;
         ChangingAmmo.text = currentAmmo.ToString();
         ChangingTotalAmmo.text = "/" + TotalMaxAmmo.ToString();
         Debug.Log("Wow 1st if statment incoming");
         if (isReloading)
             return;
-        if ((TotalMaxAmmo <= 0) && (currentAmmo <= 0))
+        if (TotalMaxAmmo <= 0 && currentAmmo <= 0) // Gun cannot shoot anymore if ammo is 0 and storage ammo is 0
         {
             Debug.Log("Statment went by max = 0 and ammo = 0");
             inputAction.PlayerShoot.Disable();
             AmmoDone = true;
             return;
         }
-        Debug.Log("Wow 2nd if statment incoming");
-        if ((currentAmmo <= 0) && (AmmoDone == false))
+        Debug.Log("Wow 2nd if statment incoming"); // if current ammo reduce to 0, reload it from max ammo
+        if (currentAmmo <= 0 && AmmoDone == false)
         {
             Debug.Log("Reload Time");
             StartCoroutine(Reload());
            return;
         }
-        Debug.Log("Wow 3rd if statment incoming");
-        if ((currentAmmo > 0) && (AmmoDone == false))
+        Debug.Log("Wow 3rd if statment incoming"); // if current ammo is greater than 0, player can shoot.
+        if (currentAmmo > 0 && AmmoDone == false)
         {
             Debug.Log("Shoot Time");
             inputAction.PlayerShoot.Shoot.performed += cntxt => Shoot();
@@ -99,7 +100,7 @@ private void Awake()
 
     private void Shoot()
     {
-        if (currentAmmo > 0)
+        if (currentAmmo > 0) // decrease current ammo
         {
             currentAmmo--;
             Debug.Log("Wow Ammo Decrease");
