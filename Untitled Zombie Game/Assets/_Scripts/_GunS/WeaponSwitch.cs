@@ -11,16 +11,17 @@ public class WeaponSwitch : MonoBehaviour
     public GameObject weaponHolder;
     public GameObject currentGun;
 
+    public GunShoot ThrowScript;
+
+    public Transform GunContainer;
+
     void Start()
     {
         totalWeapons = weaponHolder.transform.childCount;
         guns = new GameObject[totalWeapons];
 
-        for (int i = 0; i < totalWeapons; i++)
-        {
-            guns[i] = weaponHolder.transform.GetChild(i).gameObject;
-            guns[i].SetActive(false);
-        }
+        //SetCurrent();
+        setParent();
 
         guns[0].SetActive(true);
         currentGun = guns[0];
@@ -30,28 +31,45 @@ public class WeaponSwitch : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
-            //next Weapon
-            if (currentWeaponIndex < totalWeapons - 1)
-            {
-                guns[currentWeaponIndex].SetActive(false);
-                currentWeaponIndex += 1;
-                guns[currentWeaponIndex].SetActive(true);
-                currentGun = guns[currentWeaponIndex];
-            }
+            ThrowScript.ThrowReset();
+            Swap();
         }
+    }
 
-        if (Input.GetKeyDown(KeyCode.K))
+    public void setParent()
+    {
+        //currentGun.transform.SetParent(GunContainer);
+        for (int i = 0; i < totalWeapons; i++)
         {
-            //previous Weapon
-            if (currentWeaponIndex > 0)
-            {
-                guns[currentWeaponIndex].SetActive(false);
-                currentWeaponIndex -= 1;
-                guns[currentWeaponIndex].SetActive(true);
-                currentGun = guns[currentWeaponIndex];
-            }
+            guns[i] = weaponHolder.transform.GetChild(i).gameObject;
+            guns[i].SetActive(false);
         }
+    }
+
+    public void Swap()
+    {
+        if (currentWeaponIndex < totalWeapons - 1)
+        {
+            Debug.Log("1");
+            guns[currentWeaponIndex].SetActive(false);
+            currentWeaponIndex += 1;
+            guns[currentWeaponIndex].SetActive(true);
+        }
+        //previous Weapon
+        else if (currentWeaponIndex > 0)
+        {
+            Debug.Log("0");
+            guns[currentWeaponIndex].SetActive(false);
+            currentWeaponIndex -= 1;
+            guns[currentWeaponIndex].SetActive(true);
+        }
+        currentGun = guns[currentWeaponIndex];
+    }
+
+    public void SetCurrent(int index)
+    {
+        guns[index].SetActive(true);
     }
 }

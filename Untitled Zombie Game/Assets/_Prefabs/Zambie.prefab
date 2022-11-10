@@ -311,7 +311,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zombieBody: {fileID: 2449862956077504080}
   zombie: {fileID: 2449862956077504083}
-  speed: 1
+  speed: 0.5
   strafeSpeed: 20
   mplayer: {fileID: 0}
   rotationangle: 0

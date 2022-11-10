@@ -8,6 +8,7 @@ public class EnemyController : MonoBehaviour
 {
    // public GameObject EnemyHealth;
     public int damages = 20;
+
     // public int maxHealth = 100;
     //public int health = 0;
 
@@ -19,6 +20,11 @@ public class EnemyController : MonoBehaviour
     // health = maxHealth;
     // healthBar.SetMaxHealth(maxHealth);
     //}
+
+    void Start()
+    {
+        ScoreManager.instance.AddEnemy();
+    }
 
     private void OnCollisionEnter(Collision other)
     {

@@ -11,11 +11,11 @@ public class GunShoot : MonoBehaviour
     public GameObject projectile;
     public Transform projectilePos;
 
-    public int maxAmmo = 10;
+    public int maxAmmo = 15;
     private int currentAmmo;
-    public int TotalAmmo = 50;
+    public int TotalAmmo = 120;
     private int TotalMaxAmmo;
-    public float reloadTime = 5f;
+    public float reloadTime = 2f;
     public bool isReloading = false;
 
     public bool AmmoDone = false;
@@ -115,5 +115,10 @@ private void Awake()
     public void AddMaxAmmo()
     {
 
+    }
+
+    public void ThrowReset()
+    {
+        isReloading = false;
     }
 }

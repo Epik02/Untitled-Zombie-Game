@@ -10,6 +10,12 @@ using UnityEngine;
 public class PickUp : MonoBehaviour
 {
     public GameObject gunScript;
+    public GameObject GunHolder;
+
+    public GunShoot ThrowScript;
+
+    public WeaponSwitch swichy;
+
     public Rigidbody rb;
     public BoxCollider coll;
     public Transform player, gunContainer, fpsCam;
@@ -37,6 +43,9 @@ public class PickUp : MonoBehaviour
             coll.isTrigger = true;
             slotFull = true;
         }
+        GunHolder = GameObject.FindWithTag("GunHolderScript");
+        ThrowScript = gunScript.GetComponent<GunShoot>();
+        swichy = GunHolder.GetComponent<WeaponSwitch>();
     }
 
     //private void OnEnable()
@@ -62,12 +71,14 @@ public class PickUp : MonoBehaviour
     {
         //Check if player is in range and "E" is pressed
         Vector3 distanceToPlayer = player.position - transform.position;
+
         if (!equipped && distanceToPlayer.magnitude <= pickUpRange && Input.GetKeyDown(KeyCode.E) && !slotFull) PickUps();
        //if (!equipped && distanceToPlayer.magnitude <= pickUpRange && inputAction.Player.Pick && !slotFull) PickUps();
 
         ////Drop if equipped and "Q" is pressed
         if (equipped && Input.GetKeyDown(KeyCode.Q)) Drop();
-       // if (equipped) inputAction.Player.Drop.performed += cntxt => Drop();
+        // if (equipped) inputAction.Player.Drop.performed += cntxt => Drop();
+
     }
 
     private void PickUps()
@@ -88,10 +99,16 @@ public class PickUp : MonoBehaviour
         //Enable script
         gunScript.SetActive(true);
 
+        
+        swichy.setParent();
+        //swichy.Swap();
+        swichy.SetCurrent(1);
+
     }
 
     private void Drop()
     {
+        ThrowScript.ThrowReset();
         equipped = false;
         slotFull = false;
 
@@ -112,9 +129,14 @@ public class PickUp : MonoBehaviour
         float random = Random.Range(-1f, 1f);
         rb.AddTorque(new Vector3(random, random, random)*10);
 
-
         //Enable script
         gunScript.SetActive(false);
+
+       // swichy.Swap();
+        swichy.setParent();
+        swichy.SetCurrent(0);
+        //swichy.SetCurrent();
+
     }
 }
 
