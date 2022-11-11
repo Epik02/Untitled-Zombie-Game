@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using StarterAssets;
 
 public class EnemyController : MonoBehaviour
 {
@@ -34,6 +35,7 @@ public class EnemyController : MonoBehaviour
             health?.TakeDamage(damages);
             if (health.currentHealth <= 0)
             {
+                other.gameObject.GetComponent<StarterAssetsInputs>().OnApplicationFocus(false);
                 SceneManager.LoadScene(0);
             }
             //other.gameObject.GetComponent<EnemyController>().OnTakeDamages(25);
