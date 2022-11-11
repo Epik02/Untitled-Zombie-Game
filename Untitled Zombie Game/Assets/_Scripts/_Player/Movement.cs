@@ -28,12 +28,12 @@ public class Movement : MonoBehaviour
 
     private void OnEnable()
     {
-        inputAction.Player.Enable();
+        inputAction.Playeractions.Enable();
     }
 
     private void OnDisable()
     {
-        inputAction.Player.Disable();
+        inputAction.Playeractions.Disable();
     }
 
     void Awake()
@@ -49,7 +49,7 @@ public class Movement : MonoBehaviour
 
         inputAction = new PlayerAction();
 
-        inputAction.Player.ReloadScene.performed += cntxt => Reload();
+        inputAction.Playeractions.ReloadScene.performed += cntxt => Reload();
         //inputAction.Player.Damage.performed += cntxt => TakeDamage(damages);
     }
     //taking damage
@@ -73,7 +73,7 @@ public class Movement : MonoBehaviour
 
         if (Character.transform.position.y < -2)
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         }
 
        // if (healthBar.GetHealth() <= 0)
