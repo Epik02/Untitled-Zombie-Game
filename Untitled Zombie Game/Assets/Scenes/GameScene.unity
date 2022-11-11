@@ -2070,14 +2070,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunScript: {fileID: 1334549641}
   GunHolder: {fileID: 0}
-  ThrowScript: {fileID: 0}
   swichy: {fileID: 0}
   rb: {fileID: 1114852637}
   coll: {fileID: 1920920667}
   player: {fileID: 838367537}
   gunContainer: {fileID: 423840744}
   fpsCam: {fileID: 963194228}
-  pickUpRange: 4
+  pickUpRange: 2
   dropForwardForce: 0.1
   dropUpwardForce: 0.05
   equipped: 1
@@ -2401,7 +2400,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1714970942
 Transform:
   m_ObjectHideFlags: 0
@@ -3403,14 +3402,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunScript: {fileID: 146459044}
   GunHolder: {fileID: 0}
-  ThrowScript: {fileID: 0}
   swichy: {fileID: 0}
   rb: {fileID: 8887881883854623686}
   coll: {fileID: 8675056469667067939}
   player: {fileID: 838367537}
   gunContainer: {fileID: 423840744}
   fpsCam: {fileID: 963194228}
-  pickUpRange: 4
+  pickUpRange: 2
   dropForwardForce: 0.1
   dropUpwardForce: 0.05
   equipped: 1

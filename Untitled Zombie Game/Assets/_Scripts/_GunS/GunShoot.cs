@@ -37,6 +37,7 @@ public class GunShoot : MonoBehaviour
     private void OnDisable()
     {
         inputAction.Disable();
+        isReloading = false;
     }
 
 private void Awake()
@@ -126,10 +127,10 @@ private void Awake()
 
     }
 
-    public void ThrowReset()
-    {
-        isReloading = false;
-    }
+    //public void ThrowReset()
+    //{
+    //    isReloading = false;
+    //}
 
     public void SetValue(int other)
     {

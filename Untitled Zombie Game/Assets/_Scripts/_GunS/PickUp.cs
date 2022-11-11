@@ -12,14 +12,14 @@ public class PickUp : MonoBehaviour
     public GameObject gunScript;
     public GameObject GunHolder;
 
-    public GunShoot ThrowScript;
+    //public GunShoot ThrowScript;
 
     public WeaponSwitch swichy;
 
     public Rigidbody rb;
     public BoxCollider coll;
     public Transform player, gunContainer, fpsCam;
-   // PlayerAction inputAction;
+    //PlayerAction inputAction;
 
     public float pickUpRange;
     public float dropForwardForce, dropUpwardForce;
@@ -44,7 +44,7 @@ public class PickUp : MonoBehaviour
             slotFull = true;
         }
         GunHolder = GameObject.FindWithTag("GunHolderScript");
-        ThrowScript = gunScript.GetComponent<GunShoot>();
+        //ThrowScript = gunScript.GetComponent<GunShoot>();
         swichy = GunHolder.GetComponent<WeaponSwitch>();
     }
 
@@ -61,8 +61,7 @@ public class PickUp : MonoBehaviour
     //private void Awake()
     //{
     //    inputAction = new PlayerAction();
-
-    //   // if (!equipped && distanceToPlayer.magnitude <= pickUpRange && inputAction.Player.Pick.performed() && !slotFull) PickUps();
+    //    // if (!equipped && distanceToPlayer.magnitude <= pickUpRange && inputAction.Player.Pick.performed() && !slotFull) PickUps();
     //    //if (equipped && inputAction.Player.Drop.performed()) Drop();
     //    // inputAction.Player.Pick.performed += cntxt => PickUps();
     //}
@@ -73,12 +72,22 @@ public class PickUp : MonoBehaviour
         Vector3 distanceToPlayer = player.position - transform.position;
 
         if (!equipped && distanceToPlayer.magnitude <= pickUpRange && Input.GetKeyDown(KeyCode.E) && !slotFull) PickUps();
-       //if (!equipped && distanceToPlayer.magnitude <= pickUpRange && inputAction.Player.Pick && !slotFull) PickUps();
+        //if (!equipped && distanceToPlayer.magnitude <= pickUpRange && !slotFull)
+        //{
+        //    inputAction.Player.Drop.Disable();
+        //    inputAction.Player.Pick.Enable();
+        //    inputAction.Player.Pick.performed += cntxt => PickUps();
+            
+        //}
 
         ////Drop if equipped and "Q" is pressed
         if (equipped && Input.GetKeyDown(KeyCode.Q)) Drop();
-        // if (equipped) inputAction.Player.Drop.performed += cntxt => Drop();
-
+        //if (equipped)
+        //{
+        //    inputAction.Player.Pick.Disable();
+        //    inputAction.Player.Drop.Enable();
+        //    inputAction.Player.Drop.performed += cntxt => Drop();
+        //}
     }
 
     private void PickUps()
@@ -108,7 +117,7 @@ public class PickUp : MonoBehaviour
 
     private void Drop()
     {
-        ThrowScript.ThrowReset();
+        //ThrowScript.ThrowReset();
         equipped = false;
         slotFull = false;
 
@@ -134,7 +143,7 @@ public class PickUp : MonoBehaviour
 
        // swichy.Swap();
         swichy.setParent();
-        swichy.SetCurrent(0);
+        swichy.SetCurrent(1);
         //swichy.SetCurrent();
 
     }
