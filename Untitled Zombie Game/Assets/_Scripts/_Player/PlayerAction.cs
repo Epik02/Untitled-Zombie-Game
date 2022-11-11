@@ -52,7 +52,7 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
             ]
         },
         {
-            ""name"": ""Player"",
+            ""name"": ""Playeractions"",
             ""id"": ""8294e36f-ce8a-4f12-b001-c6b3c8560e9f"",
             ""actions"": [
                 {
@@ -145,12 +145,12 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         // PlayerShoot
         m_PlayerShoot = asset.FindActionMap("PlayerShoot", throwIfNotFound: true);
         m_PlayerShoot_Shoot = m_PlayerShoot.FindAction("Shoot", throwIfNotFound: true);
-        // Player
-        m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-        m_Player_Pick = m_Player.FindAction("Pick", throwIfNotFound: true);
-        m_Player_Drop = m_Player.FindAction("Drop", throwIfNotFound: true);
-        m_Player_ReloadScene = m_Player.FindAction("ReloadScene", throwIfNotFound: true);
-        m_Player_Damage = m_Player.FindAction("Damage", throwIfNotFound: true);
+        // Playeractions
+        m_Playeractions = asset.FindActionMap("Playeractions", throwIfNotFound: true);
+        m_Playeractions_Pick = m_Playeractions.FindAction("Pick", throwIfNotFound: true);
+        m_Playeractions_Drop = m_Playeractions.FindAction("Drop", throwIfNotFound: true);
+        m_Playeractions_ReloadScene = m_Playeractions.FindAction("ReloadScene", throwIfNotFound: true);
+        m_Playeractions_Damage = m_Playeractions.FindAction("Damage", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -240,44 +240,44 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
     }
     public PlayerShootActions @PlayerShoot => new PlayerShootActions(this);
 
-    // Player
-    private readonly InputActionMap m_Player;
-    private IPlayerActions m_PlayerActionsCallbackInterface;
-    private readonly InputAction m_Player_Pick;
-    private readonly InputAction m_Player_Drop;
-    private readonly InputAction m_Player_ReloadScene;
-    private readonly InputAction m_Player_Damage;
-    public struct PlayerActions
+    // Playeractions
+    private readonly InputActionMap m_Playeractions;
+    private IPlayeractionsActions m_PlayeractionsActionsCallbackInterface;
+    private readonly InputAction m_Playeractions_Pick;
+    private readonly InputAction m_Playeractions_Drop;
+    private readonly InputAction m_Playeractions_ReloadScene;
+    private readonly InputAction m_Playeractions_Damage;
+    public struct PlayeractionsActions
     {
         private @PlayerAction m_Wrapper;
-        public PlayerActions(@PlayerAction wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Pick => m_Wrapper.m_Player_Pick;
-        public InputAction @Drop => m_Wrapper.m_Player_Drop;
-        public InputAction @ReloadScene => m_Wrapper.m_Player_ReloadScene;
-        public InputAction @Damage => m_Wrapper.m_Player_Damage;
-        public InputActionMap Get() { return m_Wrapper.m_Player; }
+        public PlayeractionsActions(@PlayerAction wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Pick => m_Wrapper.m_Playeractions_Pick;
+        public InputAction @Drop => m_Wrapper.m_Playeractions_Drop;
+        public InputAction @ReloadScene => m_Wrapper.m_Playeractions_ReloadScene;
+        public InputAction @Damage => m_Wrapper.m_Playeractions_Damage;
+        public InputActionMap Get() { return m_Wrapper.m_Playeractions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(PlayerActions set) { return set.Get(); }
-        public void SetCallbacks(IPlayerActions instance)
+        public static implicit operator InputActionMap(PlayeractionsActions set) { return set.Get(); }
+        public void SetCallbacks(IPlayeractionsActions instance)
         {
-            if (m_Wrapper.m_PlayerActionsCallbackInterface != null)
+            if (m_Wrapper.m_PlayeractionsActionsCallbackInterface != null)
             {
-                @Pick.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPick;
-                @Pick.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPick;
-                @Pick.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPick;
-                @Drop.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDrop;
-                @Drop.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDrop;
-                @Drop.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDrop;
-                @ReloadScene.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReloadScene;
-                @ReloadScene.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReloadScene;
-                @ReloadScene.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReloadScene;
-                @Damage.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDamage;
-                @Damage.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDamage;
-                @Damage.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDamage;
+                @Pick.started -= m_Wrapper.m_PlayeractionsActionsCallbackInterface.OnPick;
+                @Pick.performed -= m_Wrapper.m_PlayeractionsActionsCallbackInterface.OnPick;
+                @Pick.canceled -= m_Wrapper.m_PlayeractionsActionsCallbackInterface.OnPick;
+                @Drop.started -= m_Wrapper.m_PlayeractionsActionsCallbackInterface.OnDrop;
+                @Drop.performed -= m_Wrapper.m_PlayeractionsActionsCallbackInterface.OnDrop;
+                @Drop.canceled -= m_Wrapper.m_PlayeractionsActionsCallbackInterface.OnDrop;
+                @ReloadScene.started -= m_Wrapper.m_PlayeractionsActionsCallbackInterface.OnReloadScene;
+                @ReloadScene.performed -= m_Wrapper.m_PlayeractionsActionsCallbackInterface.OnReloadScene;
+                @ReloadScene.canceled -= m_Wrapper.m_PlayeractionsActionsCallbackInterface.OnReloadScene;
+                @Damage.started -= m_Wrapper.m_PlayeractionsActionsCallbackInterface.OnDamage;
+                @Damage.performed -= m_Wrapper.m_PlayeractionsActionsCallbackInterface.OnDamage;
+                @Damage.canceled -= m_Wrapper.m_PlayeractionsActionsCallbackInterface.OnDamage;
             }
-            m_Wrapper.m_PlayerActionsCallbackInterface = instance;
+            m_Wrapper.m_PlayeractionsActionsCallbackInterface = instance;
             if (instance != null)
             {
                 @Pick.started += instance.OnPick;
@@ -295,12 +295,12 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
             }
         }
     }
-    public PlayerActions @Player => new PlayerActions(this);
+    public PlayeractionsActions @Playeractions => new PlayeractionsActions(this);
     public interface IPlayerShootActions
     {
         void OnShoot(InputAction.CallbackContext context);
     }
-    public interface IPlayerActions
+    public interface IPlayeractionsActions
     {
         void OnPick(InputAction.CallbackContext context);
         void OnDrop(InputAction.CallbackContext context);
