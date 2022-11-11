@@ -8,8 +8,11 @@ public class ScoreManager : MonoBehaviour
 
 {
     public static ScoreManager instance;
+
+    public int EnemyCounter = 0;
+
     public TMP_Text ChangingText;
-    int score = 0;
+    int score = 200;
     // Start is called before the first frame update
     void Awake()
     {
@@ -38,5 +41,18 @@ public class ScoreManager : MonoBehaviour
     public void Update()
     {
         ChangingText.text = score.ToString();
+    }
+
+    public void AddEnemy()
+    {
+        EnemyCounter++;
+    }
+    public void DecreaseEnemy()
+    {
+        EnemyCounter--;
+    }
+    public int GetEnemyNumber()
+    {
+        return EnemyCounter;
     }
 }

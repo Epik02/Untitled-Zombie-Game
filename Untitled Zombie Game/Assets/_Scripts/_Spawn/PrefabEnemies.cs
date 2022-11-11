@@ -12,10 +12,10 @@ public class PrefabEnemies : MonoBehaviour
     public int yPos;
     public int enemyCount;
 
-    void Start()
-    {
-        StartCoroutine(EnemyDrop());
-    }
+    //void Start()
+   // {
+        //StartCoroutine(EnemyDrop());
+   // }
     
     IEnumerator EnemyDrop()
     {
@@ -30,5 +30,14 @@ public class PrefabEnemies : MonoBehaviour
             enemyCount += 1;
         }
 
+    }
+
+    void Update()
+    {
+        if (ScoreManager.instance.GetEnemyNumber() <= 0)
+        {
+            enemyCount = 0;
+            StartCoroutine(EnemyDrop());
+        }
     }
 }

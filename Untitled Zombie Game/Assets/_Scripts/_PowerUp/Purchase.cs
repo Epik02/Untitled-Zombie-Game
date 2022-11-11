@@ -9,6 +9,10 @@ public class Purchase : MonoBehaviour
 
     public int decreaseScore = 100;
 
+    public GameObject GunThing;
+
+    public WeaponSwitch ShootScript;
+
     //int EarnPoints = 0;
     private void OnCollisionEnter(Collision other)
     {
@@ -16,10 +20,10 @@ public class Purchase : MonoBehaviour
         {
             if (ScoreManager.instance.GetScore() > 0)
             {
-                StartCoroutine(PowerUp());
+               // StartCoroutine(PowerUp());
                 ScoreManager.instance.DecreaseScore(decreaseScore);
                 Object.material.color = Color.blue;
-
+                ShootScript.Setvalue(1);
             }
             else
             {
@@ -28,6 +32,11 @@ public class Purchase : MonoBehaviour
             }
             
         }
+    }
+
+    public void Update()
+    {
+        ShootScript = GunThing.GetComponent<WeaponSwitch>();
     }
      IEnumerator PowerUp()
     {
