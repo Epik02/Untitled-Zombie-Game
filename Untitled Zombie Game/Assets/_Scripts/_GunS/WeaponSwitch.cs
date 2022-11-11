@@ -55,7 +55,7 @@ public class WeaponSwitch : MonoBehaviour
             guns[currentWeaponIndex].SetActive(false);
             currentWeaponIndex += 1;
             currentGun = guns[currentWeaponIndex];
-           //ThrowScript = guns[currentWeaponIndex].GetComponentInChildren<GunShoot>();
+            ThrowScript = guns[currentWeaponIndex].GetComponentInChildren<GunShoot>();
             guns[currentWeaponIndex].SetActive(true);
             //ThrowScript.ThrowReset();
         }
@@ -66,8 +66,8 @@ public class WeaponSwitch : MonoBehaviour
             guns[currentWeaponIndex].SetActive(false);
             currentWeaponIndex -= 1;
             currentGun = guns[currentWeaponIndex];
-            //ThrowScript = guns[currentWeaponIndex].GetComponentInChildren<GunShoot>();
-            //ThrowScript = currentGun.GetComponent<GunShoot>();
+            ThrowScript = guns[currentWeaponIndex].GetComponentInChildren<GunShoot>();
+            ThrowScript = currentGun.GetComponent<GunShoot>();
             guns[currentWeaponIndex].SetActive(true);
             //ThrowScript.ThrowReset();
         }
