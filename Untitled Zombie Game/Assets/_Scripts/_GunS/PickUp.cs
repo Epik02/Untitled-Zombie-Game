@@ -88,9 +88,9 @@ public class PickUp : MonoBehaviour
 
         //Make weapon a child of the character/camera and move it to default position
         transform.SetParent(gunContainer);
-        transform.localPosition = Vector3.zero;
+        transform.localPosition = new Vector3(-0.119f, -0.206f, 0.382f);
         transform.localRotation = Quaternion.Euler(Vector3.zero);
-        transform.localScale = Vector3.one;
+        transform.localScale = new Vector3(1.91f, 0.83f, 1.355f);
 
         //Make Rigidbody kinematic and BoxCollider a trigger
         rb.isKinematic = true;
