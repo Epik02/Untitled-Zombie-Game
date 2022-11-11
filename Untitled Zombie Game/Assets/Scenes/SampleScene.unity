@@ -889,7 +889,7 @@ MonoBehaviour:
   guns: []
   weaponHolder: {fileID: 423840743}
   currentGun: {fileID: 0}
-  ThrowScript: {fileID: 410326102}
+  ThrowScript: {fileID: 0}
 --- !u!1001 &492651538
 PrefabInstance:
   m_ObjectHideFlags: 0

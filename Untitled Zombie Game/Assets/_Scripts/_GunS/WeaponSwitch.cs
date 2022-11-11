@@ -24,6 +24,7 @@ public class WeaponSwitch : MonoBehaviour
         guns[0].SetActive(true);
         currentGun = guns[0];
         currentWeaponIndex = 0;
+        ThrowScript = guns[currentWeaponIndex].GetComponentInChildren<GunShoot>();
     }
 
     void Update()
@@ -47,25 +48,29 @@ public class WeaponSwitch : MonoBehaviour
 
     public void Swap()
     {
+        //ThrowScript = currentGun.GetComponent<GunShoot>();
         if (currentWeaponIndex < totalWeapons - 1)
         {
-            ThrowScript = guns[currentWeaponIndex].GetComponent<GunShoot>();
             Debug.Log("1");
             guns[currentWeaponIndex].SetActive(false);
             currentWeaponIndex += 1;
+            currentGun = guns[currentWeaponIndex];
+            ThrowScript = guns[currentWeaponIndex].GetComponentInChildren<GunShoot>();
             guns[currentWeaponIndex].SetActive(true);
+            ThrowScript.ThrowReset();
         }
         //previous Weapon
         else if (currentWeaponIndex > 0)
         {
-            ThrowScript = guns[currentWeaponIndex].GetComponent<GunShoot>();
             Debug.Log("0");
             guns[currentWeaponIndex].SetActive(false);
             currentWeaponIndex -= 1;
+            currentGun = guns[currentWeaponIndex];
+            ThrowScript = guns[currentWeaponIndex].GetComponentInChildren<GunShoot>();
+            //ThrowScript = currentGun.GetComponent<GunShoot>();
             guns[currentWeaponIndex].SetActive(true);
+            ThrowScript.ThrowReset();
         }
-        ThrowScript.ThrowReset();
-        currentGun = guns[currentWeaponIndex];
     }
 
     public void SetCurrent(int index)
