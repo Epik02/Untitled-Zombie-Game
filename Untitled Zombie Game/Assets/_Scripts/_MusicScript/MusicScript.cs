@@ -16,6 +16,7 @@ public class MusicScript : MonoBehaviour
     {
         AudioSource.Play();
         musicVolume = PlayerPrefs.GetFloat("volume");
+        
         AudioSource.volume = musicVolume;
         volumeSlider.value = musicVolume;
     }
