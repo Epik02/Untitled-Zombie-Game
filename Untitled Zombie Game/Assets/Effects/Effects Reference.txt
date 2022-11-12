@@ -1,0 +1,8 @@
+Effects Reference:
+Effects came from Unity Particle Pack
+Website: https://assetstore.unity.com/packages/essentials/tutorial-projects/unity-particle-pack-127325#description
+I simply add that asset to package, export effects
+than import to the game for our group to use as effects
+
+Tutorial Code for Explode - Grenade:
+https://www.youtube.com/watch?v=BYL6JtUdEY0&ab_channel=Brackeys
