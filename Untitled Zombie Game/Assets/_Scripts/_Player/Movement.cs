@@ -26,15 +26,15 @@ public class Movement : MonoBehaviour
     public float playery = 0;
     public float playerz = 0;
 
-    private void OnEnable()
-    {
-        inputAction.Playeractions.Enable();
-    }
+    //private void OnEnable()
+    //{
+    //    inputAction.Playeractions.Enable();
+    //}
 
-    private void OnDisable()
-    {
-        inputAction.Playeractions.Disable();
-    }
+    //private void OnDisable()
+    //{
+    //    inputAction.Playeractions.Disable();
+    //}
 
     void Awake()
     {
@@ -47,9 +47,9 @@ public class Movement : MonoBehaviour
         //currentHealth = maxHealth;
         //healthBar.SetMaxHealth(maxHealth);
 
-        inputAction = new PlayerAction();
+       // inputAction = new PlayerAction();
 
-        inputAction.Playeractions.ReloadScene.performed += cntxt => Reload();
+        //inputAction.Playeractions.ReloadScene.performed += cntxt => Reload();
         //inputAction.Player.Damage.performed += cntxt => TakeDamage(damages);
     }
     //taking damage
@@ -58,11 +58,11 @@ public class Movement : MonoBehaviour
     //    currentHealth -= damage;
     //    healthBar.SetHealth(currentHealth);
     //}
+    //public void Reload()
+    //{
 
-    public void Reload()
-    {
-        SceneManager.LoadScene(0);
-    }
+    //    SceneManager.LoadScene(0);
+    //}
 
     // Update is called once per frame
     void Update()
