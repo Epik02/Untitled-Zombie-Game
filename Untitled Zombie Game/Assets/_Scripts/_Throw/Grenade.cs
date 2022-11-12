@@ -7,6 +7,7 @@ public class Grenade : MonoBehaviour
     [SerializeField] int damage;
 
     // Numbers for explode
+    [Header("Settings")]
     public float delay = 3f;
     public float radius = 5f;
     public float force = 700f;
@@ -15,9 +16,17 @@ public class Grenade : MonoBehaviour
 
     float countdown;
     bool hasExploded = false;
+
+    // Sound Effects (Play when Grenade Explode)
+    [Header("Sound Effects")]
+    public GameObject GrenadeSound;
+
+    public float Soundvolume;
+
     // Start is called before the first frame update
     void Start()
     {
+        GrenadeSound = GameObject.FindWithTag("ExplodeSound");
         countdown = delay;
     }
 
@@ -35,7 +44,7 @@ public class Grenade : MonoBehaviour
     void Explode()
     {
         Debug.Log("BOOM!");
-
+        GrenadeSound.GetComponent<AudioSource>().Play();
         // show effect
         Instantiate(explosionEffect, transform.position, transform.rotation);
 

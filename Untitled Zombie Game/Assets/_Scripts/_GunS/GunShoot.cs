@@ -8,12 +8,14 @@ public class GunShoot : MonoBehaviour
 {
     PlayerAction inputAction;
 
+    [Header("Bullet References")]
     public GameObject[] projectile;
     public GameObject SmallBullet;
     public GameObject BigBullet;
 
     public Transform projectilePos;
 
+    [Header("Value Settings")]
     public int value;
     public int maxAmmo = 15;
     private int currentAmmo;
@@ -25,9 +27,16 @@ public class GunShoot : MonoBehaviour
     public bool AmmoDone = false;
 
     //Test for AMMO and Reloading
+    [Header("UI Score Text")]
     public TMP_Text ChangingAmmo;
     public TMP_Text ChangingTotalAmmo;
 
+    // Sound Effects (Play on certain if statements)
+    [Header("Sound Effects")]
+    public AudioSource ShootSound;
+    public AudioSource ReloadSound;
+
+    public float Soundvolume;
 
     private void OnEnable()
     {
@@ -60,7 +69,8 @@ private void Awake()
 
         projectile[0] = SmallBullet;
         projectile[1] = BigBullet;
-        
+
+        ShootSound.volume = Soundvolume;
     }
 
     private void Update()
@@ -96,6 +106,7 @@ private void Awake()
     {
         isReloading = true;
         inputAction.PlayerShoot.Disable();
+        ReloadSound.Play();
         Debug.Log("Reloading...");
         yield return new WaitForSeconds(reloadTime);
         Debug.Log("Reloading Done");
@@ -117,6 +128,7 @@ private void Awake()
         }
         ChangingAmmo.text = currentAmmo.ToString();
         Debug.Log("Ammo:" + currentAmmo);
+        ShootSound.Play();
         Rigidbody bulletRb = Instantiate(projectile[check], projectilePos.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
         bulletRb.AddForce(transform.forward * 32f, ForceMode.Impulse);
         bulletRb.AddForce(transform.up * 1f, ForceMode.Impulse);
