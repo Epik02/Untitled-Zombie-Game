@@ -351,10 +351,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c6cae0ea474c914a9897e4d1afa68be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
-  _StartingHealth: 100
+  informationValues: {fileID: 11400000, guid: 4bf7a1db7387bbd48a142917a2886570, type: 2}
   currentHealth: 0
-  damages: 0
   healthBar: {fileID: 0}
 --- !u!114 &941761561076133207
 MonoBehaviour:
@@ -381,7 +379,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 253f664b8a5c7fb4183d4994af1f2893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damages: 20
+  informationValues: {fileID: 11400000, guid: 4bf7a1db7387bbd48a142917a2886570, type: 2}
+  damages: 0
 --- !u!1 &4226166289234051140
 GameObject:
   m_ObjectHideFlags: 0

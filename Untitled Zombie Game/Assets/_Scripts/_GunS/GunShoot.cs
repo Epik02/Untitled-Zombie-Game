@@ -9,11 +9,16 @@ public class GunShoot : MonoBehaviour
     PlayerAction inputAction;
 
     [Header("Bullet References")]
+    [SerializeField]
+    private InformationValues informationValues;
+
     public GameObject[] projectile;
     public GameObject SmallBullet;
     public GameObject BigBullet;
 
     public Transform projectilePos;
+
+    public int damageNumber;
 
     [Header("Value Settings")]
     public int value;
@@ -129,9 +134,17 @@ private void Awake()
         ChangingAmmo.text = currentAmmo.ToString();
         Debug.Log("Ammo:" + currentAmmo);
         ShootSound.Play();
-        Rigidbody bulletRb = Instantiate(projectile[check], projectilePos.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+        //Rigidbody bulletRb = Instantiate(projectile[check], projectilePos.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+        Rigidbody bulletRb = ObjectPooler.instance.SpawnFromPool("Bullet", projectilePos.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
         bulletRb.AddForce(transform.forward * 32f, ForceMode.Impulse);
         bulletRb.AddForce(transform.up * 1f, ForceMode.Impulse);
+
+        if (check == 0)
+        {
+            damageNumber = informationValues.damage._SmallDamage;
+
+        }
+        else damageNumber = informationValues.damage._BigDamage;
     }
 
     public void AddMaxAmmo()

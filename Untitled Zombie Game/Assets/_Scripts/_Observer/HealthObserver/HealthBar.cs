@@ -12,46 +12,41 @@ public class HealthBar : MonoBehaviour
 {
     [SerializeField] Slider _Healthslider = null;
 
-    public Health Health { get; private set; }
+    public Health health { get; private set; }
 
     private void Awake()
     {
-        Health = GetComponent<Health>();
+        health = GetComponent<Health>();
 
-        _Healthslider.maxValue = Health.MaxHealth;
-        _Healthslider.value = Health.StartingHealth;
+        _Healthslider.maxValue = health.MaxHealth;
+        _Healthslider.value = health.StartingHealth;
     }
     
     private void OnEnable()
     {
+        health = GetComponent<Health>();
+
+        _Healthslider.maxValue = health.MaxHealth;
+        _Healthslider.value = health.StartingHealth;
+
         //subscribe to get noified when this health takes damage!
-        Health.Damaged += OnTakeDamage;
+        health.Damaged += OnTakeDamage;
     }
 
     private void Disable()
     {
-        Health.Damaged -= OnTakeDamage;
+        health.Damaged -= OnTakeDamage;
     }
 
     void OnTakeDamage(int damage)
     {
         //on damaged, display the new health
-        _Healthslider.value = Health.currentHealth;
+        _Healthslider.value = health.currentHealth;
     }
-
-    //public void SetMaxHealth(int health)
-    //{
-    //    slider.maxValue = health;
-    //    slider.value = health;
-    //}
-
-    //public void SetHealth(int health)
-    //{
-    //    slider.value = health;
-    //}
 
     public float GetHealth()
     {
+        // return health slider value
         return _Healthslider.value;
     }
 
