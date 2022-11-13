@@ -7,24 +7,22 @@ using StarterAssets;
 
 public class EnemyController : MonoBehaviour
 {
-   // public GameObject EnemyHealth;
-    public int damages = 20;
+    [SerializeField]
+    private InformationValues informationValues;
 
-    // public int maxHealth = 100;
-    //public int health = 0;
+    // public GameObject EnemyHealth;
+    public int damages;
 
-    //public EnemyHealthSlider healthBar;
-
-    //void Awake()
-    //{
-    //EnemyHealth.SetActive(true);
-    // health = maxHealth;
-    // healthBar.SetMaxHealth(maxHealth);
-    //}
-
-    void Start()
+    private void OnEnable()
     {
         ScoreManager.instance.AddEnemy();
+        damages = informationValues.damage._EnemyDamage;
+        transform.GetComponent<Rigidbody>().WakeUp();
+    }
+
+    private void OnDisable()
+    {
+        transform.GetComponent<Rigidbody>().Sleep();
     }
 
     private void OnCollisionEnter(Collision other)
@@ -43,22 +41,4 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-        //public void TakeDamages(int damage)
-        //{
-        // health -= damage;
-        // healthBar.SetHealth(health);
-        // Debug.Log(health);
-
-        // if (health <= 0)
-        // {
-        //ScoreManager.instance.ChangeScore(1);
-        //  Destroy(gameObject);
-        //  }
-
-        //}
-
-        // public float GetEnemyHealth()
-        // {
-        // return health;
-        //  }
-    }
+}

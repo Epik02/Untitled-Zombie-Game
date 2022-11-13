@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Grenade : MonoBehaviour
 {
+    [SerializeField]
+    private InformationValues informationValues;
+
     [SerializeField] int damage;
 
     // Numbers for explode
@@ -27,6 +30,7 @@ public class Grenade : MonoBehaviour
     void Start()
     {
         GrenadeSound = GameObject.FindWithTag("ExplodeSound");
+        damage = informationValues.damage._GrenadeDamage;
         countdown = delay;
     }
 

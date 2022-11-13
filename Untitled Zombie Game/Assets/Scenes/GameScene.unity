@@ -1082,6 +1082,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7504c3d5ab35077419b99d7b51e088f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  informationValues: {fileID: 11400000, guid: 4bf7a1db7387bbd48a142917a2886570, type: 2}
   projectile:
   - {fileID: 0}
   - {fileID: 0}
@@ -1089,6 +1090,7 @@ MonoBehaviour:
   SmallBullet: {fileID: 2369002665294184600, guid: 8f8b07b7600fac442b908c1710e813c5, type: 3}
   BigBullet: {fileID: 2369002665294184600, guid: 6bd328cbdbf658c4aae06d40f7d0a571, type: 3}
   projectilePos: {fileID: 197975152}
+  damageNumber: 0
   value: 0
   maxAmmo: 15
   TotalAmmo: 120
@@ -1376,11 +1378,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c6cae0ea474c914a9897e4d1afa68be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
-  _StartingHealth: 100
+  informationValues: {fileID: 11400000, guid: 4bf7a1db7387bbd48a142917a2886570, type: 2}
   currentHealth: 0
-  damages: 0
-  healthBar: {fileID: 255554247}
 --- !u!1 &260555302
 GameObject:
   m_ObjectHideFlags: 0
@@ -2745,11 +2744,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c6cae0ea474c914a9897e4d1afa68be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
-  _StartingHealth: 100
+  informationValues: {fileID: 11400000, guid: 4bf7a1db7387bbd48a142917a2886570, type: 2}
   currentHealth: 0
-  damages: 0
-  healthBar: {fileID: 255554247}
 --- !u!114 &838367536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4067,6 +4063,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7504c3d5ab35077419b99d7b51e088f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  informationValues: {fileID: 11400000, guid: 4bf7a1db7387bbd48a142917a2886570, type: 2}
   projectile:
   - {fileID: 0}
   - {fileID: 0}
@@ -4074,6 +4071,7 @@ MonoBehaviour:
   SmallBullet: {fileID: 2369002665294184600, guid: 8f8b07b7600fac442b908c1710e813c5, type: 3}
   BigBullet: {fileID: 2369002665294184600, guid: 6bd328cbdbf658c4aae06d40f7d0a571, type: 3}
   projectilePos: {fileID: 1124760257}
+  damageNumber: 0
   value: 0
   maxAmmo: 15
   TotalAmmo: 120
@@ -4540,6 +4538,54 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1632400678
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1632400680}
+  - component: {fileID: 1632400679}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1632400679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632400678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46503e26138a73142ae486ffc6134d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pools:
+  - Tag: Bullet
+    Prefab: {fileID: 2369002665294184600, guid: 8f8b07b7600fac442b908c1710e813c5, type: 3}
+    Size: 10
+--- !u!4 &1632400680
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632400678}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 637.3668, y: 304.7077, z: -39.433655}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 20
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1676422742
 GameObject:
   m_ObjectHideFlags: 0
@@ -4740,7 +4786,7 @@ MonoBehaviour:
   xPos: 0
   zPos: 0
   yPos: 0
-  enemyCount: 8
+  enemyCount: 10
 --- !u!1 &1779017241
 GameObject:
   m_ObjectHideFlags: 0
@@ -6296,6 +6342,10 @@ PrefabInstance:
       propertyPath: Soundvolume
       value: 0.08
       objectReference: {fileID: 0}
+    - target: {fileID: 451798158611418080, guid: 944cae060f274804bb416ccaa2e7e140, type: 3}
+      propertyPath: informationValues
+      value: 
+      objectReference: {fileID: 11400000, guid: 4bf7a1db7387bbd48a142917a2886570, type: 2}
     - target: {fileID: 7070163077868217758, guid: 944cae060f274804bb416ccaa2e7e140, type: 3}
       propertyPath: fpsCam
       value: 
