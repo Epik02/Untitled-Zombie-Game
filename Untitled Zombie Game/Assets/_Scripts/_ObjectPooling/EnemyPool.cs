@@ -6,6 +6,12 @@ public static class EnemyPool
 {
     private static Dictionary<string, Pools> pools = new Dictionary<string, Pools>();
 
+    public static void ResetThis()
+    {
+        pools.Clear();
+        Debug.Log(pools.Count);
+    }
+
     public static void Spawn(GameObject go, Vector3 pos, Quaternion rot)
     {
         GameObject obj;

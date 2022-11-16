@@ -6,7 +6,7 @@ using StarterAssets;
 
 public class PauseMenus : MonoBehaviour
 {
-    public static bool GameIsPaused = false;
+    public bool GameIsPaused = false;
 
     public GameObject pauseMenuUI;
 
@@ -21,8 +21,10 @@ public class PauseMenus : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log("Update Being Called (Input");
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            Debug.Log("Input Called");
             if (!GameIsPaused)
             //{
             //    Resume();
@@ -46,12 +48,14 @@ public class PauseMenus : MonoBehaviour
 
     void Pause()
     {
+        Debug.Log("Pause1");
         CurrentPlayer.GetComponent<StarterAssetsInputs>().OnApplicationFocus(false);
         pauseMenuUI.SetActive(true);
         CurrentPlayer.SetActive(false);
         CurrentUI.SetActive(false);
         Time.timeScale = 0f;
         GameIsPaused = true;
+        Debug.Log("Pause3");
     }
 
     public void LoadMenu()
