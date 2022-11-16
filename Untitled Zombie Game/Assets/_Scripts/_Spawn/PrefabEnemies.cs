@@ -12,11 +12,6 @@ public class PrefabEnemies : MonoBehaviour
     public int yPos;
     public int enemyCount;
 
-    //void Start()
-   // {
-        //StartCoroutine(EnemyDrop());
-   // }
-    
     IEnumerator EnemyDrop()
     {
         while (enemyCount < 10)

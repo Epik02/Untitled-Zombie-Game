@@ -68,6 +68,7 @@ namespace StarterAssets
 		
 		public void OnApplicationFocus(bool hasFocus)
 		{
+			Debug.Log("Pause2");
 			SetCursorState(hasFocus);
 		}
 
