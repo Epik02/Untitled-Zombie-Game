@@ -6743,6 +6743,7 @@ GameObject:
   - component: {fileID: 4246634072879665267}
   - component: {fileID: 1312865729526245689}
   - component: {fileID: 2530326234153422253}
+  - component: {fileID: 4925033977117279049}
   m_Layer: 0
   m_Name: CornStalk
   m_TagString: Untagged
@@ -6750,6 +6751,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!136 &4925033977117279049
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4925033977117279048}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.72669125
+  m_Height: 10.532898
+  m_Direction: 1
+  m_Center: {x: -0.28694606, y: -3.8838885, z: -0.36076462}
 --- !u!1001 &5433333172396137619
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6864,6 +6879,7 @@ GameObject:
   - component: {fileID: 2491528486497550551}
   - component: {fileID: 739857703917468061}
   - component: {fileID: 4278765478865083657}
+  - component: {fileID: 6639854561536906221}
   m_Layer: 0
   m_Name: Tractor
   m_TagString: Untagged
@@ -6871,6 +6887,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &6639854561536906221
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6639854561536906220}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.2396927, y: 4.896243, z: 5.52589}
+  m_Center: {x: -7.0066013, y: -0.72658855, z: 1.028399}
 --- !u!23 &7109648923203587613
 MeshRenderer:
   m_ObjectHideFlags: 0
