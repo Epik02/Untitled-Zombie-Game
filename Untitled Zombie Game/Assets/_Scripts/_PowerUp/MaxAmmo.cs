@@ -24,7 +24,7 @@ public class MaxAmmo : MonoBehaviour
                 StartCoroutine(TextAnimation());
                 ScoreManager.instance.DecreaseScore(decreaseScore);
                 Object.material.color = Color.green;
-                ShootScript.SetAmmo(120);
+                ShootScript.SetAmmo(ShootScript.GetValue());
             }
             else
             {
