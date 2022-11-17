@@ -83,4 +83,10 @@ public class WeaponSwitch : MonoBehaviour
         Debug.Log(other);
         ThrowScript.SetValue(other);
     }
+
+    public void SetAmmo(int other)
+    {
+        Debug.Log(other);
+        ThrowScript.AddAmmo(other);
+    }
 }

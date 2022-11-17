@@ -1,17 +1,16 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Purchase : MonoBehaviour
+public class MaxAmmo : MonoBehaviour
 {
     [SerializeField] private Renderer Object;
 
-    public int decreaseScore = 100;
+    public int decreaseScore = 500;
 
-    public GameObject GunThing;
+    public GameObject GunObjectThing;
 
-    public GameObject ActiveText;
+    public GameObject MaxText;
 
     public WeaponSwitch ShootScript;
 
@@ -24,36 +23,28 @@ public class Purchase : MonoBehaviour
             {
                 StartCoroutine(TextAnimation());
                 ScoreManager.instance.DecreaseScore(decreaseScore);
-                Object.material.color = Color.blue;
-                ShootScript.Setvalue(1);
+                Object.material.color = Color.green;
+                ShootScript.SetAmmo(120);
             }
             else
             {
                 Debug.Log("<color-red> You Don't Have Enough Score");
-                Object.material.color = Color.black;
+                Object.material.color = Color.red;
             }
-            
+
         }
     }
 
     public void Update()
     {
-        ShootScript = GunThing.GetComponent<WeaponSwitch>();
-    }
-     IEnumerator PowerUp()
-    {
-        Debug.Log("Power up started!");
-        yield return new WaitForSeconds(5f);
-        Object.material.color = Color.red;
-
-        Debug.Log("Power Ended");
+        ShootScript = GunObjectThing.GetComponent<WeaponSwitch>();
     }
     IEnumerator TextAnimation()
     {
         //Debug.Log("Power text up!");
-        ActiveText.SetActive(true);
+        MaxText.SetActive(true);
         yield return new WaitForSeconds(3f);
-        ActiveText.SetActive(false);
+        MaxText.SetActive(false);
 
         //Debug.Log("Power Ended");
     }

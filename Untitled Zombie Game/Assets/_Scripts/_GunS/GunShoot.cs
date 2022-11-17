@@ -92,6 +92,12 @@ private void Awake()
             AmmoDone = true;
             return;
         }
+        if (TotalMaxAmmo >= 120 && currentAmmo <=0 && AmmoDone == true)
+        {
+            inputAction.PlayerShoot.Enable();
+            AmmoDone = false;
+            return;
+        }
         //Debug.Log("Wow 2nd if statment incoming"); // if current ammo reduce to 0, reload it from max ammo
         if (currentAmmo <= 0 && AmmoDone == false)
         {
@@ -161,5 +167,10 @@ private void Awake()
     {
         //Debug.Log("Active:" + other);
         value = other;
+    }
+
+    public void AddAmmo(int ammoCount)
+    {
+        TotalMaxAmmo = ammoCount;
     }
 }
