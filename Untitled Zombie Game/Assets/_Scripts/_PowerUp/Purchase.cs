@@ -11,6 +11,8 @@ public class Purchase : MonoBehaviour
 
     public GameObject GunThing;
 
+    public GameObject ActiveText;
+
     public WeaponSwitch ShootScript;
 
     //int EarnPoints = 0;
@@ -20,7 +22,7 @@ public class Purchase : MonoBehaviour
         {
             if (ScoreManager.instance.GetScore() > 0)
             {
-               // StartCoroutine(PowerUp());
+                StartCoroutine(TextAnimation());
                 ScoreManager.instance.DecreaseScore(decreaseScore);
                 Object.material.color = Color.blue;
                 ShootScript.Setvalue(1);
@@ -45,5 +47,14 @@ public class Purchase : MonoBehaviour
         Object.material.color = Color.red;
 
         Debug.Log("Power Ended");
+    }
+    IEnumerator TextAnimation()
+    {
+        //Debug.Log("Power text up!");
+        ActiveText.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        ActiveText.SetActive(false);
+
+        //Debug.Log("Power Ended");
     }
 }
