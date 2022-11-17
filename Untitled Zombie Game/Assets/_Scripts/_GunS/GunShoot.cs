@@ -22,12 +22,14 @@ public class GunShoot : MonoBehaviour
 
     [Header("Value Settings")]
     public int value;
-    public int maxAmmo = 15;
+    public int maxAmmo;
     private int currentAmmo;
-    public int TotalAmmo = 120;
+    public int TotalAmmo;
     private int TotalMaxAmmo;
     public float reloadTime = 2f;
     public bool isReloading = false;
+    private int newAddAmmo;
+    public int speed;
 
     public bool AmmoDone = false;
 
@@ -92,7 +94,7 @@ private void Awake()
             AmmoDone = true;
             return;
         }
-        if (TotalMaxAmmo >= 120 && currentAmmo <=0 && AmmoDone == true)
+        if (TotalMaxAmmo > 120 && currentAmmo <=0 && AmmoDone == true)
         {
             inputAction.PlayerShoot.Enable();
             AmmoDone = false;
@@ -102,9 +104,11 @@ private void Awake()
         if (currentAmmo <= 0 && AmmoDone == false)
         {
             //Debug.Log("Reload Time");
-            StartCoroutine(Reload());
+            StartCoroutine(Reloads());
            return;
         }
+
+        inputAction.PlayerShoot.Reload.performed += cntxt => reloadingCurrentAmmo();
         //Debug.Log("Wow 3rd if statment incoming"); // if current ammo is greater than 0, player can shoot.
         if (currentAmmo > 0 && AmmoDone == false)
         {
@@ -113,7 +117,12 @@ private void Awake()
         }
     }
 
-    IEnumerator Reload()
+    void reloadingCurrentAmmo()
+    {
+        StartCoroutine(Reloads());
+    }
+
+    IEnumerator Reloads()
     {
         isReloading = true;
         inputAction.PlayerShoot.Disable();
@@ -121,9 +130,10 @@ private void Awake()
         Debug.Log("Reloading...");
         yield return new WaitForSeconds(reloadTime);
         Debug.Log("Reloading Done");
-        currentAmmo = maxAmmo;
+        newAddAmmo = maxAmmo - currentAmmo;
+        currentAmmo += newAddAmmo;
         ChangingAmmo.text = currentAmmo.ToString();
-        TotalMaxAmmo -= maxAmmo;
+        TotalMaxAmmo -= newAddAmmo;
         ChangingTotalAmmo.text = "/" + TotalMaxAmmo.ToString();
         //Debug.Log("Ammo Reload:" + currentAmmo);
         inputAction.PlayerShoot.Enable();
@@ -142,7 +152,7 @@ private void Awake()
         ShootSound.Play();
         //Rigidbody bulletRb = Instantiate(projectile[check], projectilePos.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
         Rigidbody bulletRb = ObjectPooler.instance.SpawnFromPool("Bullet", projectilePos.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-        bulletRb.AddForce(transform.forward * 32f, ForceMode.Impulse);
+        bulletRb.AddForce(transform.forward * speed, ForceMode.Impulse);
         bulletRb.AddForce(transform.up * 1f, ForceMode.Impulse);
 
         if (check == 0)
@@ -172,5 +182,10 @@ private void Awake()
     public void AddAmmo(int ammoCount)
     {
         TotalMaxAmmo = ammoCount;
+    }
+
+    public int MaxValueAmmo()
+    {
+        return TotalAmmo;
     }
 }

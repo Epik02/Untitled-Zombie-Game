@@ -67,7 +67,7 @@ public class WeaponSwitch : MonoBehaviour
             currentWeaponIndex -= 1;
             currentGun = guns[currentWeaponIndex];
             ThrowScript = guns[currentWeaponIndex].GetComponentInChildren<GunShoot>();
-            ThrowScript = currentGun.GetComponent<GunShoot>();
+            //ThrowScript = currentGun.GetComponent<GunShoot>();
             guns[currentWeaponIndex].SetActive(true);
             //ThrowScript.ThrowReset();
         }
@@ -84,6 +84,10 @@ public class WeaponSwitch : MonoBehaviour
         ThrowScript.SetValue(other);
     }
 
+    public int GetValue()
+    {
+        return ThrowScript.MaxValueAmmo();
+    }
     public void SetAmmo(int other)
     {
         Debug.Log(other);

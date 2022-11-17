@@ -35,6 +35,15 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Reload"",
+                    ""type"": ""Button"",
+                    ""id"": ""1dca9412-a824-470d-b31f-750755e07f59"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -46,6 +55,17 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""10113913-2ab5-4612-9a54-caf7c1aa63b1"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reload"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -145,6 +165,7 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         // PlayerShoot
         m_PlayerShoot = asset.FindActionMap("PlayerShoot", throwIfNotFound: true);
         m_PlayerShoot_Shoot = m_PlayerShoot.FindAction("Shoot", throwIfNotFound: true);
+        m_PlayerShoot_Reload = m_PlayerShoot.FindAction("Reload", throwIfNotFound: true);
         // Playeractions
         m_Playeractions = asset.FindActionMap("Playeractions", throwIfNotFound: true);
         m_Playeractions_Pick = m_Playeractions.FindAction("Pick", throwIfNotFound: true);
@@ -211,11 +232,13 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_PlayerShoot;
     private IPlayerShootActions m_PlayerShootActionsCallbackInterface;
     private readonly InputAction m_PlayerShoot_Shoot;
+    private readonly InputAction m_PlayerShoot_Reload;
     public struct PlayerShootActions
     {
         private @PlayerAction m_Wrapper;
         public PlayerShootActions(@PlayerAction wrapper) { m_Wrapper = wrapper; }
         public InputAction @Shoot => m_Wrapper.m_PlayerShoot_Shoot;
+        public InputAction @Reload => m_Wrapper.m_PlayerShoot_Reload;
         public InputActionMap Get() { return m_Wrapper.m_PlayerShoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -228,6 +251,9 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 @Shoot.started -= m_Wrapper.m_PlayerShootActionsCallbackInterface.OnShoot;
                 @Shoot.performed -= m_Wrapper.m_PlayerShootActionsCallbackInterface.OnShoot;
                 @Shoot.canceled -= m_Wrapper.m_PlayerShootActionsCallbackInterface.OnShoot;
+                @Reload.started -= m_Wrapper.m_PlayerShootActionsCallbackInterface.OnReload;
+                @Reload.performed -= m_Wrapper.m_PlayerShootActionsCallbackInterface.OnReload;
+                @Reload.canceled -= m_Wrapper.m_PlayerShootActionsCallbackInterface.OnReload;
             }
             m_Wrapper.m_PlayerShootActionsCallbackInterface = instance;
             if (instance != null)
@@ -235,6 +261,9 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 @Shoot.started += instance.OnShoot;
                 @Shoot.performed += instance.OnShoot;
                 @Shoot.canceled += instance.OnShoot;
+                @Reload.started += instance.OnReload;
+                @Reload.performed += instance.OnReload;
+                @Reload.canceled += instance.OnReload;
             }
         }
     }
@@ -299,6 +328,7 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
     public interface IPlayerShootActions
     {
         void OnShoot(InputAction.CallbackContext context);
+        void OnReload(InputAction.CallbackContext context);
     }
     public interface IPlayeractionsActions
     {
