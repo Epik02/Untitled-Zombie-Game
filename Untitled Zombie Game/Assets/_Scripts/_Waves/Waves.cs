@@ -6,30 +6,43 @@ public class Waves : MonoBehaviour
 {
     public List<WaveHolder> WaveList;
 
-    public float TimeLeft = 5.0f;
+    public float TimeLeft;
     public float TimeAdder;
-    public bool ActiveEnemyWave = false;
+    public bool ActiveEnemyWave;
 
     public PrefabEnemies enemyspawner;
 
-    public int ListIncrease = 0;
+    public int ListIncrease;
+
+    void Start()
+    {
+        ActiveEnemyWave = false;
+        enemyspawner.SetNewHealth(100);
+    }
 
     void Update()
     {
-        TimeLeft -= Time.deltaTime;
-
-        if (ScoreManager.instance.GetEnemyNumber() <= 0 && TimeLeft <= 0 && !ActiveEnemyWave)
+        if (TimeLeft > 0)
         {
-            TimeLeft += TimeAdder;
-            ActiveEnemyWave = true;
+            TimeLeft -= Time.deltaTime;
         }
-        
+
         //Add text displaying time left before next wave
-        if (ScoreManager.instance.GetEnemyNumber() <= 0 && TimeLeft <= 0 && ActiveEnemyWave)
+        if (ScoreManager.instance.GetEnemyNumber() <= 0 && TimeLeft <= 0f && ActiveEnemyWave == true)
         {
-            WaveCounter(WaveList[ListIncrease].EnemyNumber);
-            ListIncrease++;
             ActiveEnemyWave = false;
+            Debug.Log("Wow");
+            WaveCounter(WaveList[ListIncrease].EnemyNumber);
+            enemyspawner.SetNewHealth(WaveList[ListIncrease].MaxHealth);
+            enemyspawner.SetNewDamage(WaveList[ListIncrease].EnemyDamageValue);
+            ListIncrease++;
+        }
+
+        if (ScoreManager.instance.GetEnemyNumber() <= 0 && TimeLeft <= 0f && ActiveEnemyWave == false)
+        {
+
+            ActiveEnemyWave = true;
+            TimeLeft = TimeAdder;
         }
     }
 

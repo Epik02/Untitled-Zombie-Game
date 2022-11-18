@@ -41,4 +41,8 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    public void SetDamage(int value)
+    {
+        informationValues.damage._EnemyDamage = value;
+    }
 }

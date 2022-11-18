@@ -43,4 +43,9 @@ public class Health : MonoBehaviour
             EnemyPool.Despawn(gameObject);
         }
     }
+
+    public void SetMaxHealth(int other)
+    {
+        informationValues._maxHealth = other;
+    }
 }

@@ -8,4 +8,5 @@ public class WaveHolder
     public string WaveName;
     public int EnemyNumber;
     public int MaxHealth;
+    public int EnemyDamageValue;
 }

@@ -19,15 +19,15 @@ public class HealthBar : MonoBehaviour
         health = GetComponent<Health>();
 
         _Healthslider.maxValue = health.MaxHealth;
-        _Healthslider.value = health.StartingHealth;
+        _Healthslider.value = health.MaxHealth;
     }
     
     private void OnEnable()
     {
-        health = GetComponent<Health>();
+         //health = GetComponent<Health>();
 
         _Healthslider.maxValue = health.MaxHealth;
-        _Healthslider.value = health.StartingHealth;
+        _Healthslider.value = health.MaxHealth;
 
         //subscribe to get noified when this health takes damage!
         health.Damaged += OnTakeDamage;
@@ -49,5 +49,4 @@ public class HealthBar : MonoBehaviour
         // return health slider value
         return _Healthslider.value;
     }
-
 }

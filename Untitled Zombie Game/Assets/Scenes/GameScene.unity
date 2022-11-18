@@ -2641,6 +2641,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Character: {fileID: 838367509}
+  PlayerHealth: {fileID: 838367535}
   player: {fileID: 838367517}
   playerx: 0
   playery: 0
@@ -4480,6 +4481,7 @@ GameObject:
   - component: {fileID: 1632400680}
   - component: {fileID: 1632400679}
   - component: {fileID: 1632400681}
+  - component: {fileID: 1632400682}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -4536,6 +4538,41 @@ MonoBehaviour:
   zPos: 0
   yPos: 0
   enemyCount: 0
+  MaxEnemy: 0
+  newHealth: 0
+  damageValue: 0
+  healthchange: {fileID: 0}
+  EnemyDamage: {fileID: 0}
+--- !u!114 &1632400682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632400678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9562167272fbc874595ea5b70a956097, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WaveList:
+  - WaveName: Round1
+    EnemyNumber: 10
+    MaxHealth: 100
+    EnemyDamageValue: 25
+  - WaveName: Round2
+    EnemyNumber: 15
+    MaxHealth: 150
+    EnemyDamageValue: 50
+  - WaveName: Round3
+    EnemyNumber: 20
+    MaxHealth: 200
+    EnemyDamageValue: 75
+  TimeLeft: 0
+  TimeAdder: 5
+  ActiveEnemyWave: 0
+  enemyspawner: {fileID: 1632400681}
+  ListIncrease: 0
 --- !u!1 &1676422742
 GameObject:
   m_ObjectHideFlags: 0
