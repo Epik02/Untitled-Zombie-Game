@@ -11,14 +11,20 @@ public class PrefabEnemies : MonoBehaviour
     public int zPos;
     public int yPos;
     public int enemyCount;
+    public int MaxEnemy;
+    public int newHealth;
+    public int damageValue;
+
+    public Health healthchange;
+    public EnemyController EnemyDamage;
 
     IEnumerator EnemyDrop()
     {
-        while (enemyCount < 10)
+        while (enemyCount < MaxEnemy)
         {
-            xPos = Random.Range(1, 30);
+            //xPos = Random.Range(1, 30);
             //yPos = Random.Range(1, 2);
-            zPos = Random.Range(1, 10);
+            //zPos = Random.Range(1, 10);
 
             EnemyPool.Spawn(Enemy1, new Vector3(Random.Range(1, 30), 2, Random.Range(1, 10)), Quaternion.identity);
             //Instantiate(Enemy1, new Vector3(Random.Range(1, 30), 2, Random.Range(1, 10)), Quaternion.identity);
@@ -35,6 +41,27 @@ public class PrefabEnemies : MonoBehaviour
         {
             enemyCount = 0;
             StartCoroutine(EnemyDrop());
+            healthchange = Enemy1.GetComponent<Health>();
+            healthchange.SetMaxHealth(newHealth);
+            //EnemyDamage = Enemy1.GetComponent<EnemyController>();
+            //EnemyDamage.SetDamage(damageValue);
         }
     }
+
+    public void SetMaxEnemy(int Value)
+    {
+        MaxEnemy = Value;   
+    }
+
+    public void SetNewHealth(int value)
+    {
+        //healthchange = Enemy1.GetComponent<Health>();
+        newHealth = value;
+    }
+
+    public void SetNewDamage(int value)
+    {
+        damageValue = value;
+    }
+
 }

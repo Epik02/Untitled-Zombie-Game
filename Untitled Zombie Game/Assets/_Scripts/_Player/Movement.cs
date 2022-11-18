@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using StarterAssets;
 
 public class Movement : MonoBehaviour
 {
@@ -12,13 +13,16 @@ public class Movement : MonoBehaviour
     public PlayerAction inputAction;
     public GameObject Character;
 
+    public Health PlayerHealth;
+
+
     //Health Testing
     //public int maxHealth = 100;
     //public int currentHealth;
     //public int damages = 0;
 
     //public HealthBar healthBar;
-    
+
 
     //Player Movement from Unity Asset for Testing
     public Movement player;
@@ -44,6 +48,7 @@ public class Movement : MonoBehaviour
             instance = this;
         }
 
+        PlayerHealth.SetMaxHealth(100);
         //currentHealth = maxHealth;
         //healthBar.SetMaxHealth(maxHealth);
 
@@ -73,7 +78,8 @@ public class Movement : MonoBehaviour
 
         if (Character.transform.position.y < -2)
         {
-            SceneManager.LoadScene(1);
+            Character.GetComponent<StarterAssetsInputs>().OnApplicationFocus(false);
+            SceneManager.LoadScene(0);
         }
 
        // if (healthBar.GetHealth() <= 0)

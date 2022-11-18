@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: DamageValues
   m_EditorClassIdentifier: 
   _SmallDamage: 25
+  _EnemyDamage: 25
   _BigDamage: 50
-  _EnemyDamage: 20
   _GrenadeDamage: 100
