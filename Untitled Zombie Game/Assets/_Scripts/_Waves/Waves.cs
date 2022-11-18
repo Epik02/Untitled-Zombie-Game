@@ -12,8 +12,7 @@ public class Waves : MonoBehaviour
 
     public PrefabEnemies enemyspawner;
 
-    public int EnemyNumbers = 0;
-    public int counter;
+    public int ListIncrease = 0;
 
     void Update()
     {
@@ -26,11 +25,10 @@ public class Waves : MonoBehaviour
         }
         
         //Add text displaying time left before next wave
-        if (ScoreManager.instance.GetEnemyNumber() <= 0 && counter == 0f && TimeLeft <= 0 && ActiveEnemyWave)
+        if (ScoreManager.instance.GetEnemyNumber() <= 0 && TimeLeft <= 0 && ActiveEnemyWave)
         {
-            EnemyNumbers += 10;
-            WaveCounter(EnemyNumbers);
-            counter++;
+            WaveCounter(WaveList[ListIncrease].EnemyNumber);
+            ListIncrease++;
             ActiveEnemyWave = false;
         }
     }
