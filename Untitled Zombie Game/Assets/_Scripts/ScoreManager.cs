@@ -55,4 +55,8 @@ public class ScoreManager : MonoBehaviour
     {
         return EnemyCounter;
     }
+    public void SetEnemyNumber(int other)
+    {
+        EnemyCounter += other;
+    }
 }

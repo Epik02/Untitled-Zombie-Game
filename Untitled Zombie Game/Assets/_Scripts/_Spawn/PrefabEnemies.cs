@@ -11,10 +11,11 @@ public class PrefabEnemies : MonoBehaviour
     public int zPos;
     public int yPos;
     public int enemyCount;
+    public int MaxEnemy;
 
     IEnumerator EnemyDrop()
     {
-        while (enemyCount < 10)
+        while (enemyCount < MaxEnemy)
         {
             xPos = Random.Range(1, 30);
             //yPos = Random.Range(1, 2);
@@ -36,5 +37,10 @@ public class PrefabEnemies : MonoBehaviour
             enemyCount = 0;
             StartCoroutine(EnemyDrop());
         }
+    }
+
+    public void SetMaxEnemy(int Value)
+    {
+        MaxEnemy = Value;   
     }
 }
