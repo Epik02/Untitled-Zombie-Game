@@ -47,6 +47,7 @@ public class GunShoot : MonoBehaviour
 
     private void OnEnable()
     {
+        //ShootSound.volume = Soundvolume;
         inputAction.Enable();
     }
 
@@ -59,11 +60,13 @@ public class GunShoot : MonoBehaviour
 private void Awake()
     {
         inputAction = new PlayerAction();
-
+        //ShootSound.volume = Soundvolume;
     }
 
     private void Start()
     {
+        //Soundvolume = PlayerPrefs.GetFloat("volume");
+        //ShootSound.volume = Soundvolume;
         currentAmmo = maxAmmo;
         TotalMaxAmmo = TotalAmmo;
 
@@ -76,12 +79,11 @@ private void Awake()
 
         projectile[0] = SmallBullet;
         projectile[1] = BigBullet;
-
-        ShootSound.volume = Soundvolume;
     }
 
     private void Update()
     {
+        ShootSound.volume = Soundvolume;
         ChangingAmmo.text = currentAmmo.ToString();
         ChangingTotalAmmo.text = "/" + TotalMaxAmmo.ToString();
         //Debug.Log("Wow 1st if statment incoming");

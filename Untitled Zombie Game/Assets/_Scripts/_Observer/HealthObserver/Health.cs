@@ -40,6 +40,7 @@ public class Health : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            //ScoreManager.instance.DecreaseEnemy();
             EnemyPool.Despawn(gameObject);
         }
     }

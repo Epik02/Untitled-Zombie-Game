@@ -12,6 +12,8 @@ public class ScoreManager : MonoBehaviour
     public int EnemyCounter = 0;
 
     public TMP_Text ChangingText;
+    public TMP_Text EnemyCountText;
+
     int score = 200;
     // Start is called before the first frame update
     void Awake()
@@ -41,6 +43,7 @@ public class ScoreManager : MonoBehaviour
     public void Update()
     {
         ChangingText.text = score.ToString();
+        EnemyCountText.text = EnemyCounter.ToString();
     }
 
     public void AddEnemy()
@@ -53,6 +56,7 @@ public class ScoreManager : MonoBehaviour
     }
     public int GetEnemyNumber()
     {
+        //Debug.Log(EnemyCounter);
         return EnemyCounter;
     }
     public void SetEnemyNumber(int other)
