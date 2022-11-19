@@ -11,9 +11,9 @@ public class WaveTest : MonoBehaviour
     //Variables
     public float TimeLeft;
     public float TimeAdder;
-    public bool ActiveEnemyWave = false;
+    public bool ActiveEnemyWave;
     public int TimeText;
-    public bool TimerDone = false;
+    public bool TimerDone;
 
     // EnemySummon Script
     public PrefabEnemies enemyspawner;
@@ -28,9 +28,9 @@ public class WaveTest : MonoBehaviour
 
     void Start()
     {
-        //TextSet.SetActive(true);
-        //ActiveEnemyWave = false;
-        //TimerDone = false;
+        TextSet.SetActive(true);
+        ActiveEnemyWave = false;
+        TimerDone = false;
         enemyspawner.SetNewHealth(100);
         TimeLeft = TimeAdder;
     }
@@ -38,58 +38,61 @@ public class WaveTest : MonoBehaviour
     void Update()
     {
         //Add text displaying time left before next wave
-        if (ScoreManager.instance.GetEnemyNumber() <= 0)
+        //if (ScoreManager.instance.GetEnemyNumber() <= 0)
+        //{
+        //    Debug.Log("HI from Waves 1st.");
+        //}
+        //if (ActiveEnemyWave == true)
+        //{
+        //    Debug.Log("HI from Waves 2nd.");
+        //}
+        //if (TimerDone == true)
+        //{
+        //    Debug.Log("HI from Waves 3rd.");
+        //}
+        //Debug.Log(ScoreManager.instance.GetEnemyNumber());
+
+        if (TimerDone == false && TimeLeft > 0)
         {
-            Debug.Log("HI from Waves 1st.");
+            //TextSet.SetActive(true);
+            TimeLeft -= Time.deltaTime;
+            TimeText = (int)TimeLeft;
+            TimerText.text = TimeText.ToString();
+            return;
         }
-        if (ActiveEnemyWave == true)
+        if (TimeLeft <= 0)
         {
-            Debug.Log("HI from Waves 2nd.");
+            TextSet.SetActive(false);
+            ActiveEnemyWave = true;
+            TimerDone = true;
+            TimeLeft = TimeAdder;
+            return;
         }
-        if (TimerDone == true)
-        {
-            Debug.Log("HI from Waves 3rd.");
-        }
-        Debug.Log(ScoreManager.instance.GetEnemyNumber());
-        if (ScoreManager.instance.GetEnemyNumber() <= 0 && ActiveEnemyWave == true && TimeLeft <= 0f)
+
+        if (ScoreManager.instance.GetEnemyNumber() <= 0 && ActiveEnemyWave == true && TimerDone == true)
         {
             //StartCoroutine(AddNewWave());
 
             ActiveEnemyWave = false;
-
+            TimerDone = false;
             Debug.Log("Wow");
             WaveCounter(WaveList[ListIncrease].EnemyNumber);
             enemyspawner.SetNewHealth(WaveList[ListIncrease].MaxHealth);
             enemyspawner.SetNewDamage(WaveList[ListIncrease].EnemyDamageValue);
             ListIncrease++;
             return;
-            //TimerDone = false;
+            
         }
 
-        if (TimerDone == false && TimeLeft > 0)
-        {
-            //TextSet.SetActive(true);
-            TimeLeft -= Time.deltaTime;
-            //TimeText = (int)TimeLeft;
-           // TimerText.text = TimeText.ToString();
-        }
-        else//(TimerDone == false && TimeLeft <= 0)
-        {
-            //TextSet.SetActive(false);
-            TimerDone = true;
-            ActiveEnemyWave = true;
-            Debug.Log("From timer statement");
-        }
-
-        if (ScoreManager.instance.GetEnemyNumber() <= 0 && TimeLeft <= 0f && TimerDone == true)
-        {
-            TimeLeft = TimeAdder;
-            //TextSet.SetActive(true);
-            ActiveEnemyWave = true;
-            TimerDone = false;
-            Debug.Log("from 3rd if statement");
-            return;
-        }
+        //if (ScoreManager.instance.GetEnemyNumber() <= 0 && TimerDone == true)
+        //{
+        //    TimeLeft = TimeAdder;
+        //    TextSet.SetActive(true);
+        //    ActiveEnemyWave = true;
+        //    TimerDone = false;
+        //    Debug.Log("from 3rd if statement");
+        //    return;
+        //}
     }
 
     public void WaveCounter(int increase)
