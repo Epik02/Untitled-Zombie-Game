@@ -22,6 +22,7 @@ public class EnemyController : MonoBehaviour
 
     private void OnDisable()
     {
+        //ScoreManager.instance.DecreaseEnemy();
         transform.GetComponent<Rigidbody>().Sleep();
     }
 

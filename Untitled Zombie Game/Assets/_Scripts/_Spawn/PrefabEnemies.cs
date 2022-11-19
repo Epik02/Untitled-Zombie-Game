@@ -37,9 +37,9 @@ public class PrefabEnemies : MonoBehaviour
 
     void Update()
     {
-        if (ScoreManager.instance.GetEnemyNumber() <= 0)
+        if (ScoreManager.instance.GetEnemyNumber() <= 0 && enemyCount <= 0)
         {
-            enemyCount = 0;
+            //enemyCount = 0;
             StartCoroutine(EnemyDrop());
             healthchange = Enemy1.GetComponent<Health>();
             healthchange.SetMaxHealth(newHealth);
@@ -64,4 +64,8 @@ public class PrefabEnemies : MonoBehaviour
         damageValue = value;
     }
 
+    public void SetEnemyCount()
+    {
+        enemyCount = 0;
+    }
 }

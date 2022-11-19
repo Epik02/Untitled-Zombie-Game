@@ -53,6 +53,7 @@ public class ScoreManager : MonoBehaviour
     }
     public int GetEnemyNumber()
     {
+        //Debug.Log(EnemyCounter);
         return EnemyCounter;
     }
     public void SetEnemyNumber(int other)

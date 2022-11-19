@@ -4719,11 +4719,11 @@ MonoBehaviour:
   - WaveName: Wave2
     EnemyNumber: 15
     MaxHealth: 150
-    EnemyDamageValue: 25
+    EnemyDamageValue: 50
   - WaveName: Wave3
     EnemyNumber: 20
     MaxHealth: 200
-    EnemyDamageValue: 25
+    EnemyDamageValue: 75
   TimeLeft: 0
   TimeAdder: 5
   ActiveEnemyWave: 0
