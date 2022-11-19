@@ -4708,22 +4708,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1632400678}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9562167272fbc874595ea5b70a956097, type: 3}
+  m_Script: {fileID: 11500000, guid: 6d292fdbd39ac45419a986f9b964ee8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   WaveList:
-  - WaveName: Round1
+  - WaveName: Wave1
     EnemyNumber: 10
     MaxHealth: 100
     EnemyDamageValue: 25
-  - WaveName: Round2
+  - WaveName: Wave2
     EnemyNumber: 15
     MaxHealth: 150
-    EnemyDamageValue: 50
-  - WaveName: Round3
+    EnemyDamageValue: 25
+  - WaveName: Wave3
     EnemyNumber: 20
     MaxHealth: 200
-    EnemyDamageValue: 75
+    EnemyDamageValue: 25
   TimeLeft: 0
   TimeAdder: 5
   ActiveEnemyWave: 0

@@ -43,8 +43,8 @@ public class PrefabEnemies : MonoBehaviour
             StartCoroutine(EnemyDrop());
             healthchange = Enemy1.GetComponent<Health>();
             healthchange.SetMaxHealth(newHealth);
-            //EnemyDamage = Enemy1.GetComponent<EnemyController>();
-            //EnemyDamage.SetDamage(damageValue);
+            EnemyDamage = Enemy1.GetComponent<EnemyController>();
+            EnemyDamage.SetDamage(damageValue);
         }
     }
 
