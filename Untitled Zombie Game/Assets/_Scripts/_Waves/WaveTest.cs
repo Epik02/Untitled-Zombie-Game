@@ -52,37 +52,88 @@ public class WaveTest : MonoBehaviour
         //}
         //Debug.Log(ScoreManager.instance.GetEnemyNumber());
 
-        if (TimerDone == false && TimeLeft > 0)
+        if (TimerDone == false && ActiveEnemyWave == false)
         {
-            //TextSet.SetActive(true);
             TimeLeft -= Time.deltaTime;
             TimeText = (int)TimeLeft;
             TimerText.text = TimeText.ToString();
-            return;
-        }
-        if (TimeLeft <= 0)
-        {
-            TextSet.SetActive(false);
-            ActiveEnemyWave = true;
-            TimerDone = true;
-            TimeLeft = TimeAdder;
-            return;
+           // Debug.Log("Decreasing Time");
+
+            if (TimeLeft <= 0)
+            {
+                //Detect when timer is done
+                TimerDone = true;
+                TimeLeft = 2;
+                TextSet.SetActive(false);
+                Debug.Log("Time is Done, Hide Text");
+            }
         }
 
-        if (ScoreManager.instance.GetEnemyNumber() <= 0 && ActiveEnemyWave == true && TimerDone == true)
+        if (TimerDone == true && ActiveEnemyWave == false)
         {
-            //StartCoroutine(AddNewWave());
-
-            ActiveEnemyWave = false;
-            TimerDone = false;
-            Debug.Log("Wow");
+            //Start New Wave
+            Debug.Log("Start New Wave");
             WaveCounter(WaveList[ListIncrease].EnemyNumber);
             enemyspawner.SetNewHealth(WaveList[ListIncrease].MaxHealth);
             enemyspawner.SetNewDamage(WaveList[ListIncrease].EnemyDamageValue);
             ListIncrease++;
-            return;
-            
+            //Enable ActiveEnemyWave
+            ActiveEnemyWave = true;
         }
+
+        if (ScoreManager.instance.GetEnemyNumber() <= 0 && ActiveEnemyWave == true)
+        {
+            Debug.Log("Start New Timer");
+            //End Wave
+            TimerDone = false;
+            ActiveEnemyWave = false;
+            //Start New Timer
+            TimeLeft = TimeAdder;
+            TextSet.SetActive(true);
+        }
+        
+
+        ////Is the filler time in between waves
+        //if (TimerDone == false && TimeLeft > 0)
+        //{
+        //    //TextSet.SetActive(true);
+        //    TimeLeft -= Time.deltaTime;
+        //    TimeText = (int)TimeLeft;
+        //    TimerText.text = TimeText.ToString();
+        //    Debug.Log("Clause 1");
+        //    return;
+        //}
+
+        ////Declares The Timer is finished
+        //if (TimeLeft <= 0)
+        //{
+        //    TextSet.SetActive(false);
+        //    ActiveEnemyWave = true;
+        //    TimerDone = true;
+        //    TimeLeft = TimeAdder;
+        //    Debug.Log("Clause 2");
+        //    return;
+        //}
+
+        ////Spawns new enemy wave
+        //if (ScoreManager.instance.GetEnemyNumber() <= 0 && ActiveEnemyWave == true && TimerDone == true)
+        //{
+        //    //StartCoroutine(AddNewWave());
+
+        //    ActiveEnemyWave = false;
+        //    TimerDone = false;
+        //    Debug.Log("New Wave");
+        //    WaveCounter(WaveList[ListIncrease].EnemyNumber);
+        //    enemyspawner.SetNewHealth(WaveList[ListIncrease].MaxHealth);
+        //    enemyspawner.SetNewDamage(WaveList[ListIncrease].EnemyDamageValue);
+        //    ListIncrease++;
+        //    return;  
+        //}
+
+        //Display Timer during downtime
+        //End downtime when timer ends
+        //Do wave
+        //Reset Timer and start downtime
 
         //if (ScoreManager.instance.GetEnemyNumber() <= 0 && TimerDone == true)
         //{
