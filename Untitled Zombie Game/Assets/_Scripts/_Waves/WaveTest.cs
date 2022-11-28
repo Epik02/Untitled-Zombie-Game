@@ -69,6 +69,17 @@ public class WaveTest : MonoBehaviour
             }
         }
 
+        if (ScoreManager.instance.GetEnemyNumber() <= 0 && ActiveEnemyWave == true)
+        {
+            Debug.Log("Start New Timer");
+            //End Wave
+            TimerDone = false;
+            ActiveEnemyWave = false;
+            //Start New Timer
+            TimeLeft = TimeAdder;
+            TextSet.SetActive(true);
+        }
+
         if (TimerDone == true && ActiveEnemyWave == false)
         {
             //Start New Wave
@@ -81,16 +92,7 @@ public class WaveTest : MonoBehaviour
             ActiveEnemyWave = true;
         }
 
-        if (ScoreManager.instance.GetEnemyNumber() <= 0 && ActiveEnemyWave == true)
-        {
-            Debug.Log("Start New Timer");
-            //End Wave
-            TimerDone = false;
-            ActiveEnemyWave = false;
-            //Start New Timer
-            TimeLeft = TimeAdder;
-            TextSet.SetActive(true);
-        }
+        
         
 
         ////Is the filler time in between waves
