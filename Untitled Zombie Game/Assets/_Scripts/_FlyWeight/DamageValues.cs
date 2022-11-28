@@ -10,4 +10,5 @@ public class DamageValues : ScriptableObject
     // below is GDW game numbers to be used
     public int _BigDamage = 50;
     public int _GrenadeDamage = 100;
+    public int _MeleeDamage = 50;
 }
