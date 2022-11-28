@@ -66,9 +66,10 @@ namespace StarterAssets
 			sprint = newSprintState;
 		}
 		
-		private void OnApplicationFocus(bool hasFocus)
+		public void OnApplicationFocus(bool hasFocus)
 		{
-			SetCursorState(cursorLocked);
+			Debug.Log("Pause2");
+			SetCursorState(hasFocus);
 		}
 
 		private void SetCursorState(bool newState)
