@@ -6,10 +6,10 @@ public class PrefabEnemies : MonoBehaviour
 {
     public GameObject Enemy1;
    // public GameObject Enemy2;
-    public int xRandom1 = 10;
-    public int xRandom2 = 25;
-    public int zRandom1 = 1;
-    public int zRandom2 = 20;
+
+    public int xPos;
+    public int zPos;
+    public int yPos;
     public int enemyCount;
     public int MaxEnemy;
     public int newHealth;
@@ -26,7 +26,7 @@ public class PrefabEnemies : MonoBehaviour
             //yPos = Random.Range(1, 2);
             //zPos = Random.Range(1, 10);
 
-            EnemyPool.Spawn(Enemy1, new Vector3(Random.Range(xRandom1, xRandom2), 2.4f, Random.Range(zRandom1, zRandom2)), Quaternion.identity);
+            EnemyPool.Spawn(Enemy1, new Vector3(Random.Range(10, 25), 2.3f, Random.Range(1, 20)), Quaternion.identity);
             //Instantiate(Enemy1, new Vector3(Random.Range(1, 30), 2, Random.Range(1, 10)), Quaternion.identity);
             // Instantiate(Enemy2, new Vector3(Random.Range(1, 30), 3, Random.Range(1, 10)), Quaternion.identity);
             yield return new WaitForSeconds(0.1f);

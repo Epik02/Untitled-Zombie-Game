@@ -13,8 +13,6 @@ public class Health : MonoBehaviour
     //Public Action
     public event Action<int> Damaged = delegate { };
     //public event Action Killed = delegate { };
-    public event Action<int> Regen = delegate { };
-    public event Action<int> Jug = delegate { };
 
     //Health Testing
     public int MaxHealth => informationValues._maxHealth;
@@ -24,20 +22,15 @@ public class Health : MonoBehaviour
 
     public int currentHealth;
 
-    public int maxHealthApply;
-
-    void OnEnable()
+    private void OnEnable()
     {
-        //currentHealth = MaxHealth;
-        //maxHealthApply = MaxHealth;
+        currentHealth = MaxHealth;
     }
 
     void Awake()
     {
         currentHealth = MaxHealth;
-        maxHealthApply = MaxHealth;
     }
-
 
     //taking damage
     public void TakeDamage(int damage)
@@ -56,18 +49,4 @@ public class Health : MonoBehaviour
     {
         informationValues._maxHealth = other;
     }
-
-    public void RegenHealth(int value)
-    {
-        currentHealth += value;
-        Regen.Invoke(value);
-    }
-
-    public void SetHealth(int value)
-    {
-        maxHealthApply = value;
-        informationValues._maxHealth = value;
-        Jug.Invoke(value);
-    }
-
 }

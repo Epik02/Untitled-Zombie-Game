@@ -15,18 +15,30 @@ public class Movement : MonoBehaviour
 
     public Health PlayerHealth;
 
+
+    //Health Testing
+    //public int maxHealth = 100;
+    //public int currentHealth;
+    //public int damages = 0;
+
+    //public HealthBar healthBar;
+
+
     //Player Movement from Unity Asset for Testing
     public Movement player;
     public float playerx = 0;
     public float playery = 0;
     public float playerz = 0;
 
-    // time variables
-    public float timer = 5f;
-    public bool timeCheck = false;
+    //private void OnEnable()
+    //{
+    //    inputAction.Playeractions.Enable();
+    //}
 
-    // Regen if Active or Not
-    public bool RegenActive = false;
+    //private void OnDisable()
+    //{
+    //    inputAction.Playeractions.Disable();
+    //}
 
     void Awake()
     {
@@ -35,9 +47,27 @@ public class Movement : MonoBehaviour
         {
             instance = this;
         }
-        // set player max health at awake
+
         PlayerHealth.SetMaxHealth(100);
+        //currentHealth = maxHealth;
+        //healthBar.SetMaxHealth(maxHealth);
+
+       // inputAction = new PlayerAction();
+
+        //inputAction.Playeractions.ReloadScene.performed += cntxt => Reload();
+        //inputAction.Player.Damage.performed += cntxt => TakeDamage(damages);
     }
+    //taking damage
+    //public void TakeDamage(int damage)
+    //{
+    //    currentHealth -= damage;
+    //    healthBar.SetHealth(currentHealth);
+    //}
+    //public void Reload()
+    //{
+
+    //    SceneManager.LoadScene(0);
+    //}
 
     // Update is called once per frame
     void Update()
@@ -51,5 +81,10 @@ public class Movement : MonoBehaviour
             Character.GetComponent<StarterAssetsInputs>().OnApplicationFocus(false);
             SceneManager.LoadScene(0);
         }
+
+       // if (healthBar.GetHealth() <= 0)
+        //{
+          //  SceneManager.LoadScene(0);
+       // }
     }
 }
