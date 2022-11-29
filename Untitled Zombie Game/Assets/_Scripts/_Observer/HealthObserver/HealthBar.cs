@@ -31,6 +31,8 @@ public class HealthBar : MonoBehaviour
 
         //subscribe to get noified when this health takes damage!
         health.Damaged += OnTakeDamage;
+        health.Regen += AddHealth;
+        health.Jug += SetHealth;
     }
 
     private void Disable()
@@ -48,5 +50,16 @@ public class HealthBar : MonoBehaviour
     {
         // return health slider value
         return _Healthslider.value;
+    }
+
+    public void AddHealth(int value)
+    {
+        // on regen, display the new health
+        _Healthslider.value = health.currentHealth;
+    }
+
+    public void SetHealth(int holder)
+    {
+        _Healthslider.maxValue = health.maxHealthApply;
     }
 }
