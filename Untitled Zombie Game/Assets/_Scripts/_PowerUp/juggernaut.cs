@@ -2,19 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MaxAmmo : MonoBehaviour
+public class juggernaut : MonoBehaviour
 {
     [SerializeField] private Renderer Object;
 
-    public int decreaseScore = 1000;
-
-    public GameObject GunObjectThing;
+    public Health PlayerHealth;
 
     public GameObject MaxText;
 
-    public WeaponSwitch ShootScript;
+    public int JugHeathValue;
 
-    //int EarnPoints = 0;
+    public int DecreaseScore = 100;
+
+
+
     private void OnCollisionEnter(Collision other)
     {
         if (other.collider.tag == "Player")
@@ -22,23 +23,19 @@ public class MaxAmmo : MonoBehaviour
             if (ScoreManager.instance.GetScore() > 0)
             {
                 StartCoroutine(TextAnimation());
-                ScoreManager.instance.DecreaseScore(decreaseScore);
-                Object.material.color = Color.green;
-                ShootScript.SetAmmo(ShootScript.GetValue());
+                ScoreManager.instance.DecreaseScore(DecreaseScore);
+                Object.material.color = Color.red;
+                PlayerHealth?.SetHealth(JugHeathValue);
             }
             else
             {
-                Debug.Log("<color-red> You Don't Have Enough Score");
+                Debug.Log("<color-black> You Don't Have Enough Score");
                 Object.material.color = Color.black;
             }
 
         }
     }
 
-    public void Update()
-    {
-        ShootScript = GunObjectThing.GetComponent<WeaponSwitch>();
-    }
     IEnumerator TextAnimation()
     {
         //Debug.Log("Power text up!");
