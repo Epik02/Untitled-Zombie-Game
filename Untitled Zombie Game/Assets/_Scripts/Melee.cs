@@ -16,13 +16,14 @@ public class Melee : MonoBehaviour
 
     void Start()
     {
+        //Sword.SetActive(false);
         valueDamage = informationValues.damage._MeleeDamage;
         CanAttack = true;
     }
 
     void OnEnable()
     {
-
+        //Sword.SetActive(false);
         CanAttack = true;
     }
 
@@ -36,7 +37,7 @@ public class Melee : MonoBehaviour
         if (Input.GetKeyDown(MeleeAttackKey))
         {
             if (CanAttack)
-            {
+            {             
                 SwordAttack();
             }
         }
@@ -45,6 +46,7 @@ public class Melee : MonoBehaviour
 
     public void SwordAttack()
     {
+        //Sword.SetActive(true);
         CanAttack = false;
         Animator anim = Sword.GetComponent<Animator>();
         anim.SetTrigger("Attack");
@@ -54,6 +56,7 @@ public class Melee : MonoBehaviour
 
     IEnumerator ResetAttackCooldown()
     {
+        //Sword.SetActive(false);
         yield return new WaitForSeconds(AttackCooldown);
         CanAttack = true;
     }

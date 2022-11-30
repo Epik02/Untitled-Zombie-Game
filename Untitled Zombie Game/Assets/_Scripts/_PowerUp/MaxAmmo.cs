@@ -6,7 +6,7 @@ public class MaxAmmo : MonoBehaviour
 {
     [SerializeField] private Renderer Object;
 
-    public int decreaseScore = 500;
+    public int decreaseScore = 1000;
 
     public GameObject GunObjectThing;
 
@@ -29,7 +29,7 @@ public class MaxAmmo : MonoBehaviour
             else
             {
                 Debug.Log("<color-red> You Don't Have Enough Score");
-                Object.material.color = Color.red;
+                Object.material.color = Color.black;
             }
 
         }
