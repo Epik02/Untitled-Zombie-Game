@@ -2,16 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Runtime.InteropServices;
 
 public class AudioManager : MonoBehaviour
 {
+    //Import Native C++ Library
+    [DllImport("AUDIOHELPAH", EntryPoint = "VolumeChanger")]
+    public static extern float VolumeChanger(float volume1, float volume2);
+
+    [DllImport("AUDIOHELPAH", EntryPoint = "VolumeModified")]
+    public static extern float VolumeModified(float volume1, float volume2, float volume3);
+
     public static AudioManager audioInstance;
 
     [SerializeField] private AudioSource musicPlayer;
     [SerializeField] private AudioSource soundPlayer;
 
     public Slider masterSlider;
-    private float MasterVolume = 1f;
+    private float MasterVolume = 1.00f;
 
     // Start is called before the first frame update
     private void Awake()
@@ -19,16 +27,16 @@ public class AudioManager : MonoBehaviour
         if (!audioInstance)
         {
             audioInstance = this;
-            Debug.Log("Ran Awake");
+           // Debug.Log("Ran Awake");
         }
     }
 
     private void Start()
     {
         MasterVolume = PlayerPrefs.GetFloat("volume");
-        musicPlayer.volume = MasterVolume;
+        musicPlayer.volume = VolumeChanger(musicPlayer.volume, MasterVolume);
         masterSlider.value = MasterVolume;
-        Debug.Log("Ran Start");
+       // Debug.Log("Ran Start");
 
 
 
@@ -57,7 +65,7 @@ public class AudioManager : MonoBehaviour
     private void Update()
     {
         //currently only master volume, with more sliders it can be master volume, music, etc.
-        musicPlayer.volume = MasterVolume;
+        musicPlayer.volume = VolumeChanger(musicPlayer.volume, MasterVolume);
         PlayerPrefs.SetFloat("volume", MasterVolume);
 
         soundPlayer.volume = MasterVolume;
@@ -66,6 +74,7 @@ public class AudioManager : MonoBehaviour
 
     public void updateVolume( float volume)
     {
-        MasterVolume = volume;
+        MasterVolume = VolumeChanger(MasterVolume, volume);
+        //MasterVolume = volume;
     }
 }
