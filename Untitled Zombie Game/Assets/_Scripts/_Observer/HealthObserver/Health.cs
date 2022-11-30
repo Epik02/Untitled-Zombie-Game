@@ -29,13 +29,14 @@ public class Health : MonoBehaviour
     void OnEnable()
     {
         //Debug.Log("OnEnable(Health)");
+        currentHealth = MaxHealth;
     }
 
     void Awake()
     {
         //Debug.Log("Awake(Health)");
         currentHealth = MaxHealth;
-        maxHealthApply = MaxHealth;
+        //maxHealthApply = MaxHealth;
     }
 
 

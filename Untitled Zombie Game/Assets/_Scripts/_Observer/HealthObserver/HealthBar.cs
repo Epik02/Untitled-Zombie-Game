@@ -29,10 +29,10 @@ public class HealthBar : MonoBehaviour
     
     private void OnEnable()
     {
-        health = GetComponent<Health>();
+        //health = GetComponent<Health>();
         //Debug.Log("OnEnable(HealthBar");
-        //_Healthslider.maxValue = health.MaxHealth;
-        //_Healthslider.value = health.MaxHealth;
+        _Healthslider.maxValue = health.MaxHealth;
+        _Healthslider.value = health.MaxHealth;
 
         //subscribe to get noified when this health takes damage!
         health.Damaged += OnTakeDamage;
