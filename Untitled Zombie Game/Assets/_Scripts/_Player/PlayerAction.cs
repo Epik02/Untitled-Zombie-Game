@@ -12,11 +12,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
 public partial class @PlayerAction : IInputActionCollection2, IDisposable
 {
+    [SerializeField] public PlayerInput playerInput = null;
+
     public InputActionAsset asset { get; }
     public @PlayerAction()
     {
@@ -162,6 +165,8 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
     ],
     ""controlSchemes"": []
 }");
+        
+
         // PlayerShoot
         m_PlayerShoot = asset.FindActionMap("PlayerShoot", throwIfNotFound: true);
         m_PlayerShoot_Shoot = m_PlayerShoot.FindAction("Shoot", throwIfNotFound: true);
