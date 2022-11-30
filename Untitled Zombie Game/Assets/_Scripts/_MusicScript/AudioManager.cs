@@ -19,7 +19,9 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource soundPlayer;
 
     public Slider masterSlider;
+    public Slider musicSlider;
     private float MasterVolume = 1.00f;
+    private float MusicVolume = 1.00f;
 
     // Start is called before the first frame update
     private void Awake()
@@ -34,9 +36,14 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         MasterVolume = PlayerPrefs.GetFloat("volume");
-        musicPlayer.volume = VolumeChanger(musicPlayer.volume, MasterVolume);
+        MusicVolume = PlayerPrefs.GetFloat("musVolume");
+
+
+        musicPlayer.volume = VolumeModified(musicPlayer.volume, MasterVolume, MusicVolume);
+
         masterSlider.value = MasterVolume;
-       // Debug.Log("Ran Start");
+        musicSlider.value = MusicVolume;
+        // Debug.Log("Ran Start");
 
 
 
@@ -65,16 +72,22 @@ public class AudioManager : MonoBehaviour
     private void Update()
     {
         //currently only master volume, with more sliders it can be master volume, music, etc.
-        musicPlayer.volume = VolumeChanger(musicPlayer.volume, MasterVolume);
-        PlayerPrefs.SetFloat("volume", MasterVolume);
+        musicPlayer.volume = VolumeModified(musicPlayer.volume, MasterVolume, MusicVolume);
+        PlayerPrefs.SetFloat("musVolume", MusicVolume);
 
+        //original function
         soundPlayer.volume = MasterVolume;
         PlayerPrefs.SetFloat("volume", MasterVolume);
     }
 
-    public void updateVolume( float volume)
+    public void updateMaster( float volume)
     {
         MasterVolume = VolumeChanger(MasterVolume, volume);
         //MasterVolume = volume;
+    }
+
+    public void updateMusic( float volume)
+    {
+        MusicVolume = VolumeModified(MusicVolume, MasterVolume, volume);
     }
 }
