@@ -10,6 +10,11 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
+
+    [SerializeField]
+    private InformationValues informationValues;
+
+
     [SerializeField] Slider _Healthslider = null;
 
     public Health health { get; private set; }
@@ -24,10 +29,10 @@ public class HealthBar : MonoBehaviour
     
     private void OnEnable()
     {
-         //health = GetComponent<Health>();
-
-        _Healthslider.maxValue = health.MaxHealth;
-        _Healthslider.value = health.MaxHealth;
+        health = GetComponent<Health>();
+        //Debug.Log("OnEnable(HealthBar");
+        //_Healthslider.maxValue = health.MaxHealth;
+        //_Healthslider.value = health.MaxHealth;
 
         //subscribe to get noified when this health takes damage!
         health.Damaged += OnTakeDamage;
@@ -38,6 +43,8 @@ public class HealthBar : MonoBehaviour
     private void Disable()
     {
         health.Damaged -= OnTakeDamage;
+        health.Regen += AddHealth;
+        health.Jug += SetHealth;
     }
 
     void OnTakeDamage(int damage)
@@ -61,5 +68,6 @@ public class HealthBar : MonoBehaviour
     public void SetHealth(int holder)
     {
         _Healthslider.maxValue = health.maxHealthApply;
+        //informationValues._maxHealth = health.maxHealthApply;
     }
 }

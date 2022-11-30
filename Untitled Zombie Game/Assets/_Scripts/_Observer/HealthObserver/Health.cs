@@ -28,12 +28,12 @@ public class Health : MonoBehaviour
 
     void OnEnable()
     {
-        //currentHealth = MaxHealth;
-        //maxHealthApply = MaxHealth;
+        //Debug.Log("OnEnable(Health)");
     }
 
     void Awake()
     {
+        //Debug.Log("Awake(Health)");
         currentHealth = MaxHealth;
         maxHealthApply = MaxHealth;
     }
@@ -66,7 +66,7 @@ public class Health : MonoBehaviour
     public void SetHealth(int value)
     {
         maxHealthApply = value;
-        informationValues._maxHealth = value;
+        //informationValues._maxHealth = value;
         Jug.Invoke(value);
     }
 
