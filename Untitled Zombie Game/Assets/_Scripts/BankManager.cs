@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using TMPro;
 
 public class BankManager : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class BankManager : MonoBehaviour
     bool intrigger = false;
     public string filePath;
     public static ScoreManager scoreInstance;
+    //public TMP_Text Text;
+    public GameObject bankPrompt;
 
     private void Start()
     {
@@ -65,6 +68,7 @@ public class BankManager : MonoBehaviour
     {
         if (intrigger == true)
         {
+            bankPrompt.SetActive(true);
             if (Input.GetKeyDown(KeyCode.L) == true)
             {
                 deposit();
@@ -73,6 +77,10 @@ public class BankManager : MonoBehaviour
             {
                 withdraw();
             }
+        }
+        else
+        {
+            bankPrompt.SetActive(false);
         }
     }
 }
