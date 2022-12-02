@@ -131,6 +131,8 @@ GameObject:
   - component: {fileID: 1741756961725498827}
   - component: {fileID: 1741756961725498824}
   - component: {fileID: 1741756961725498825}
+  - component: {fileID: -4450255398633164091}
+  - component: {fileID: -8890340999066072968}
   m_Layer: 0
   m_Name: AnimationPistol
   m_TagString: Untagged
@@ -211,6 +213,38 @@ MonoBehaviour:
   dropForwardForce: 0.1
   dropUpwardForce: 0.05
   equipped: 1
+--- !u!95 &-4450255398633164091
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1396157764275150708}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1ac5b1d49e4cbd04ea20b790fa7e16e5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-8890340999066072968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1396157764275150708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f28dc13f0d01c6478901ae86b3a4cf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3546472588429241618
 GameObject:
   m_ObjectHideFlags: 0
