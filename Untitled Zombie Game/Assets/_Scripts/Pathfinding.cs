@@ -5,12 +5,13 @@ using UnityEngine.AI;
 
 public class Pathfinding : MonoBehaviour
 {
-    public NavMeshAgent agent;
+    NavMeshAgent agent;
     public GameObject player;
 
     private void Start()
     {
         player = GameObject.FindWithTag("Player");
+        agent = this.transform.gameObject.GetComponent<NavMeshAgent>();
     }
     // Update is called once per frame
     void Update()

@@ -5,25 +5,32 @@ using UnityEngine;
 public class ZAnims : MonoBehaviour
 {
     bool intrigger = false;
+    public GameObject animObject;
     public Animator animator;
+
+    GameObject tootiredtounderstand;
     void Start()
     {
-        //animator = GetComponent<Animator>();
+        //animator = animObject.GetComponent<Animator>();
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "OnionZombie2")
+        if (other.transform.gameObject.name == "OnionZombie2 1(Clone)")
         {
-            intrigger = true;
+            //intrigger = true;
+            animator = other.transform.gameObject.GetComponent<Animator>();
+            animator.SetBool("IsAttacking", true);
             Debug.Log("true");
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.name == "OnionZombie2")
+        if (other.transform.gameObject.name == "OnionZombie2 1(Clone)")
         {
-            intrigger = false;
+            //intrigger = false;
+            animator = other.transform.gameObject.GetComponent<Animator>();
+            animator.SetBool("IsAttacking", false);
             Debug.Log("false");
         }
     }
@@ -31,14 +38,14 @@ public class ZAnims : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(intrigger == true)
-        {
-            Debug.Log("Workomon");
-            animator.SetBool("IsAttacking", true);
-        }
-        else
-        {
-            animator.SetBool("IsAttacking", false);
-        }
+        //if(intrigger == true)
+        //{
+        //    Debug.Log("Workomon");
+        //    animator.SetBool("IsAttacking", true);
+        //}
+        //else
+        //{
+        //    animator.SetBool("IsAttacking", false);
+        //}
     }
 }
