@@ -43,7 +43,7 @@ public class Doors : MonoBehaviour
         {
             doorPrompt.SetActive(true);
             ChangingText.text = pointsToBuy.ToString() + " points to clear debris";
-            if (Input.GetKeyDown(KeyCode.E) == true)
+            if (Input.GetKeyDown(KeyCode.E) == true && ScoreManager.instance.GetScore() >= pointsToBuy)
             {
                 Debug.Log("It workie");
                 ScoreManager.instance.DecreaseScore(pointsToBuy);
