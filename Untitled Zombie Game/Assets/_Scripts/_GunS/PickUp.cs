@@ -21,6 +21,8 @@ public class PickUp : MonoBehaviour
     public Transform player, gunContainer, fpsCam;
     //PlayerAction inputAction;
 
+    public Vector3 holder;
+
     public float pickUpRange;
     public float dropForwardForce, dropUpwardForce;
 
@@ -97,8 +99,10 @@ public class PickUp : MonoBehaviour
 
         //Make weapon a child of the character/camera and move it to default position
         transform.SetParent(gunContainer);
-        transform.localPosition = new Vector3(-0.119f, -0.206f, 0.382f);
-        transform.localRotation = Quaternion.Euler(Vector3.zero);
+        transform.localPosition = holder;
+            //new Vector3(-0.119f, -0.206f, 0.382f);
+        //transform.localPosition = new Vector3(-2.378f, 4.266f, 30.75f);
+        transform.localRotation = Quaternion.Euler(0.0f,90.0f, 0.0f);//Quaternion.Euler(Vector3.zero);
         transform.localScale = new Vector3(1.91f, 0.83f, 1.355f);
 
         //Make Rigidbody kinematic and BoxCollider a trigger

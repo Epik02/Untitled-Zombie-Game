@@ -10,9 +10,11 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager instance;
 
     public int EnemyCounter = 0;
+    public int WaveCounter = 0;
 
     public TMP_Text ChangingText;
     public TMP_Text EnemyCountText;
+    public TMP_Text WaveCounterText;
 
     int score = 200;
     // Start is called before the first frame update
@@ -44,6 +46,7 @@ public class ScoreManager : MonoBehaviour
     {
         ChangingText.text = score.ToString();
         EnemyCountText.text = EnemyCounter.ToString();
+        WaveCounterText.text = WaveCounter.ToString();
     }
 
     public void AddEnemy()
@@ -62,5 +65,10 @@ public class ScoreManager : MonoBehaviour
     public void SetEnemyNumber(int other)
     {
         EnemyCounter += other;
+    }
+    
+    public void SetWaveCounter(int other)
+    {
+        WaveCounter += other;
     }
 }
