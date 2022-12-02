@@ -85795,6 +85795,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6286745365761463689, guid: ac1b063a295dedc4b90807478056cdf8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 8815523906733731159, guid: ac1b063a295dedc4b90807478056cdf8, type: 3}
+      propertyPath: m_text
+      value: 'PowerUp!
+
+        500 Points'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: ac1b063a295dedc4b90807478056cdf8, type: 3}
@@ -86807,6 +86817,24 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 235575550}
     m_Modifications:
+    - target: {fileID: 563264340171341340, guid: 7a0082dde557b384481b5f2fff4fac81, type: 3}
+      propertyPath: m_text
+      value: 'MaxAmmo
+
+        1000 Points'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280101534097450020, guid: 7a0082dde557b384481b5f2fff4fac81, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280101534097450020, guid: 7a0082dde557b384481b5f2fff4fac81, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280101534097450020, guid: 7a0082dde557b384481b5f2fff4fac81, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 9086400795043981451, guid: 7a0082dde557b384481b5f2fff4fac81, type: 3}
       propertyPath: m_Name
       value: AddAmmo

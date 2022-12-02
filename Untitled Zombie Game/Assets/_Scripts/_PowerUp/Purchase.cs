@@ -7,7 +7,7 @@ public class Purchase : MonoBehaviour
 {
     [SerializeField] private Renderer Object;
 
-    public int decreaseScore = 100;
+    public int decreaseScore = 500;
 
     public GameObject GunThing;
 
@@ -20,7 +20,7 @@ public class Purchase : MonoBehaviour
     {
         if (other.collider.tag == "Player")
         {
-            if (ScoreManager.instance.GetScore() > 0)
+            if (ScoreManager.instance.GetScore() >= 500)
             {
                 StartCoroutine(TextAnimation());
                 ScoreManager.instance.DecreaseScore(decreaseScore);

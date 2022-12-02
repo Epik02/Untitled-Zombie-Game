@@ -19,7 +19,7 @@ public class MaxAmmo : MonoBehaviour
     {
         if (other.collider.tag == "Player")
         {
-            if (ScoreManager.instance.GetScore() > 0)
+            if (ScoreManager.instance.GetScore() >= 1000)
             {
                 StartCoroutine(TextAnimation());
                 ScoreManager.instance.DecreaseScore(decreaseScore);
