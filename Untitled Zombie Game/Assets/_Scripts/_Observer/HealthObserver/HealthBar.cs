@@ -10,6 +10,11 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
+
+    [SerializeField]
+    private InformationValues informationValues;
+
+
     [SerializeField] Slider _Healthslider = null;
 
     public Health health { get; private set; }
@@ -24,18 +29,22 @@ public class HealthBar : MonoBehaviour
     
     private void OnEnable()
     {
-         //health = GetComponent<Health>();
-
+        //health = GetComponent<Health>();
+        //Debug.Log("OnEnable(HealthBar");
         _Healthslider.maxValue = health.MaxHealth;
         _Healthslider.value = health.MaxHealth;
 
         //subscribe to get noified when this health takes damage!
         health.Damaged += OnTakeDamage;
+        health.Regen += AddHealth;
+        health.Jug += SetHealth;
     }
 
     private void Disable()
     {
         health.Damaged -= OnTakeDamage;
+        health.Regen += AddHealth;
+        health.Jug += SetHealth;
     }
 
     void OnTakeDamage(int damage)
@@ -48,5 +57,17 @@ public class HealthBar : MonoBehaviour
     {
         // return health slider value
         return _Healthslider.value;
+    }
+
+    public void AddHealth(int value)
+    {
+        // on regen, display the new health
+        _Healthslider.value = health.currentHealth;
+    }
+
+    public void SetHealth(int holder)
+    {
+        _Healthslider.maxValue = health.maxHealthApply;
+        //informationValues._maxHealth = health.maxHealthApply;
     }
 }
