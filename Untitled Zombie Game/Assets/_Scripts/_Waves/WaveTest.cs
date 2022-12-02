@@ -83,6 +83,7 @@ public class WaveTest : MonoBehaviour
         if (TimerDone == true && ActiveEnemyWave == false)
         {
             //Start New Wave
+            ScoreManager.instance.SetWaveCounter(1);
             Debug.Log("Start New Wave");
             WaveCounter(WaveList[ListIncrease].EnemyNumber);
             enemyspawner.SetNewHealth(WaveList[ListIncrease].MaxHealth);
