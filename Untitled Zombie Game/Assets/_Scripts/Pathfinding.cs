@@ -5,17 +5,22 @@ using UnityEngine.AI;
 
 public class Pathfinding : MonoBehaviour
 {
-    NavMeshAgent agent;
+    public NavMeshAgent agent;
     public GameObject player;
 
     private void Start()
     {
-        player = GameObject.FindWithTag("Player");
+       // player = GameObject.FindWithTag("Player");
+        player = GameObject.Find("PlayerCapsule");
         agent = this.transform.gameObject.GetComponent<NavMeshAgent>();
     }
     // Update is called once per frame
     void Update()
     {
-        agent.SetDestination(player.transform.position);
+        //if (player.gameObject != null && gameObject.activeSelf)
+        //{
+            agent.SetDestination(player.transform.position);
+            Debug.Log("THIS IS 69");
+        //}
     }
 }
