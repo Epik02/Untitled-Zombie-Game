@@ -6,7 +6,7 @@ A once prosperous farm, now overrun by the undead remnants of those who used to 
 It is your job to take back the farm land and make it out alive by defending against countless undead farmers and farm animals.  
 Get better weapons, advance through barricades, obtain upgrades, and survive as long as you can by getting kills and increasing your score.
 
-Game Engine Design: playable run code on
+Game Engine Design: playable run code on Build exe.zip folder, unzip and that is the release build
 
 controls:
 
