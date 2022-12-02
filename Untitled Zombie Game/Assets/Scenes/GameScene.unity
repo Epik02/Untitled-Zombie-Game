@@ -38716,6 +38716,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 423840744}
     m_Modifications:
+    - target: {fileID: -4450255398633164091, guid: 65a3714bafaa9c248821544e042b1a1d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1396157764275150708, guid: 65a3714bafaa9c248821544e042b1a1d, type: 3}
       propertyPath: m_Name
       value: BlueGunA
@@ -63398,21 +63402,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WaveList:
   - WaveName: Wave1
-    EnemyNumber: 10
+    EnemyNumber: 5
     MaxHealth: 100
     EnemyDamageValue: 25
   - WaveName: Wave2
-    EnemyNumber: 15
-    MaxHealth: 150
-    EnemyDamageValue: 50
+    EnemyNumber: 10
+    MaxHealth: 100
+    EnemyDamageValue: 25
   - WaveName: Wave3
+    EnemyNumber: 15
+    MaxHealth: 100
+    EnemyDamageValue: 50
+  - WaveName: Wave4
     EnemyNumber: 20
     MaxHealth: 200
+    EnemyDamageValue: 50
+  - WaveName: Wave5
+    EnemyNumber: 25
+    MaxHealth: 200
     EnemyDamageValue: 75
-  - WaveName: Wave4
+  - WaveName: Wave6
+    EnemyNumber: 30
+    MaxHealth: 200
+    EnemyDamageValue: 75
+  - WaveName: Wave7
     EnemyNumber: 30
     MaxHealth: 300
     EnemyDamageValue: 100
+  - WaveName: Wave8
+    EnemyNumber: 30
+    MaxHealth: 300
+    EnemyDamageValue: 100
+  - WaveName: Wave9
+    EnemyNumber: 30
+    MaxHealth: 300
+    EnemyDamageValue: 125
+  - WaveName: Wave10
+    EnemyNumber: 30
+    MaxHealth: 500
+    EnemyDamageValue: 1000
   TimeLeft: 0
   TimeAdder: 11
   ActiveEnemyWave: 0
