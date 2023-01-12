@@ -30,7 +30,7 @@ public class PlayerHealth : MonoBehaviour
     {
         //Debug.Log("OnEnable(Health)");
         currentHealth = MaxHealth;
-        maxHealthApply = MaxHealth;
+        //maxHealthApply = MaxHealth;
     }
 
     void Awake()

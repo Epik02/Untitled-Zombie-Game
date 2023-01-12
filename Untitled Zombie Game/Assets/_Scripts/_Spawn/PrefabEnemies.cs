@@ -32,7 +32,8 @@ public class PrefabEnemies : MonoBehaviour
             //zPos = Random.Range(1, 10);
             
             EnemyPool.Spawn(Enemy1, new Vector3(Random.Range(Placement[Spawn].Xcoor1, Placement[Spawn].Xcoor2), yValue, Random.Range(Placement[Spawn].Zcoor1, Placement[Spawn].Zcoor2)), Quaternion.identity);
-
+            EnemyPool.Spawn(Enemy1, new Vector3(Random.Range(Placement[Spawn].L1.transform.position.x, Placement[Spawn].L2.transform.position.x), 
+                yValue, Random.Range(Placement[Spawn].L1.transform.position.z, Placement[Spawn].L2.transform.position.z)), Quaternion.identity);
             //EnemyPool.Spawn(Enemy1, new Vector3(Random.Range(Placement[Spawn].Xcoor1, Placement[Spawn].Xcoor2), yValue, Random.Range(Placement[Spawn].Zcoor1, Placement[Spawn].Zcoor2)), Quaternion.identity);
 
             //EnemyPool.Spawn(Enemy1, new Vector3(Random.Range(xRandom1, xRandom2), yValue, Random.Range(zRandom1, zRandom2)), Quaternion.identity);

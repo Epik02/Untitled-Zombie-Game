@@ -13,7 +13,7 @@ public class Movement : MonoBehaviour
     public PlayerAction inputAction;
     public GameObject Character;
 
-    public Health PlayerHealth;
+    //public Health PlayerHealth;
 
     //Player Movement from Unity Asset for Testing
     public Movement player;
@@ -36,7 +36,7 @@ public class Movement : MonoBehaviour
             instance = this;
         }
         // set player max health at awake
-        PlayerHealth.SetMaxHealth(100);
+       // PlayerHealth.SetMaxHealth(100);
     }
 
     // Update is called once per frame

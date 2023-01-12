@@ -6,7 +6,7 @@ public class juggernaut : MonoBehaviour
 {
     [SerializeField] private Renderer Object;
 
-    public Health PlayerHealth;
+    public PlayerHealth PlayerHealth;
 
     public GameObject MaxText;
 

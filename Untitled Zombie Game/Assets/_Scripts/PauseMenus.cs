@@ -27,8 +27,8 @@ public class PauseMenus : MonoBehaviour
             Debug.Log("Input Called");
             if (!GameIsPaused)
             //{
-            //    Resume();
-            //}
+               // Resume();
+           // }
             //else
             {
                 Pause();
@@ -46,7 +46,7 @@ public class PauseMenus : MonoBehaviour
         GameIsPaused = false;
     }
 
-    void Pause()
+    public void Pause()
     {
         Debug.Log("Pause1");
         CurrentPlayer.GetComponent<StarterAssetsInputs>().OnApplicationFocus(false);
