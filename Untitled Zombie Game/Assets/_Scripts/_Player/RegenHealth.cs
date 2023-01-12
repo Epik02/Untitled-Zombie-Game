@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RegenHealth : MonoBehaviour
 {
-    public Health PlayerHealth;
+    public PlayerHealth PlayerHealth;
 
     // time variables
     public float timer;
