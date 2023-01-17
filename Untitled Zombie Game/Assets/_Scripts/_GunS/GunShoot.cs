@@ -16,7 +16,7 @@ public class GunShoot : MonoBehaviour
     public GameObject SmallBullet;
     public GameObject BigBullet;
 
-    public Transform projectilePos;
+    public GameObject projectilePos;
 
     public int damageNumber;
 
@@ -144,6 +144,9 @@ private void Awake()
 
     private void Shoot(int check)
     {
+
+        ShootSound.Play();
+
         if (currentAmmo > 0) // decrease current ammo by 1
         {
             currentAmmo--;
@@ -151,11 +154,6 @@ private void Awake()
         }
         ChangingAmmo.text = currentAmmo.ToString();
         Debug.Log("Ammo:" + currentAmmo);
-        ShootSound.Play();
-        //Rigidbody bulletRb = Instantiate(projectile[check], projectilePos.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-        Rigidbody bulletRb = ObjectPooler.instance.SpawnFromPool("Bullet", projectilePos.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-        bulletRb.AddForce(transform.forward * speed, ForceMode.Impulse);
-        bulletRb.AddForce(transform.up * 1f, ForceMode.Impulse);
 
         if (check == 0)
         {
@@ -163,11 +161,18 @@ private void Awake()
 
         }
         else damageNumber = informationValues.damage._BigDamage;
-    }
 
-    public void AddMaxAmmo()
-    {
+        //Rigidbody bulletRb = Instantiate(projectile[check], projectilePos.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
 
+        Rigidbody bulletRb = ObjectPooler.instance.SpawnFromPool("Bullet", projectilePos.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+        bulletRb.transform.position = projectilePos.transform.position;
+        //Physics.IgnoreCollision(bulletRb.GetComponent<Collider>(), GetComponent<Collider>());
+        //Vector3 rotation = bulletRb.transform.rotation.eulerAngles;
+        //bulletRb.transform.rotation = Quaternion.Euler(rotation.x, transform.eulerAngles.y, rotation.z);
+        //bulletRb.GetComponent<Rigidbody>().AddRelativeForce(new Vector3 (0, 0, -launchVelocity));
+
+        bulletRb.AddForce(transform.forward * -speed, ForceMode.Impulse);
+        //bulletRb.AddForce(transform.up * 1f, ForceMode.Impulse);
     }
 
     //public void ThrowReset()
