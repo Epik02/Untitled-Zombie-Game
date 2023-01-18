@@ -165,7 +165,6 @@ private void Awake()
         //Rigidbody bulletRb = Instantiate(projectile[check], projectilePos.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
 
         Rigidbody bulletRb = ObjectPooler.instance.SpawnFromPool("Bullet", projectilePos.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-        bulletRb.transform.position = projectilePos.transform.position;
         //Physics.IgnoreCollision(bulletRb.GetComponent<Collider>(), GetComponent<Collider>());
         //Vector3 rotation = bulletRb.transform.rotation.eulerAngles;
         //bulletRb.transform.rotation = Quaternion.Euler(rotation.x, transform.eulerAngles.y, rotation.z);
