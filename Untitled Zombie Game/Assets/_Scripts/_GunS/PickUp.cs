@@ -22,6 +22,7 @@ public class PickUp : MonoBehaviour
     //PlayerAction inputAction;
 
     public Vector3 holder;
+    public Vector3 ScaleLocation;
 
     public float pickUpRange;
     public float dropForwardForce, dropUpwardForce;
@@ -105,10 +106,11 @@ public class PickUp : MonoBehaviour
             //new Vector3(-0.119f, -0.206f, 0.382f);
         //transform.localPosition = new Vector3(-2.378f, 4.266f, 30.75f);
         transform.localRotation = Quaternion.Euler(0.0f,90.0f, 0.0f);//Quaternion.Euler(Vector3.zero);
-        transform.localScale = new Vector3(1.91f, 0.83f, 1.355f);
+        transform.localScale = ScaleLocation;
 
         //Make Rigidbody kinematic and BoxCollider a trigger
         rb.isKinematic = true;
+        coll.enabled = false;
         //coll.isTrigger = true;
 
         //Enable script
@@ -132,6 +134,7 @@ public class PickUp : MonoBehaviour
 
         //Make Rigidbody kinematic and BoxCollider a trigger
         rb.isKinematic = false;
+        coll.enabled = true;
         //coll.isTrigger = false;
 
         //Gun carries momentum of player

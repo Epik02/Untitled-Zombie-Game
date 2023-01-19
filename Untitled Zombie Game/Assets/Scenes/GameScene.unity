@@ -9291,6 +9291,100 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.62, y: 37.877216, z: 28.611324}
   m_Center: {x: -2.039124e-14, y: 18.438608, z: 6.565092}
+--- !u!1 &213620806
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 213620807}
+  - component: {fileID: 213620808}
+  - component: {fileID: 213620810}
+  - component: {fileID: 213620809}
+  m_Layer: 0
+  m_Name: AK
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &213620807
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213620806}
+  m_LocalRotation: {x: -0, y: 0.70710677, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -0, y: 0, z: 2.45}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1118329010645601315}
+  - {fileID: 931063278459033741}
+  - {fileID: 8691307984255020614}
+  - {fileID: 1064606224}
+  - {fileID: 1752135309}
+  m_Father: {fileID: 423840744}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &213620808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213620806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a1cf8e7c8caa2d4f8d4a8dcc1f93948, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunScript: {fileID: 1064606223}
+  GunHolder: {fileID: 0}
+  swichy: {fileID: 0}
+  rb: {fileID: 213620809}
+  coll: {fileID: 213620810}
+  player: {fileID: 8997996946658020879}
+  gunContainer: {fileID: 423840744}
+  fpsCam: {fileID: 963194228}
+  holder: {x: 0, y: 0, z: 2.45}
+  ScaleLocation: {x: 1, y: 1, z: 1}
+  pickUpRange: 4
+  dropForwardForce: 0.1
+  dropUpwardForce: 0.05
+  equipped: 1
+--- !u!54 &213620809
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213620806}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 3
+--- !u!65 &213620810
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213620806}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.027738, y: 1.4267472, z: 0.7171546}
+  m_Center: {x: -4.513857, y: -0.11961353, z: 0.08942663}
 --- !u!1 &218875099
 GameObject:
   m_ObjectHideFlags: 0
@@ -16961,73 +17055,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 393340559}
   m_Mesh: {fileID: 8091616958390451731, guid: 0dde36d42d08ca64ab542d72b6593824, type: 3}
---- !u!1 &393562860
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 393562861}
-  - component: {fileID: 393562863}
-  - component: {fileID: 393562862}
-  m_Layer: 0
-  m_Name: AK47Test
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &393562861
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 393562860}
-  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: 17.22, y: 0.11659373, z: 0.43}
-  m_LocalScale: {x: 1.5311487, y: 0.9380667, z: 2.160267}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1118329010645601315}
-  - {fileID: 931063278459033741}
-  - {fileID: 8691307984255020614}
-  - {fileID: 1064606224}
-  - {fileID: 1752135309}
-  m_Father: {fileID: 833120378}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
---- !u!65 &393562862
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 393562860}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 6.3263, y: 1.5474496, z: 0.37929463}
-  m_Center: {x: 14.241678, y: -0.2737254, z: 0.16051412}
---- !u!54 &393562863
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 393562860}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &396037924
 GameObject:
   m_ObjectHideFlags: 0
@@ -18408,7 +18435,7 @@ Transform:
   m_LocalScale: {x: 0.092732646, y: 0.21355994, z: 0.13084158}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 833120378}
+  - {fileID: 213620807}
   - {fileID: 3219198277534497675}
   m_Father: {fileID: 4135013736980966889}
   m_RootOrder: -1
@@ -34962,64 +34989,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 831879877}
   m_Mesh: {fileID: 6055277006425145491, guid: 0dde36d42d08ca64ab542d72b6593824, type: 3}
---- !u!1 &833120377
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 833120378}
-  - component: {fileID: 833120379}
-  m_Layer: 0
-  m_Name: AK47Tests
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &833120378
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 833120377}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 393562861}
-  m_Father: {fileID: 423840744}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &833120379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 833120377}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a1cf8e7c8caa2d4f8d4a8dcc1f93948, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gunScript: {fileID: 1064606223}
-  GunHolder: {fileID: 0}
-  swichy: {fileID: 0}
-  rb: {fileID: 393562863}
-  coll: {fileID: 393562862}
-  player: {fileID: 8997996946658020879}
-  gunContainer: {fileID: 423840744}
-  fpsCam: {fileID: 963194228}
-  holder: {x: 0, y: 0, z: 0}
-  pickUpRange: 4
-  dropForwardForce: 0.1
-  dropUpwardForce: 0.05
-  equipped: 1
 --- !u!1 &836874792
 GameObject:
   m_ObjectHideFlags: 0
@@ -43018,12 +42987,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1064606223}
-  m_LocalRotation: {x: -0.29542682, y: -0.64243525, z: -0.29542682, w: -0.64243525}
-  m_LocalPosition: {x: 14.3, y: 1.62, z: -2.92}
-  m_LocalScale: {x: 0.5357099, y: 1.2337555, z: 0.7558745}
+  m_LocalRotation: {x: 0.29542682, y: 0.6424353, z: -0.29542667, w: -0.64243525}
+  m_LocalPosition: {x: -4.6754365, y: 1.6362615, z: 6.737992}
+  m_LocalScale: {x: 0.66095436, y: 1.717302, z: 1.1573571}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 393562861}
+  m_Father: {fileID: 213620807}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1064606225
@@ -43047,8 +43016,8 @@ MonoBehaviour:
   projectilePos: {fileID: 1752135308}
   damageNumber: 0
   value: 0
-  maxAmmo: 15
-  TotalAmmo: 120
+  maxAmmo: 30
+  TotalAmmo: 200
   reloadTime: 2.5
   isReloading: 0
   speed: -60
@@ -45314,6 +45283,7 @@ MonoBehaviour:
   gunContainer: {fileID: 423840744}
   fpsCam: {fileID: 963194228}
   holder: {x: 0, y: 0, z: 0}
+  ScaleLocation: {x: 0, y: 0, z: 0}
   pickUpRange: 2
   dropForwardForce: 0.1
   dropUpwardForce: 0.05
@@ -67883,12 +67853,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1752135308}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.89, y: -0.06, z: 0.16}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: -0.0000001490116}
+  m_LocalPosition: {x: -10.248814, y: 0.3886339, z: 0.10595989}
+  m_LocalScale: {x: 1.5311493, y: 0.9380667, z: 2.1602676}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 393562861}
+  m_Father: {fileID: 213620807}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1752478527
@@ -85355,12 +85325,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9154908453869395756}
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: -0.00000017881389}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: 0.00000026822087, z: -0, w: -1}
+  m_LocalPosition: {x: 17.220018, y: 0.11659373, z: 0.43001175}
+  m_LocalScale: {x: 1.5311493, y: 0.9380667, z: 2.1602683}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 393562861}
+  m_Father: {fileID: 213620807}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1091891224284672150
@@ -85405,13 +85375,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1520756651005363817}
-  m_LocalRotation: {x: -0, y: -0.70710665, z: -0.7071069, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalRotation: {x: 0.70710695, y: -0, z: -0, w: -0.7071067}
+  m_LocalPosition: {x: 17.220018, y: 0.11659373, z: 0.43001175}
+  m_LocalScale: {x: 153.11494, y: 216.02675, z: 93.806656}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4876605078008910327}
-  m_Father: {fileID: 393562861}
+  m_Father: {fileID: 213620807}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1155048320531788109
@@ -85470,7 +85440,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1520756651005363817
 GameObject:
   m_ObjectHideFlags: 0
@@ -85519,7 +85489,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1396157764156090056}
   m_LocalRotation: {x: -0, y: -0.7101817, z: -0, w: 0.7040185}
-  m_LocalPosition: {x: 6.8053336, y: 5.8459997, z: 8.550207}
+  m_LocalPosition: {x: 10.825, y: 5.531, z: 12.942}
   m_LocalScale: {x: 0.17310137, y: 0.17309746, z: 0.17309213}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -85566,7 +85536,8 @@ MonoBehaviour:
   player: {fileID: 8997996946658020879}
   gunContainer: {fileID: 423840744}
   fpsCam: {fileID: 963194228}
-  holder: {x: -0.04, y: 0.1919821, z: 1.14}
+  holder: {x: -0.04, y: 0.1919821, z: 4.24}
+  ScaleLocation: {x: 1.322984, y: 0.8105334, z: 1.866571}
   pickUpRange: 4
   dropForwardForce: 0.1
   dropUpwardForce: 0.05
@@ -85604,7 +85575,8 @@ MonoBehaviour:
   player: {fileID: 8997996946658020879}
   gunContainer: {fileID: 423840744}
   fpsCam: {fileID: 963194228}
-  holder: {x: -0.04, y: 0.1919821, z: 1.14}
+  holder: {x: -0.04, y: 0.1919821, z: 4.24}
+  ScaleLocation: {x: 1.322984, y: 0.8105334, z: 1.866571}
   pickUpRange: 4
   dropForwardForce: 0.1
   dropUpwardForce: 0.05
@@ -86021,6 +85993,7 @@ MonoBehaviour:
   gunContainer: {fileID: 423840744}
   fpsCam: {fileID: 963194228}
   holder: {x: 0, y: 0, z: 0}
+  ScaleLocation: {x: 0, y: 0, z: 0}
   pickUpRange: 4
   dropForwardForce: 0.1
   dropUpwardForce: 0.05
@@ -86051,7 +86024,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2875323424359473457}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.04, y: 0.19198208, z: 1.14}
+  m_LocalPosition: {x: -0.04, y: 0.19198208, z: 4.24}
   m_LocalScale: {x: 1.3229836, y: 0.8105334, z: 1.8665708}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -86082,7 +86055,8 @@ MonoBehaviour:
   player: {fileID: 8997996946658020879}
   gunContainer: {fileID: 423840744}
   fpsCam: {fileID: 963194228}
-  holder: {x: -0.04, y: 0.1919821, z: 1.14}
+  holder: {x: -0.04, y: 0.1919821, z: 4.24}
+  ScaleLocation: {x: 1.322984, y: 0.8105334, z: 1.866571}
   pickUpRange: 4
   dropForwardForce: 0.1
   dropUpwardForce: 0.05
@@ -87558,7 +87532,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 131120227150268131}
   m_LocalRotation: {x: 0.7370431, y: -0.00000047539172, z: -0.00000055729646, w: 0.67584574}
-  m_LocalPosition: {x: 0, y: 0.65, z: -1.06}
+  m_LocalPosition: {x: 0, y: 0.77, z: -2.41}
   m_LocalScale: {x: 0.03476923, y: 0.034769233, z: 0.034769233}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -87876,6 +87850,7 @@ MonoBehaviour:
   gunContainer: {fileID: 423840744}
   fpsCam: {fileID: 963194228}
   holder: {x: 0, y: 0, z: 0}
+  ScaleLocation: {x: 0, y: 0, z: 0}
   pickUpRange: 4
   dropForwardForce: 0.1
   dropUpwardForce: 0.05
@@ -88419,12 +88394,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1155048320531788109}
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: -0.00000017881389}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: 0.00000026822087, z: -0, w: -1}
+  m_LocalPosition: {x: 17.220018, y: 0.11659373, z: 0.43001175}
+  m_LocalScale: {x: 1.5311493, y: 0.9380667, z: 2.1602683}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 393562861}
+  m_Father: {fileID: 213620807}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &8723446376475157543
@@ -88550,6 +88525,7 @@ MonoBehaviour:
   gunContainer: {fileID: 423840744}
   fpsCam: {fileID: 963194228}
   holder: {x: 0, y: 0, z: 0}
+  ScaleLocation: {x: 0, y: 0, z: 0}
   pickUpRange: 2
   dropForwardForce: 0.1
   dropUpwardForce: 0.05
