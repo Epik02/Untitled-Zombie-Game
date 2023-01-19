@@ -9304,7 +9304,7 @@ GameObject:
   - component: {fileID: 213620810}
   - component: {fileID: 213620809}
   m_Layer: 0
-  m_Name: AK
+  m_Name: AK47GUN1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
