@@ -36,13 +36,15 @@ public class PickUp : MonoBehaviour
         {
             gunScript.SetActive(false);
             rb.isKinematic = false;
-            coll.isTrigger = false;
+            //coll.isTrigger = false;
+            coll.enabled = true;
         }
         if (equipped)
         {
             gunScript.SetActive(true);
             rb.isKinematic = true;
-            coll.isTrigger = true;
+            //coll.isTrigger = true;
+            coll.enabled = false;
             slotFull = true;
         }
         GunHolder = GameObject.FindWithTag("GunHolderScript");
@@ -107,7 +109,7 @@ public class PickUp : MonoBehaviour
 
         //Make Rigidbody kinematic and BoxCollider a trigger
         rb.isKinematic = true;
-        coll.isTrigger = true;
+        //coll.isTrigger = true;
 
         //Enable script
         gunScript.SetActive(true);
@@ -130,7 +132,7 @@ public class PickUp : MonoBehaviour
 
         //Make Rigidbody kinematic and BoxCollider a trigger
         rb.isKinematic = false;
-        coll.isTrigger = false;
+        //coll.isTrigger = false;
 
         //Gun carries momentum of player
         rb.velocity = player.GetComponent<Rigidbody>().velocity;
