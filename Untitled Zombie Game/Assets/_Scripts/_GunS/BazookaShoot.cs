@@ -22,6 +22,8 @@ public class BazookaShoot : MonoBehaviour
 
     public int damageNumber;
 
+    public WeaponSwitch Weapon;
+
     [Header("Value Settings")]
     public int value;
     public int maxAmmo;
@@ -50,6 +52,7 @@ public class BazookaShoot : MonoBehaviour
     private void OnEnable()
     {
         inputAction.Enable();
+        Weapon.GunType = 1;
     }
 
     private void OnDisable()
@@ -62,6 +65,7 @@ public class BazookaShoot : MonoBehaviour
     private void Awake()
     {
         inputAction = new PlayerAction();
+        //Weapon.GunType = 1;
     }
 
     private void Start()
@@ -73,6 +77,7 @@ public class BazookaShoot : MonoBehaviour
 
         isReloading = false;
 
+        Weapon.GunType = 1;
         value = 0;
 
         ChangingAmmo = GameObject.FindWithTag("CurrentAMMO").GetComponent<TMP_Text>();

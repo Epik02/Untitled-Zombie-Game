@@ -20,6 +20,8 @@ public class GunShoot : MonoBehaviour
 
     public int damageNumber;
 
+    public WeaponSwitch Weapon;
+
     [Header("Value Settings")]
     public int value;
     public int maxAmmo;
@@ -49,6 +51,7 @@ public class GunShoot : MonoBehaviour
     {
         //ShootSound.volume = Soundvolume;
         inputAction.Enable();
+        Weapon.GunType = 0;
     }
 
     private void OnDisable()
@@ -60,6 +63,7 @@ public class GunShoot : MonoBehaviour
 private void Awake()
     {
         inputAction = new PlayerAction();
+        //Weapon.GunType = 0;
         //ShootSound.volume = Soundvolume;
     }
 
@@ -73,6 +77,8 @@ private void Awake()
         isReloading = false;
 
         value = 0;
+
+        Weapon.GunType = 0;
 
         ChangingAmmo = GameObject.FindWithTag("CurrentAMMO").GetComponent<TMP_Text>();
         ChangingTotalAmmo = GameObject.FindWithTag("TotalAMMO").GetComponent<TMP_Text>();

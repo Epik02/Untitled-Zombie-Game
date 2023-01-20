@@ -20,7 +20,7 @@ public class juggernaut : MonoBehaviour
     {
         if (other.collider.tag == "Player")
         {
-            if (ScoreManager.instance.GetScore() > 0)
+            if (ScoreManager.instance.GetScore() > DecreaseScore)
             {
                 StartCoroutine(TextAnimation());
                 ScoreManager.instance.DecreaseScore(DecreaseScore);
