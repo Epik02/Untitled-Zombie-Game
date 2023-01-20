@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WeaponSwitch : MonoBehaviour
 {
+    public int GunType;
     int totalWeapons = 1;
     public int currentWeaponIndex;
 
@@ -12,6 +13,7 @@ public class WeaponSwitch : MonoBehaviour
     public GameObject currentGun;
 
     public GunShoot ThrowScript;
+    public BazookaShoot BazookaScript;
 
     void Start()
     {
@@ -25,6 +27,8 @@ public class WeaponSwitch : MonoBehaviour
         currentGun = guns[0];
         currentWeaponIndex = 0;
         ThrowScript = guns[currentWeaponIndex].GetComponentInChildren<GunShoot>();
+        BazookaScript = guns[currentWeaponIndex].GetComponentInChildren<BazookaShoot>();
+        Debug.Log(GunType);
     }
 
     void Update()
@@ -56,7 +60,9 @@ public class WeaponSwitch : MonoBehaviour
             currentWeaponIndex += 1;
             currentGun = guns[currentWeaponIndex];
             ThrowScript = guns[currentWeaponIndex].GetComponentInChildren<GunShoot>();
+            BazookaScript = guns[currentWeaponIndex].GetComponentInChildren<BazookaShoot>();
             guns[currentWeaponIndex].SetActive(true);
+            Debug.Log(GunType);
             //ThrowScript.ThrowReset();
         }
         //previous Weapon
@@ -67,8 +73,10 @@ public class WeaponSwitch : MonoBehaviour
             currentWeaponIndex -= 1;
             currentGun = guns[currentWeaponIndex];
             ThrowScript = guns[currentWeaponIndex].GetComponentInChildren<GunShoot>();
+            BazookaScript = guns[currentWeaponIndex].GetComponentInChildren<BazookaShoot>();
             //ThrowScript = currentGun.GetComponent<GunShoot>();
             guns[currentWeaponIndex].SetActive(true);
+            Debug.Log(GunType);
             //ThrowScript.ThrowReset();
         }
     }
@@ -81,16 +89,36 @@ public class WeaponSwitch : MonoBehaviour
     public void Setvalue(int other)
     {
         Debug.Log(other);
-        ThrowScript.SetValue(other);
+        if (GunType == 0)
+        {
+            ThrowScript.SetValue(other);
+        }
+        else if (GunType == 1)
+        {
+            BazookaScript.SetValue(other);
+        }
     }
 
     public int GetValue()
     {
         return ThrowScript.MaxValueAmmo();
+       // return BazookaScript.MaxValueAmmo();
+    }
+
+    public int GetBaValue()
+    {
+        return BazookaScript.MaxValueAmmo();
     }
     public void SetAmmo(int other)
     {
         Debug.Log(other);
-        ThrowScript.AddAmmo(other);
+        if (GunType == 0)
+        {
+            ThrowScript.AddAmmo(other);
+        }
+        else if (GunType == 1)
+        {
+            BazookaScript.AddAmmo(other);
+        }
     }
 }

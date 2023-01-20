@@ -6023,6 +6023,7 @@ MonoBehaviour:
   BigBullet: {fileID: 2369002665294184600, guid: 6bd328cbdbf658c4aae06d40f7d0a571, type: 3}
   projectilePos: {fileID: 197975152}
   damageNumber: 0
+  Weapon: {fileID: 0}
   value: 0
   maxAmmo: 15
   TotalAmmo: 120
@@ -9993,6 +9994,7 @@ Transform:
   m_Children:
   - {fileID: 289974773}
   - {fileID: 134012512}
+  - {fileID: 511196069}
   - {fileID: 2928457981602880744}
   m_Father: {fileID: 0}
   m_RootOrder: 10
@@ -18256,11 +18258,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d210ef7724d21b547a6e5cffa7d4bf12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GunType: 0
   currentWeaponIndex: 0
   guns: []
   weaponHolder: {fileID: 423840743}
   currentGun: {fileID: 0}
   ThrowScript: {fileID: 0}
+  BazookaScript: {fileID: 0}
 --- !u!1 &424250280
 GameObject:
   m_ObjectHideFlags: 0
@@ -22403,6 +22407,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 510680768}
   m_Mesh: {fileID: -6338851639619172837, guid: 0dde36d42d08ca64ab542d72b6593824, type: 3}
+--- !u!4 &511196069 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5489921097023402635, guid: 3701faf1d65b353449fe8dbb49bb62f5, type: 3}
+  m_PrefabInstance: {fileID: 621711358}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &511504428
 GameObject:
   m_ObjectHideFlags: 0
@@ -27285,23 +27294,23 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 2
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 235575550}
     m_Modifications:
     - target: {fileID: 5489921097023402635, guid: 3701faf1d65b353449fe8dbb49bb62f5, type: 3}
       propertyPath: m_RootOrder
-      value: 39
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5489921097023402635, guid: 3701faf1d65b353449fe8dbb49bb62f5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.823306
+      value: -6.859952
       objectReference: {fileID: 0}
     - target: {fileID: 5489921097023402635, guid: 3701faf1d65b353449fe8dbb49bb62f5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.9939027
+      value: -1.3181171
       objectReference: {fileID: 0}
     - target: {fileID: 5489921097023402635, guid: 3701faf1d65b353449fe8dbb49bb62f5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 13.214674
+      value: 23.718285
       objectReference: {fileID: 0}
     - target: {fileID: 5489921097023402635, guid: 3701faf1d65b353449fe8dbb49bb62f5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -42686,6 +42695,7 @@ MonoBehaviour:
   BigBullet: {fileID: 2369002665294184600, guid: 6bd328cbdbf658c4aae06d40f7d0a571, type: 3}
   projectilePos: {fileID: 1752135309}
   damageNumber: 0
+  Weapon: {fileID: 423840745}
   value: 0
   maxAmmo: 30
   TotalAmmo: 200
@@ -52036,6 +52046,7 @@ MonoBehaviour:
   BigBullet: {fileID: 2369002665294184600, guid: 6bd328cbdbf658c4aae06d40f7d0a571, type: 3}
   projectilePos: {fileID: 1124760257}
   damageNumber: 0
+  Weapon: {fileID: 0}
   value: 0
   maxAmmo: 15
   TotalAmmo: 120
@@ -52364,6 +52375,7 @@ MonoBehaviour:
   CornBullet: {fileID: 7596587302446565607, guid: 85297eb5e8a54de4f93067e5c3a4ba51, type: 3}
   projectilePos: {fileID: 716355179}
   damageNumber: 0
+  Weapon: {fileID: 423840745}
   value: 0
   maxAmmo: 5
   TotalAmmo: 50
@@ -59351,6 +59363,7 @@ MonoBehaviour:
   BigBullet: {fileID: 2369002665294184600, guid: 6bd328cbdbf658c4aae06d40f7d0a571, type: 3}
   projectilePos: {fileID: 560869751}
   damageNumber: 0
+  Weapon: {fileID: 423840745}
   value: 0
   maxAmmo: 15
   TotalAmmo: 120
@@ -63372,9 +63385,6 @@ MonoBehaviour:
   - Tag: Bullet
     Prefab: {fileID: 2369002665294184600, guid: 8f8b07b7600fac442b908c1710e813c5, type: 3}
     Size: 10
-  - Tag: CornBullet
-    Prefab: {fileID: 8254401456946780261, guid: 1d38a6cf5f45a4b4085afd4d95b5a7cc, type: 3}
-    Size: 2
 --- !u!4 &1632400680
 Transform:
   m_ObjectHideFlags: 0
@@ -67880,7 +67890,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 40
+  m_RootOrder: 39
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1757044436
 GameObject:
@@ -84785,6 +84795,7 @@ MonoBehaviour:
   BigBullet: {fileID: 2369002665294184600, guid: 6bd328cbdbf658c4aae06d40f7d0a571, type: 3}
   projectilePos: {fileID: 4937178801774879693}
   damageNumber: 0
+  Weapon: {fileID: 0}
   value: 0
   maxAmmo: 50
   TotalAmmo: 250
@@ -86185,6 +86196,7 @@ MonoBehaviour:
   BigBullet: {fileID: 2369002665294184600, guid: 6bd328cbdbf658c4aae06d40f7d0a571, type: 3}
   projectilePos: {fileID: 3785017640200959267}
   damageNumber: 0
+  Weapon: {fileID: 423840745}
   value: 0
   maxAmmo: 50
   TotalAmmo: 250
@@ -86232,6 +86244,7 @@ MonoBehaviour:
   BigBullet: {fileID: 2369002665294184600, guid: 6bd328cbdbf658c4aae06d40f7d0a571, type: 3}
   projectilePos: {fileID: 3785017640134456974}
   damageNumber: 0
+  Weapon: {fileID: 423840745}
   value: 0
   maxAmmo: 15
   TotalAmmo: 120
@@ -86665,7 +86678,7 @@ PrefabInstance:
       objectReference: {fileID: 1865150806}
     - target: {fileID: 4783616304876060481, guid: ac1b063a295dedc4b90807478056cdf8, type: 3}
       propertyPath: decreaseScore
-      value: 100
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 4783616304876060485, guid: ac1b063a295dedc4b90807478056cdf8, type: 3}
       propertyPath: m_RootOrder
@@ -87173,6 +87186,7 @@ MonoBehaviour:
   BigBullet: {fileID: 2369002665294184600, guid: 6bd328cbdbf658c4aae06d40f7d0a571, type: 3}
   projectilePos: {fileID: 607527859001490059}
   damageNumber: 0
+  Weapon: {fileID: 0}
   value: 0
   maxAmmo: 15
   TotalAmmo: 120

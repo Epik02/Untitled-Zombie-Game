@@ -20,12 +20,13 @@ public class Purchase : MonoBehaviour
     {
         if (other.collider.tag == "Player")
         {
-            if (ScoreManager.instance.GetScore() >= 500)
+            if (ScoreManager.instance.GetScore() >= decreaseScore)
             {
                 StartCoroutine(TextAnimation());
                 ScoreManager.instance.DecreaseScore(decreaseScore);
                 Object.material.color = Color.blue;
                 ShootScript.Setvalue(1);
+
             }
             else
             {

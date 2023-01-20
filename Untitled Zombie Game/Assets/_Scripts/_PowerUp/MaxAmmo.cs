@@ -19,12 +19,21 @@ public class MaxAmmo : MonoBehaviour
     {
         if (other.collider.tag == "Player")
         {
-            if (ScoreManager.instance.GetScore() >= 1000)
+            if (ScoreManager.instance.GetScore() >= decreaseScore)
             {
                 StartCoroutine(TextAnimation());
                 ScoreManager.instance.DecreaseScore(decreaseScore);
                 Object.material.color = Color.green;
-                ShootScript.SetAmmo(ShootScript.GetValue());
+                if (ShootScript.GunType == 0)
+                {
+                    ShootScript.SetAmmo(ShootScript.GetValue());
+                    Debug.Log(ShootScript.GunType);
+                }
+                else if (ShootScript.GunType == 1)
+                {
+                    ShootScript.SetAmmo(ShootScript.GetBaValue());
+                    Debug.Log(ShootScript.GunType);
+                }
             }
             else
             {
