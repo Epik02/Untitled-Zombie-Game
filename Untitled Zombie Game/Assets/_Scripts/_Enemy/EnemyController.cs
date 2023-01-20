@@ -30,7 +30,7 @@ public class EnemyController : MonoBehaviour
     {
         if (other.collider.tag == "Player")
         {
-            Health health = other.gameObject.GetComponent<Health>();
+            PlayerHealth health = other.gameObject.GetComponent<PlayerHealth>();
             health?.TakeDamage(damages);
             if (health.currentHealth <= 0)
             {

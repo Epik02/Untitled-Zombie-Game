@@ -4,17 +4,19 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
 
-public class GunShoot : MonoBehaviour
+public class BazookaShoot : MonoBehaviour
 {
     PlayerAction inputAction;
 
-    [Header("Bullet References")]
+    [Header("Bullet Reference")]
     [SerializeField]
     private InformationValues informationValues;
 
+    public Transform Cam;
+
     public GameObject[] projectile;
-    public GameObject SmallBullet;
-    public GameObject BigBullet;
+
+    public GameObject CornBullet;
 
     public Transform projectilePos;
 
@@ -47,7 +49,6 @@ public class GunShoot : MonoBehaviour
 
     private void OnEnable()
     {
-        //ShootSound.volume = Soundvolume;
         inputAction.Enable();
     }
 
@@ -57,10 +58,10 @@ public class GunShoot : MonoBehaviour
         isReloading = false;
     }
 
-private void Awake()
+
+    private void Awake()
     {
         inputAction = new PlayerAction();
-        //ShootSound.volume = Soundvolume;
     }
 
     private void Start()
@@ -77,8 +78,7 @@ private void Awake()
         ChangingAmmo = GameObject.FindWithTag("CurrentAMMO").GetComponent<TMP_Text>();
         ChangingTotalAmmo = GameObject.FindWithTag("TotalAMMO").GetComponent<TMP_Text>();
 
-        projectile[0] = SmallBullet;
-        projectile[1] = BigBullet;
+        projectile[0] = CornBullet;
     }
 
     private void Update()
@@ -96,7 +96,7 @@ private void Awake()
             AmmoDone = true;
             return;
         }
-        if (TotalMaxAmmo > 120 && currentAmmo <=0 && AmmoDone == true)
+        if (TotalMaxAmmo > 20 && currentAmmo <= 0 && AmmoDone == true)
         {
             inputAction.PlayerShoot.Enable();
             AmmoDone = false;
@@ -107,7 +107,7 @@ private void Awake()
         {
             //Debug.Log("Reload Time");
             StartCoroutine(Reloads());
-           return;
+            return;
         }
 
         inputAction.PlayerShoot.Reload.performed += cntxt => reloadingCurrentAmmo();
@@ -152,19 +152,21 @@ private void Awake()
             currentAmmo--;
             //Debug.Log("Wow Ammo Decrease");
         }
+
         ChangingAmmo.text = currentAmmo.ToString();
         Debug.Log("Ammo:" + currentAmmo);
 
         if (check == 0)
         {
-            damageNumber = informationValues.damage._SmallDamage;
-
+            damageNumber = informationValues.damage._SmallCornDamage;
         }
-        else damageNumber = informationValues.damage._BigDamage;
+        else damageNumber = informationValues.damage._BigCornDamage;
 
-        Rigidbody bulletRb = ObjectPooler.instance.SpawnFromPool("Bullet", projectilePos.position, Quaternion.identity).GetComponent<Rigidbody>();
-        
-        bulletRb.AddForce(transform.forward * -speed, ForceMode.Impulse);
+        //Rigidbody CornbulletRb = ObjectPooler.instance.SpawnFromPool("CornBullet", projectilePos.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+
+        Rigidbody CornBulletRB = Instantiate(projectile[0], projectilePos.position, Cam.rotation).GetComponent<Rigidbody>();
+
+        CornBulletRB.AddForce(transform.forward * -speed, ForceMode.Impulse);
         //bulletRb.AddForce(transform.up * 1f, ForceMode.Impulse);
     }
 

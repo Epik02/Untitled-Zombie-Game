@@ -9,6 +9,8 @@ public class InformationValues : ScriptableObject
     // Global Movement Speed Variables - GDW variable
     public int _EnemySpeed = 5;
 
+    public int _PlayerMaxHealth = 100;
+
     // Reference to another Scriptable Object to gain access
     public DamageValues damage;
 }
