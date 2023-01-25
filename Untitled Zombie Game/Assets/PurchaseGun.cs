@@ -45,6 +45,7 @@ public class PurchaseGun : MonoBehaviour
             {
                 Debug.Log("Purchase Weapon Working");
                 Instantiate(WeaponSold, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+
             }
         }
         else
