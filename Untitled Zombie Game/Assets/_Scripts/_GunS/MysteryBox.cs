@@ -58,7 +58,7 @@ public class MysteryBox : MonoBehaviour
                 counterCompare++;
                 guns[selectedGun].transform.position = cubePosition.transform.position;
                 //RandomStartingSoon = false;
-               // guns[selectedGun].transform.parent = null;
+                // guns[selectedGun].transform.parent = null;
             }
             //guns[selectedGun].transform.position = cubePosition.transform.position;
             //guns[selectedGun].transform.SetParent(null);
