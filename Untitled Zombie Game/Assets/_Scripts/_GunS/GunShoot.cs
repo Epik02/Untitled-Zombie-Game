@@ -15,6 +15,7 @@ public class GunShoot : MonoBehaviour
     public GameObject[] projectile;
     public GameObject SmallBullet;
     public GameObject BigBullet;
+    public GameObject GunHolder;
 
     public Transform projectilePos;
 
@@ -39,6 +40,9 @@ public class GunShoot : MonoBehaviour
     [Header("UI Score Text")]
     public TMP_Text ChangingAmmo;
     public TMP_Text ChangingTotalAmmo;
+
+    public GameObject ShootSounds;
+    public GameObject ReloadSounds;
 
     // Sound Effects (Play on certain if statements)
     [Header("Sound Effects")]
@@ -78,6 +82,9 @@ private void Awake()
 
         value = 0;
 
+        GunHolder = GameObject.FindWithTag("GunHolderScript");
+        Weapon = GunHolder.GetComponent<WeaponSwitch>();
+
         Weapon.GunType = 0;
 
         ChangingAmmo = GameObject.FindWithTag("CurrentAMMO").GetComponent<TMP_Text>();
@@ -85,6 +92,12 @@ private void Awake()
 
         projectile[0] = SmallBullet;
         projectile[1] = BigBullet;
+
+        ShootSounds = GameObject.FindWithTag("Shooting");
+        ShootSound = ShootSounds.GetComponent<AudioSource>();
+
+        ReloadSounds = GameObject.FindWithTag("Reload");
+        ReloadSound = ReloadSounds.GetComponent<AudioSource>();
     }
 
     private void Update()
