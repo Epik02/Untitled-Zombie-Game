@@ -13826,7 +13826,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8762286023885395322, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5
+      value: -57.93
       objectReference: {fileID: 0}
     - target: {fileID: 8762286023885395322, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
       propertyPath: m_LocalPosition.y
@@ -13834,7 +13834,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8762286023885395322, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5
+      value: -21.7
       objectReference: {fileID: 0}
     - target: {fileID: 8762286023885395322, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
       propertyPath: m_LocalRotation.w
@@ -19144,7 +19144,7 @@ MonoBehaviour:
   doorPrompt: {fileID: 370399695}
   door: {fileID: 500128106}
   ChangingText: {fileID: 370399697}
-  pointsToBuy: 1500
+  pointsToBuy: 500
 --- !u!65 &407359166
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25692,6 +25692,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 545892500}
   m_Mesh: {fileID: 7213501675257580136, guid: 0dde36d42d08ca64ab542d72b6593824, type: 3}
+--- !u!1 &547164576 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8081871867403737588, guid: efcad2236524abf418c3f5733f5cd591, type: 3}
+  m_PrefabInstance: {fileID: 263481350}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &547164580
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547164576}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.8196224, y: 1.0000001, z: 3.5527137e-14}
+  m_Center: {x: -0.000000038184226, y: -0.0000000020954758, z: 0}
 --- !u!1 &549133381
 GameObject:
   m_ObjectHideFlags: 0
@@ -28898,7 +28916,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 614933393}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.26, y: 4.738, z: -0.62}
+  m_LocalPosition: {x: -51.91, y: 4.738, z: -17.33}
   m_LocalScale: {x: 0.23986, y: 0.23986, z: 0.23986}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -42008,8 +42026,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0, y: -0.9999905, z: 0, w: -0.0043580276}
-  m_LocalPosition: {x: 5, y: 6.375, z: 5}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -57.93, y: 6.375, z: -21.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -46868,7 +46886,7 @@ MonoBehaviour:
   doorPrompt: {fileID: 829313535}
   door: {fileID: 597469863}
   ChangingText: {fileID: 829313537}
-  pointsToBuy: 2000
+  pointsToBuy: 500
 --- !u!65 &1070994588
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -72928,7 +72946,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1755126802}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.016, y: 4.738, z: -4.09}
+  m_LocalPosition: {x: -58.666, y: 4.738, z: -24.8}
   m_LocalScale: {x: 0.31057, y: 0.31057, z: 0.31057}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -84186,7 +84204,7 @@ PrefabInstance:
       objectReference: {fileID: 872523866}
     - target: {fileID: 3996869339037432859, guid: b2c97874674a86e489f62ea374528d19, type: 3}
       propertyPath: pointsToBuy
-      value: 3000
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 3996869339037432859, guid: b2c97874674a86e489f62ea374528d19, type: 3}
       propertyPath: ChangingText
@@ -93071,7 +93089,7 @@ PrefabInstance:
       objectReference: {fileID: 113339912}
     - target: {fileID: 3996869339037432859, guid: b2c97874674a86e489f62ea374528d19, type: 3}
       propertyPath: pointsToBuy
-      value: 1000
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 3996869339037432859, guid: b2c97874674a86e489f62ea374528d19, type: 3}
       propertyPath: ChangingText
@@ -95066,8 +95084,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8616685848234661045}
-  m_LocalRotation: {x: -0, y: -0.9999905, z: -0, w: -0.0043580276}
-  m_LocalPosition: {x: 5, y: 5, z: 5}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -57.93, y: 5, z: -21.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -95076,7 +95094,7 @@ Transform:
   - {fileID: 1900330292}
   m_Father: {fileID: 0}
   m_RootOrder: 26
-  m_LocalEulerAnglesHint: {x: 0, y: -180.499, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &8997996946658020883
 MonoBehaviour:
   m_ObjectHideFlags: 0
