@@ -244,7 +244,7 @@ MonoBehaviour:
   fpsCam: {fileID: 0}
   holder: {x: -0.04, y: 0.1919821, z: 4.24}
   ScaleLocation: {x: 1.322984, y: 0.8105334, z: 1.866571}
-  pickUpRange: 2
+  pickUpRange: 2.5
   dropForwardForce: 0.1
   dropUpwardForce: 0.05
   equipped: 0
