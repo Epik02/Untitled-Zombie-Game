@@ -20,9 +20,9 @@ Mouse right click - throw grenade
 
 Space - jump
 
-key Q - drop weapon
+Key Q - Pick Up near Weapon (delete current weapon you are holding)
 
-key E - pick up weapon and interact door
+key E - interact with Objects
 
 Shift - sprint
 
