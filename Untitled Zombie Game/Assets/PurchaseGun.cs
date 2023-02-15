@@ -14,6 +14,8 @@ public class PurchaseGun : MonoBehaviour
     public GameObject CostText;
     public string WeaponName;
 
+    public Vector3 LocationOfWeapon;
+
 
     PickUp grabWeaponName;
 
@@ -44,8 +46,7 @@ public class PurchaseGun : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E) == true && ScoreManager.instance.GetScore() >= PurchaseCost)
             {
                 Debug.Log("Purchase Weapon Working");
-                Instantiate(WeaponSold, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
-
+                Instantiate(WeaponSold, LocationOfWeapon, Quaternion.identity);
             }
         }
         else

@@ -8,9 +8,11 @@ public class MysteryBox : MonoBehaviour
     Animation Movement;
 
     public GameObject[] guns;
+    public GameObject[] PreFabs;
 
     bool intrigger = false;
     bool RandomStartingSoon = false;
+    bool SelectGun = false;
 
     float timer;
     int counter, counterCompare;
@@ -46,6 +48,7 @@ public class MysteryBox : MonoBehaviour
         if (RandomStartingSoon == true)
         {
             timer += Time.deltaTime;
+            
 
             if (timer < 4.0f && counter < counterCompare)
             {
@@ -57,19 +60,19 @@ public class MysteryBox : MonoBehaviour
                 RandomizeWeapon();
                 counterCompare++;
                 guns[selectedGun].transform.position = cubePosition.transform.position;
+                SelectGun = true;
                 //RandomStartingSoon = false;
                 // guns[selectedGun].transform.parent = null;
             }
+            //if (counterCompare = )
             //guns[selectedGun].transform.position = cubePosition.transform.position;
             //guns[selectedGun].transform.SetParent(null);
             //else RandomStartingSoon = false;
         }
-        else
+        if (timer >= 4 && SelectGun == true)
         {
-            counter = 0;
-            counterCompare = 0;
-            timer = 0;
-            RandomStartingSoon = false;
+            Instantiate(PreFabs[selectedGun], cubePosition.transform.position, Quaternion.identity);
+            SelectGun = false;
         }
         if (intrigger == true)
         {
@@ -77,6 +80,10 @@ public class MysteryBox : MonoBehaviour
             MysteryBoxText.text = PointsToBuy.ToString() + " to roll the Mystery Box.";
             if (Input.GetKeyDown(KeyCode.E) == true && ScoreManager.instance.GetScore() >= PointsToBuy)
             {
+                counter = 0;
+                counterCompare = 0;
+                timer = 0;
+                RandomStartingSoon = false;
                 RandomStartingSoon = true;
                 Debug.Log("Mystery Box It worked");
                 //OpenMysteryBox();

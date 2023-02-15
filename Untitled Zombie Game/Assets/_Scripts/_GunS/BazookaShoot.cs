@@ -22,6 +22,8 @@ public class BazookaShoot : MonoBehaviour
 
     public int damageNumber;
 
+    public GameObject GunHolder;
+
     public WeaponSwitch Weapon;
 
     [Header("Value Settings")]
@@ -41,6 +43,9 @@ public class BazookaShoot : MonoBehaviour
     [Header("UI Score Text")]
     public TMP_Text ChangingAmmo;
     public TMP_Text ChangingTotalAmmo;
+
+    public GameObject ShootSounds;
+    public GameObject ReloadSounds;
 
     // Sound Effects (Play on certain if statements)
     [Header("Sound Effects")]
@@ -76,6 +81,18 @@ public class BazookaShoot : MonoBehaviour
         TotalMaxAmmo = TotalAmmo;
 
         isReloading = false;
+
+        Cam = GameObject.FindWithTag("MainCamera").transform;
+
+        ShootSounds = GameObject.FindWithTag("Shooting");
+        ShootSound = ShootSounds.GetComponent<AudioSource>();
+
+        ReloadSounds = GameObject.FindWithTag("Reload");
+        ReloadSound = ReloadSounds.GetComponent<AudioSource>();
+
+
+        GunHolder = GameObject.FindWithTag("GunHolderScript");
+        Weapon = GunHolder.GetComponent<WeaponSwitch>();
 
         Weapon.GunType = 1;
         value = 0;

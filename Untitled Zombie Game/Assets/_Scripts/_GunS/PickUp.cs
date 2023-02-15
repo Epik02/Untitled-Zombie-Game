@@ -9,12 +9,15 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
+    public GameObject CurrentGunEquiped;
     public GameObject gunScript;
     public GameObject GunHolder;
 
     //public GunShoot ThrowScript;
 
     public WeaponSwitch swichy;
+
+    public PickUp CurrentPickUp;
 
     public Rigidbody rb;
     public BoxCollider coll;
@@ -48,9 +51,16 @@ public class PickUp : MonoBehaviour
             coll.enabled = false;
             slotFull = true;
         }
+
         GunHolder = GameObject.FindWithTag("GunHolderScript");
         //ThrowScript = gunScript.GetComponent<GunShoot>();
+        player = GameObject.FindWithTag("Player").transform;
+        gunContainer = GameObject.FindWithTag("GunHolderScript").transform;
+        fpsCam = GameObject.FindWithTag("MainCamera").transform;
         swichy = GunHolder.GetComponent<WeaponSwitch>();
+
+        //CurrentGunEquiped = GameObject.FindWithTag("CurrentGun");
+        //CurrentPickUp = CurrentGunEquiped.GetComponent<PickUp>();
     }
 
     //private void OnEnable()
@@ -76,17 +86,24 @@ public class PickUp : MonoBehaviour
         //Check if player is in range and "E" is pressed
         Vector3 distanceToPlayer = player.position - transform.position;
 
-        if (!equipped && distanceToPlayer.magnitude <= pickUpRange && Input.GetKeyDown(KeyCode.E) && !slotFull) PickUps();
+        if (distanceToPlayer.magnitude <= pickUpRange && Input.GetKeyDown(KeyCode.Q))
+        {
+            CurrentGunEquiped = GameObject.FindWithTag("CurrentGun");
+            CurrentPickUp = CurrentGunEquiped.GetComponent<PickUp>();
+            CurrentPickUp.Drop();
+            Debug.Log("Dropped Gun");
+            PickUps();
+            Debug.Log("Pick Up Gun");
+        }
         //if (!equipped && distanceToPlayer.magnitude <= pickUpRange && !slotFull)
         //{
         //    inputAction.Player.Drop.Disable();
         //    inputAction.Player.Pick.Enable();
-        //    inputAction.Player.Pick.performed += cntxt => PickUps();
-            
+        //    inputAction.Player.Pick.performed += cntxt => PickUps();  
         //}
 
         ////Drop if equipped and "Q" is pressed
-        if (equipped && Input.GetKeyDown(KeyCode.Q)) Drop();
+        //if (equipped && Input.GetKeyDown(KeyCode.Q)) Drop();
         //if (equipped)
         //{
         //    inputAction.Player.Pick.Disable();
@@ -97,9 +114,10 @@ public class PickUp : MonoBehaviour
 
     private void PickUps()
     {
+
         equipped = true;
         slotFull = true;
-
+        //Destroy(CurrentGunEquiped);
         //Make weapon a child of the character/camera and move it to default position
         transform.SetParent(gunContainer);
         transform.localPosition = holder;
@@ -120,6 +138,7 @@ public class PickUp : MonoBehaviour
         swichy.setParent();
         //swichy.Swap();
         swichy.SetCurrent(1);
+        //gameObject.tag = "CurrentGun";
 
     }
 
@@ -128,10 +147,14 @@ public class PickUp : MonoBehaviour
         //ThrowScript.ThrowReset();
         equipped = false;
         slotFull = false;
-
+        
         //Set parent to null
         transform.SetParent(null);
+        gunScript.SetActive(false);
+        //swichy.setParent();
+        //swichy.SetCurrent(1);
 
+        Destroy(gameObject);
         //Make Rigidbody kinematic and BoxCollider a trigger
         rb.isKinematic = false;
         coll.enabled = true;
@@ -148,11 +171,11 @@ public class PickUp : MonoBehaviour
         rb.AddTorque(new Vector3(random, random, random)*10);
 
         //Enable script
-        gunScript.SetActive(false);
+        //gunScript.SetActive(false);
 
        // swichy.Swap();
-        swichy.setParent();
-        swichy.SetCurrent(1);
+        //swichy.setParent();
+        //swichy.SetCurrent(1);
         //swichy.SetCurrent();
 
     }
