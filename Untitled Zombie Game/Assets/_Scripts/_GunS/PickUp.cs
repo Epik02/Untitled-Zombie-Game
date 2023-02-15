@@ -91,9 +91,9 @@ public class PickUp : MonoBehaviour
             CurrentGunEquiped = GameObject.FindWithTag("CurrentGun");
             CurrentPickUp = CurrentGunEquiped.GetComponent<PickUp>();
             CurrentPickUp.Drop();
-            Debug.Log("Dropped Gun");
             PickUps();
             Debug.Log("Pick Up Gun");
+            Debug.Log("Dropped Gun");
         }
         //if (!equipped && distanceToPlayer.magnitude <= pickUpRange && !slotFull)
         //{

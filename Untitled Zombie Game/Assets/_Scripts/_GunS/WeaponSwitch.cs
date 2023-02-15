@@ -6,6 +6,7 @@ public class WeaponSwitch : MonoBehaviour
 {
     public int GunType;
     int totalWeapons = 1;
+    public int OtherWeaponIndex;
     public int currentWeaponIndex;
 
     public GameObject[] guns;
@@ -26,10 +27,9 @@ public class WeaponSwitch : MonoBehaviour
         guns[0].SetActive(true);
         currentGun = guns[0];
         currentWeaponIndex = 0;
+        OtherWeaponIndex = 1;
         ThrowScript = guns[currentWeaponIndex].GetComponentInChildren<GunShoot>();
         BazookaScript = guns[currentWeaponIndex].GetComponentInChildren<BazookaShoot>();
-        guns[0].gameObject.tag = "CurrentGun";
-        guns[1].gameObject.tag = "NotCurrentGun";
         Debug.Log(GunType);
     }
 
@@ -60,11 +60,13 @@ public class WeaponSwitch : MonoBehaviour
             Debug.Log("1");
             guns[currentWeaponIndex].SetActive(false);
             currentWeaponIndex += 1;
+            OtherWeaponIndex -= 1;
+            
             currentGun = guns[currentWeaponIndex];
             ThrowScript = guns[currentWeaponIndex].GetComponentInChildren<GunShoot>();
             BazookaScript = guns[currentWeaponIndex].GetComponentInChildren<BazookaShoot>();
-            guns[0].gameObject.tag = "NotCurrentGun";
-            guns[currentWeaponIndex].gameObject.tag = "CurrentGun";
+            //guns[0].gameObject.tag = "NotCurrentGun";
+            //guns[currentWeaponIndex].gameObject.tag = "CurrentGun";
             guns[currentWeaponIndex].SetActive(true);
             Debug.Log(GunType);
             //ThrowScript.ThrowReset();
@@ -75,11 +77,12 @@ public class WeaponSwitch : MonoBehaviour
             Debug.Log("0");
             guns[currentWeaponIndex].SetActive(false);
             currentWeaponIndex -= 1;
+            OtherWeaponIndex += 1;
             currentGun = guns[currentWeaponIndex];
             ThrowScript = guns[currentWeaponIndex].GetComponentInChildren<GunShoot>();
             BazookaScript = guns[currentWeaponIndex].GetComponentInChildren<BazookaShoot>();
-            guns[1].gameObject.tag = "NotCurrentGun";
-            guns[currentWeaponIndex].gameObject.tag = "CurrentGun";
+            //guns[1].gameObject.tag = "NotCurrentGun";
+            //guns[currentWeaponIndex].gameObject.tag = "CurrentGun";
             //ThrowScript = currentGun.GetComponent<GunShoot>();
             guns[currentWeaponIndex].SetActive(true);
             Debug.Log(GunType);
@@ -90,6 +93,8 @@ public class WeaponSwitch : MonoBehaviour
     public void SetCurrent(int index)
     {
         guns[index].SetActive(true);
+        guns[1].gameObject.tag = "CurrentGun";
+        guns[0].gameObject.tag = "NotCurrentGun";
     }
 
     public void Setvalue(int other)
