@@ -9,6 +9,8 @@ public class PrefabEnemies : MonoBehaviour
     public GameObject Enemy1;
     //public GameObject Enemy2;
 
+    public WaveTest GetValue;
+
     public int Spawn;
     //public int xRandom1 = 10;
     //public int xRandom2 = 20;
@@ -30,10 +32,13 @@ public class PrefabEnemies : MonoBehaviour
             //xPos = Random.Range(1, 30);
             //yPos = Random.Range(1, 2);
             //zPos = Random.Range(1, 10);
-            
+
             //EnemyPool.Spawn(Enemy1, new Vector3(Random.Range(Placement[Spawn].Xcoor1, Placement[Spawn].Xcoor2), yValue, Random.Range(Placement[Spawn].Zcoor1, Placement[Spawn].Zcoor2)), Quaternion.identity);
-            EnemyPool.Spawn(Enemy1, new Vector3(Random.Range(Placement[Spawn].L1.transform.position.x, Placement[Spawn].L2.transform.position.x), 
-                yValue, Random.Range(Placement[Spawn].L1.transform.position.z, Placement[Spawn].L2.transform.position.z)), Quaternion.identity);
+            for (int i = 0; i <= GetValue.SpawnNumber; i++)
+            {
+                EnemyPool.Spawn(Enemy1, new Vector3(Random.Range(Placement[i].L1.transform.position.x, Placement[i].L2.transform.position.x),
+                yValue, Random.Range(Placement[i].L1.transform.position.z, Placement[i].L2.transform.position.z)), Quaternion.identity);
+            }
             //EnemyPool.Spawn(Enemy1, new Vector3(Random.Range(Placement[Spawn].Xcoor1, Placement[Spawn].Xcoor2), yValue, Random.Range(Placement[Spawn].Zcoor1, Placement[Spawn].Zcoor2)), Quaternion.identity);
 
             //EnemyPool.Spawn(Enemy1, new Vector3(Random.Range(xRandom1, xRandom2), yValue, Random.Range(zRandom1, zRandom2)), Quaternion.identity);
@@ -47,8 +52,10 @@ public class PrefabEnemies : MonoBehaviour
 
     void Update()
     {
+
         if (ScoreManager.instance.GetEnemyNumber() <= 0 && enemyCount <= 0)
         {
+            Spawn = GetValue.SpawnNumber;
             //enemyCount = 0;
             StartCoroutine(EnemyDrop());
             healthchange = Enemy1.GetComponent<Health>();
