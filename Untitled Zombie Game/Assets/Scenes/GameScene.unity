@@ -45874,7 +45874,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0db4e6193e60db4682d6a5039fcface, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WeaponSold: {fileID: 7307184946118042427, guid: b9ece2b1b5217b44ab350b528790c56f, type: 3}
+  WeaponSold: {fileID: 750138142165094432, guid: 41ddb709fd44d4e468cb121aff972bad, type: 3}
   PurchaseCost: 100
   Cost: {fileID: 1698998396}
   CostText: {fileID: 1698998394}

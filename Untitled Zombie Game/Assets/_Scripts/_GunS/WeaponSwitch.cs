@@ -35,7 +35,8 @@ public class WeaponSwitch : MonoBehaviour
 
     void Update()
     {
-
+        guns[currentWeaponIndex].gameObject.tag = "CurrentGun";
+        guns[OtherWeaponIndex].gameObject.tag = "NotCurrentGun";
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             Swap();
@@ -93,8 +94,8 @@ public class WeaponSwitch : MonoBehaviour
     public void SetCurrent(int index)
     {
         guns[index].SetActive(true);
-        guns[1].gameObject.tag = "CurrentGun";
-        guns[0].gameObject.tag = "NotCurrentGun";
+        //guns[1].gameObject.tag = "CurrentGun";
+        //guns[0].gameObject.tag = "NotCurrentGun";
     }
 
     public void Setvalue(int other)

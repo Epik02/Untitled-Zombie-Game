@@ -326,7 +326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   informationValues: {fileID: 11400000, guid: 4bf7a1db7387bbd48a142917a2886570, type: 2}
   projectile:
-  - {fileID: 0}
+  - {fileID: 2369002665294184600, guid: 8f8b07b7600fac442b908c1710e813c5, type: 3}
   - {fileID: 0}
   SmallBullet: {fileID: 2369002665294184600, guid: 8f8b07b7600fac442b908c1710e813c5, type: 3}
   BigBullet: {fileID: 0}
