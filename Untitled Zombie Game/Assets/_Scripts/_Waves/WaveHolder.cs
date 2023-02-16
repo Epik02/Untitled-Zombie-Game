@@ -9,4 +9,5 @@ public class WaveHolder
     public int EnemyNumber;
     public int MaxHealth;
     public int EnemyDamageValue;
+    public int SpawnLocationIncrease;
 }

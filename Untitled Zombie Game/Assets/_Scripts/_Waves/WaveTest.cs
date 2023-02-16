@@ -21,6 +21,8 @@ public class WaveTest : MonoBehaviour
     //Array List Number
     public int ListIncrease;
 
+    public int SpawnNumber;
+
     //text
     public TMP_Text TimerText;
 
@@ -88,6 +90,7 @@ public class WaveTest : MonoBehaviour
             WaveCounter(WaveList[ListIncrease].EnemyNumber);
             enemyspawner.SetNewHealth(WaveList[ListIncrease].MaxHealth);
             enemyspawner.SetNewDamage(WaveList[ListIncrease].EnemyDamageValue);
+            SpawnNumber = WaveList[ListIncrease].SpawnLocationIncrease;
             ListIncrease++;
             //Enable ActiveEnemyWave
             ActiveEnemyWave = true;

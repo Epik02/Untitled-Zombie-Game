@@ -9,13 +9,18 @@ public class PurchaseGun : MonoBehaviour
 
     bool intrigger = false;
 
-    public int PurchaseCost = 0;
+    public int PurchaseCost;
     public TMP_Text Cost;
     public GameObject CostText;
     public string WeaponName;
 
-    public Vector3 LocationOfWeapon;
+    public float Cooldown = 10;
 
+    public int ResetCooldown = 10;
+
+    public GameObject Location;
+
+    //public Vector3 LocationOfWeapon;
 
     PickUp grabWeaponName;
 
@@ -39,14 +44,17 @@ public class PurchaseGun : MonoBehaviour
 
     private void Update()
     {
+        Cooldown += Time.deltaTime;
         if (intrigger == true)
         {
             CostText.SetActive(true);
             Cost.text = PurchaseCost.ToString() + " points to purchase " + WeaponName;
-            if (Input.GetKeyDown(KeyCode.E) == true && ScoreManager.instance.GetScore() >= PurchaseCost)
+            if (Input.GetKeyDown(KeyCode.E) == true && ScoreManager.instance.GetScore() >= PurchaseCost && Cooldown >= ResetCooldown)
             {
                 Debug.Log("Purchase Weapon Working");
-                Instantiate(WeaponSold, LocationOfWeapon, Quaternion.identity);
+                ScoreManager.instance.DecreaseScore(PurchaseCost);
+                Instantiate(WeaponSold, Location.transform.position, Quaternion.identity);
+                Cooldown = 0;
             }
         }
         else
