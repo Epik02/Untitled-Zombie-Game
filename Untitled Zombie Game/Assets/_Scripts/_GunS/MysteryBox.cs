@@ -26,6 +26,10 @@ public class MysteryBox : MonoBehaviour
     public int PointsToBuy;
      string pointsToBuyText = "0";
 
+    public float Cooldown = 6;
+
+    public float ResetCooldown = 6;
+
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "Capsule")
@@ -45,6 +49,7 @@ public class MysteryBox : MonoBehaviour
 
     void Update()
     {
+        Cooldown += Time.deltaTime;
         if (RandomStartingSoon == true)
         {
             timer += Time.deltaTime;
@@ -78,11 +83,13 @@ public class MysteryBox : MonoBehaviour
         {
             MysteryTextPrompt.SetActive(true);
             MysteryBoxText.text = PointsToBuy.ToString() + " to roll the Mystery Box.";
-            if (Input.GetKeyDown(KeyCode.E) == true && ScoreManager.instance.GetScore() >= PointsToBuy)
+            if (Input.GetKeyDown(KeyCode.E) == true && ScoreManager.instance.GetScore() >= PointsToBuy && Cooldown >= ResetCooldown)
             {
+                ScoreManager.instance.DecreaseScore(PointsToBuy);
                 counter = 0;
                 counterCompare = 0;
                 timer = 0;
+                Cooldown = 0;
                 RandomStartingSoon = false;
                 RandomStartingSoon = true;
                 Debug.Log("Mystery Box It worked");
