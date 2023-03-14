@@ -17,11 +17,19 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] private AudioSource musicPlayer;
     [SerializeField] private AudioSource soundPlayer;
+    [SerializeField] private AudioSource GunShotPlayer;
+    [SerializeField] private AudioSource ReloadPlayer;
+    [SerializeField] private AudioSource ExplodePlayer;
 
     public Slider masterSlider;
     public Slider musicSlider;
+    public Slider soundSlider;
     private float MasterVolume = 1.00f;
     private float MusicVolume = 1.00f;
+    private float SoundVolume = 1.00f;
+    private float GunshotVolume = 1.00f;
+    private float ReloadVolume = 1.00f;
+    private float ExplodeVolume = 1.00f;
 
     // Start is called before the first frame update
     private void Awake()
@@ -35,14 +43,34 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
+        //Saves values between playthroughs
         MasterVolume = PlayerPrefs.GetFloat("volume");
         MusicVolume = PlayerPrefs.GetFloat("musVolume");
+        SoundVolume = PlayerPrefs.GetFloat("souVolume");
+        GunshotVolume = PlayerPrefs.GetFloat("gunVolume");
+        ReloadVolume = PlayerPrefs.GetFloat("relVolume");
+        ExplodeVolume = PlayerPrefs.GetFloat("expVolume");
 
 
+        //Setup volume levels off of presets and other higher level sliders
         musicPlayer.volume = VolumeModified(musicPlayer.volume, MasterVolume, MusicVolume);
+        //soundPlayer.volume = VolumeModified(soundPlayer.volume, MasterVolume, SoundVolume);
 
+
+
+        GunShotPlayer.volume = VolumeModified(GunShotPlayer.volume, MasterVolume, SoundVolume);  //souVolume == 0 // fixed*
+        ReloadPlayer.volume = VolumeModified(ReloadPlayer.volume, MasterVolume, SoundVolume);
+        ExplodePlayer.volume = VolumeModified(ExplodePlayer.volume, MasterVolume, SoundVolume);
+        // GunShotPlayer.volume = MasterVolume * SoundVolume * GunshotVolume;
+       // ReloadPlayer.volume = MasterVolume * SoundVolume * ReloadVolume;
+
+
+        //Sets sliders to saved values
         masterSlider.value = MasterVolume;
         musicSlider.value = MusicVolume;
+        soundSlider.value = SoundVolume;          //initialize when slider is ready, also setup other sliders on deeper menu
+
+
         // Debug.Log("Ran Start");
 
 
@@ -78,6 +106,20 @@ public class AudioManager : MonoBehaviour
         //original function
         soundPlayer.volume = MasterVolume;
         PlayerPrefs.SetFloat("volume", MasterVolume);
+
+        PlayerPrefs.SetFloat("souVolume", SoundVolume);
+
+        GunShotPlayer.volume = VolumeModified(GunShotPlayer.volume, MasterVolume, SoundVolume) / 2;
+        PlayerPrefs.SetFloat("gunVolume", GunshotVolume);
+        ReloadPlayer.volume = 2*VolumeModified(ReloadPlayer.volume, MasterVolume, SoundVolume);
+        PlayerPrefs.SetFloat("relVolume", ReloadVolume);
+        ExplodePlayer.volume = VolumeModified(ExplodePlayer.volume, MasterVolume, SoundVolume);
+        PlayerPrefs.SetFloat("expVolume", ExplodeVolume);
+
+        //GunShotPlayer.volume = MasterVolume * SoundVolume * GunshotVolume;
+        //ReloadPlayer.volume = MasterVolume * SoundVolume * ReloadVolume;
+
+        //Debug.Log(SoundVolume);
     }
 
     public void updateMaster( float volume)
@@ -89,5 +131,10 @@ public class AudioManager : MonoBehaviour
     public void updateMusic( float volume)
     {
         MusicVolume = VolumeModified(MusicVolume, MasterVolume, volume);
+    }
+
+    public void updateSound ( float volume)
+    {
+        SoundVolume = VolumeModified(SoundVolume, MasterVolume, volume);
     }
 }

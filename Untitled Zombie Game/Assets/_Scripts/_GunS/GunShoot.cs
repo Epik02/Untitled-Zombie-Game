@@ -49,7 +49,7 @@ public class GunShoot : MonoBehaviour
     public AudioSource ShootSound;
     public AudioSource ReloadSound;
 
-    public float Soundvolume;
+    //public float Soundvolume;
 
     private void OnEnable()
     {
@@ -102,7 +102,7 @@ private void Awake()
 
     private void Update()
     {
-        ShootSound.volume = Soundvolume;
+        //ShootSound.volume = Soundvolume;
         ChangingAmmo.text = currentAmmo.ToString();
         ChangingTotalAmmo.text = "/" + TotalMaxAmmo.ToString();
         //Debug.Log("Wow 1st if statment incoming");
