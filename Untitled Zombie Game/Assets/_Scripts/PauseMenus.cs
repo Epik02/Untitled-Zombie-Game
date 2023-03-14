@@ -9,6 +9,7 @@ public class PauseMenus : MonoBehaviour
     public bool GameIsPaused = false;
 
     public GameObject pauseMenuUI;
+    public GameObject advMenuUI;
 
     public GameObject CurrentPlayer;
     public GameObject CurrentUI;
@@ -71,4 +72,17 @@ public class PauseMenus : MonoBehaviour
             Application.Quit();
         }
     }
+
+    public void AOmenu()
+    {
+        pauseMenuUI.SetActive(false);
+        advMenuUI.SetActive(true);
+    }
+
+    public void Pmenu()
+    {
+        pauseMenuUI.SetActive(true);
+        advMenuUI.SetActive(false);
+    }
+
 }
