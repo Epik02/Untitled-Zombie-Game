@@ -20,6 +20,8 @@ public class PurchaseGun : MonoBehaviour
 
     public GameObject Location;
 
+    public float NewY = 0;
+
     //public Vector3 LocationOfWeapon;
 
     PickUp grabWeaponName;
@@ -53,7 +55,7 @@ public class PurchaseGun : MonoBehaviour
             {
                 Debug.Log("Purchase Weapon Working");
                 ScoreManager.instance.DecreaseScore(PurchaseCost);
-                Instantiate(WeaponSold, Location.transform.position, Quaternion.identity);
+                Instantiate(WeaponSold, Location.transform.position, Quaternion.Euler(new Vector3(0,NewY,0)));
                 Cooldown = 0;
             }
         }
