@@ -37191,8 +37191,8 @@ MonoBehaviour:
   - {fileID: 5428857241698555298, guid: bf651ec7ba2edd04da2ca3d22f2c8e1e, type: 3}
   - {fileID: 576364501386026048, guid: 89e19e68cf5cd684d990dda9dad76c40, type: 3}
   ChanceOfBazooka: 0.9
-  ChanceOfAK47: 0.3
-  ChanceOfDeagle: 0.6
+  ChanceOfAK47: 0.5
+  ChanceOfDeagle: 0
   selectedGun: 0
   cubePosition: {fileID: 466239003}
   MysteryBoxText: {fileID: 1578163866}
