@@ -27,10 +27,6 @@ public class PauseMenus : MonoBehaviour
         {
             Debug.Log("Input Called");
             if (!GameIsPaused)
-            //{
-               // Resume();
-           // }
-            //else
             {
                 Pause();
             }
