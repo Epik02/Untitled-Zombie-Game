@@ -19,6 +19,7 @@ public class MysteryBox : MonoBehaviour
 
     public float ChanceOfBazooka;
     public float ChanceOfAK47;
+    public float ChanceOfDeagle;
 
     public int selectedGun;
     public Transform cubePosition;
@@ -32,6 +33,7 @@ public class MysteryBox : MonoBehaviour
     public float Cooldown = 6;
 
     public float ResetCooldown = 6;
+    public float randomvalue;
 
     void OnTriggerEnter(Collider other)
     {
@@ -140,17 +142,23 @@ public class MysteryBox : MonoBehaviour
     void RandomizeWeapon2()
     {
         float rand = Random.value;
-        if (rand > ChanceOfAK47)
-        {
-            selectedGun = 0;
-            //guns[0].SetActive(true);
-            //guns[0].transform.position = cubePosition.transform.position;
-        }
+        randomvalue = rand;
         if (rand > ChanceOfBazooka)
         {
             selectedGun = 1;
             //guns[1].SetActive(true);
             //guns[1].transform.position = cubePosition.transform.position;
         }
+        else if (rand > ChanceOfAK47)
+        {
+            selectedGun = 0;
+            //guns[0].SetActive(true);
+            //guns[0].transform.position = cubePosition.transform.position;
+        }
+        else if (rand > ChanceOfDeagle)
+        {
+            selectedGun = 2;
+        }
+
     }
 }

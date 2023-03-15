@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
 
-public class GunShoot : MonoBehaviour
+public class DesertShoot : MonoBehaviour
 {
     PlayerAction inputAction;
 
@@ -33,9 +33,6 @@ public class GunShoot : MonoBehaviour
     public bool isReloading = false;
     private int newAddAmmo;
     public int speed;
-
-    [Header("Define Weapon Type")]
-    public int DefineWeapon;
 
     public bool AmmoDone = false;
 
@@ -67,7 +64,7 @@ public class GunShoot : MonoBehaviour
         isReloading = false;
     }
 
-private void Awake()
+    private void Awake()
     {
         inputAction = new PlayerAction();
         //Weapon.GunType = 0;
@@ -118,7 +115,7 @@ private void Awake()
             AmmoDone = true;
             return;
         }
-        if (TotalMaxAmmo > 120 && currentAmmo <=0 && AmmoDone == true)
+        if (TotalMaxAmmo > 120 && currentAmmo <= 0 && AmmoDone == true)
         {
             inputAction.PlayerShoot.Enable();
             AmmoDone = false;
@@ -129,7 +126,7 @@ private void Awake()
         {
             //Debug.Log("Reload Time");
             StartCoroutine(Reloads());
-           return;
+            return;
         }
 
         inputAction.PlayerShoot.Reload.performed += cntxt => reloadingCurrentAmmo();
@@ -176,36 +173,16 @@ private void Awake()
         }
         ChangingAmmo.text = currentAmmo.ToString();
         Debug.Log("Ammo:" + currentAmmo);
-        if (DefineWeapon >= 0)
-        {
-            if (check == 0)
-            {
-                damageNumber = informationValues.damage._SmallDamage;
 
-            }
-            else damageNumber = informationValues.damage._BigDamage;
-        }
-        if (DefineWeapon == 1)
+        if (check == 0)
         {
-            if (check == 0)
-            {
-                damageNumber = informationValues.damage._EagleDamage;
+            damageNumber = informationValues.damage._EagleDamage;
 
-            }
-            else damageNumber = informationValues.damage._BigEagleDamage;
         }
-        if (DefineWeapon == 2)
-        {
-            if (check == 0)
-            {
-                damageNumber = informationValues.damage._SmallAK47Damage;
-
-            }
-            else damageNumber = informationValues.damage._BigAK47Damage;
-        }
+        else damageNumber = informationValues.damage._BigEagleDamage;
 
         Rigidbody bulletRb = ObjectPooler.instance.SpawnFromPool("Bullet", projectilePos.position, Quaternion.identity).GetComponent<Rigidbody>();
-        
+
         bulletRb.AddForce(transform.forward * -speed, ForceMode.Impulse);
         //bulletRb.AddForce(transform.up * 1f, ForceMode.Impulse);
     }
