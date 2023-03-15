@@ -122,6 +122,7 @@ MonoBehaviour:
   reloadTime: 2.5
   isReloading: 0
   speed: -60
+  DefineWeapon: 2
   AmmoDone: 0
   ChangingAmmo: {fileID: 0}
   ChangingTotalAmmo: {fileID: 0}
@@ -129,7 +130,6 @@ MonoBehaviour:
   ReloadSounds: {fileID: 0}
   ShootSound: {fileID: 0}
   ReloadSound: {fileID: 0}
-  Soundvolume: 0.1
 --- !u!1 &750138142165094432
 GameObject:
   m_ObjectHideFlags: 0

@@ -34,6 +34,9 @@ public class GunShoot : MonoBehaviour
     private int newAddAmmo;
     public int speed;
 
+    [Header("Define Weapon Type")]
+    public int DefineWeapon;
+
     public bool AmmoDone = false;
 
     //Test for AMMO and Reloading
@@ -173,13 +176,33 @@ private void Awake()
         }
         ChangingAmmo.text = currentAmmo.ToString();
         Debug.Log("Ammo:" + currentAmmo);
-
-        if (check == 0)
+        if (DefineWeapon >= 0)
         {
-            damageNumber = informationValues.damage._SmallDamage;
+            if (check == 0)
+            {
+                damageNumber = informationValues.damage._SmallDamage;
 
+            }
+            else damageNumber = informationValues.damage._BigDamage;
         }
-        else damageNumber = informationValues.damage._BigDamage;
+        if (DefineWeapon == 1)
+        {
+            if (check == 0)
+            {
+                damageNumber = informationValues.damage._EagleDamage;
+
+            }
+            else damageNumber = informationValues.damage._BigEagleDamage;
+        }
+        if (DefineWeapon == 2)
+        {
+            if (check == 0)
+            {
+                damageNumber = informationValues.damage._SmallAK47Damage;
+
+            }
+            else damageNumber = informationValues.damage._BigAK47Damage;
+        }
 
         Rigidbody bulletRb = ObjectPooler.instance.SpawnFromPool("Bullet", projectilePos.position, Quaternion.identity).GetComponent<Rigidbody>();
         

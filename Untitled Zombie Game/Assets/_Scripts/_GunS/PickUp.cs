@@ -27,6 +27,8 @@ public class PickUp : MonoBehaviour
     public Vector3 holder;
     public Vector3 ScaleLocation;
 
+    public float ChangeY = 90.0f;
+
     public float pickUpRange;
     public float dropForwardForce, dropUpwardForce;
 
@@ -123,7 +125,8 @@ public class PickUp : MonoBehaviour
         transform.localPosition = holder;
             //new Vector3(-0.119f, -0.206f, 0.382f);
         //transform.localPosition = new Vector3(-2.378f, 4.266f, 30.75f);
-        transform.localRotation = Quaternion.Euler(0.0f,90.0f, 0.0f);//Quaternion.Euler(Vector3.zero);
+
+        transform.localRotation = Quaternion.Euler(0.0f,ChangeY, 0.0f);//Quaternion.Euler(Vector3.zero);
         transform.localScale = ScaleLocation;
 
         //Make Rigidbody kinematic and BoxCollider a trigger
