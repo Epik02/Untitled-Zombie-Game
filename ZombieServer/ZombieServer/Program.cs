@@ -11,12 +11,13 @@ namespace ZombieServer
 {
     public class ZombieServer
     {
-        private static int PlayerCount = 3;
-
+        
+        private static byte[] buffer = new byte[512];
         public static void StartServer()
         {
-            byte[] buffer = new byte[512];
-            IPAddress ip = IPAddress.Parse("127.0.0.1");
+            //private int PlayerCount = 3;
+            int PlayerCount = 3;
+        IPAddress ip = IPAddress.Parse("127.0.0.1");
             Console.WriteLine("Server name: {0}", ip);
             IPEndPoint localEP = new IPEndPoint(ip, 8889);
 
@@ -36,9 +37,14 @@ namespace ZombieServer
                 //Send + 1 to client to know how many players for now send 3
                 //Write Code to send only 1 for each client connected
                 Console.WriteLine("Sending Player Count");
-                byte[] MSG = Encoding.ASCII.GetBytes(PlayerCount.ToString());
-                server.SendTo(MSG, localEP);
-                Console.WriteLine("Player Count: " + PlayerCount + " has been sent");
+                buffer = Encoding.ASCII.GetBytes(PlayerCount.ToString());
+                server.SendTo(buffer, localEP);
+                Console.WriteLine("Waiting Responds...");
+                rec = server.ReceiveFrom(buffer, ref fromClient);
+                Console.WriteLine(rec.ToString());
+
+                
+                //Console.WriteLine("Player Count: " + PlayerCount + " has been sent");
                 //do
                 //{
                     // Do movement of players using array of floats[]

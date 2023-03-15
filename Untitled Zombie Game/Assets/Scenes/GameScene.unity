@@ -35109,6 +35109,8 @@ MonoBehaviour:
   - {fileID: 669360258}
   - {fileID: 165238987}
   NumberOfPlayers: 2
+  check: 0
+  Display: 
 --- !u!1 &744561221
 GameObject:
   m_ObjectHideFlags: 0
