@@ -22,13 +22,13 @@ public class SpawnPlayers : MonoBehaviour
     private static IPEndPoint ClientEP;
     //private static IPEndPoint IPChatEP;
     private static EndPoint remoteServer;
-    //private static EndPoint ChatEP;
+    private static EndPoint ChatEP;
 
     private static Socket ClientSocket;
 
     public String Display;
 
-    /*private static void StartClient()
+    private static void StartClient()
     {
         try
         {
@@ -49,7 +49,7 @@ public class SpawnPlayers : MonoBehaviour
         {
             Debug.Log("Exception: " + e.ToString());
         }
-    }*/
+    }
     private void SendMessage()
     {
         //ClientSocket.Bind(ClientEP);
@@ -92,7 +92,7 @@ public class SpawnPlayers : MonoBehaviour
 
     private void Update()
     {
-        if (check == true)
+        /*if (check == true)
         {
             SendMessage();
             NumberOfPlayers--;
@@ -101,6 +101,6 @@ public class SpawnPlayers : MonoBehaviour
                 Instantiate(PlayerPreFabContent, SpawnLocations[i].transform.position, Quaternion.identity);
             }
             check = false;
-        }
+        }*/
     }
 }
