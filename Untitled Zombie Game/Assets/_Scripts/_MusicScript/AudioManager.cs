@@ -131,13 +131,13 @@ public class AudioManager : MonoBehaviour
 
     public void updateMusic( float volume)
     {
-        MusicVolume = VolumeModified(MusicVolume, MasterVolume, volume);
+        MusicVolume = VolumeChanger(MusicVolume, volume);
         PlayerPrefs.SetFloat("musVolume", MusicVolume);
     }
 
     public void updateSound ( float volume)
     {
-        SoundVolume = VolumeModified(SoundVolume, MasterVolume, volume);
+        SoundVolume = VolumeChanger(SoundVolume, volume);
         PlayerPrefs.SetFloat("souVolume", SoundVolume);
     }
 
