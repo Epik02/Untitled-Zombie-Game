@@ -9,6 +9,7 @@ using System.Text;
 using System.Net.Sockets;
 using TMPro;
 using System.Threading;
+using StarterAssets;
 
 public class ClientScript : MonoBehaviour
 {
@@ -158,8 +159,12 @@ public class ClientScript : MonoBehaviour
     void Start()
     {
         myCube = GameObject.Find("Cube");
-        //chatThread = new Thread(StartChatClient);
-        //chatThread.Start();
+
+
+        chatThread = new Thread(StartChatClient);
+        chatThread.Start();
+
+
         posThread = new Thread(StartClient);
         posThread.Start();
         StartClient();
@@ -225,6 +230,18 @@ public class ClientScript : MonoBehaviour
         //int3 = clientSoc.ReceiveFrom(buf, ref remoteClient);
         //float.TryParse(Encoding.ASCII.GetString(buf, 0, int3), out zvalue);
         //Debug.Log(zvalue);
+
+        if (Input.GetKeyDown("1"))
+        {
+            osText.GetComponent<TMP_InputField>().Select();
+        }
+        else if (Input.GetKeyDown("2"))
+        {
+            print("2 key was pressed");
+            Cursor.visible = false;
+            CubeObject.GetComponent<StarterAssetsInputs>().OnApplicationFocus(false);
+            CubeObject.SetActive(true);
+        }
 
     }
 }

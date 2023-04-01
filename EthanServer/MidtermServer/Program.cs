@@ -39,9 +39,32 @@ public class ServerMidterm
         List<string> posZ = new List<string>();
         List<EndPoint> endPoints = new List<EndPoint>();
 
+        String userText;
+        String fo = "hello";
+        String fo2 = "there";
+        byte[] buffer = new byte[512];
+        byte[] buffer2 = new byte[512];
+        IPEndPoint ChatEP = new IPEndPoint(ip, 52030);
+        Socket ServerChat = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+
         try
         {
-            server.Bind(localEP);
+            server.Bind(localEP); // may need to move down
+
+            //chat stuff
+            ServerChat.Bind(ChatEP);
+            ServerChat.Listen(1);
+            Console.WriteLine("Waiting for Chat Connections...");
+
+            // socketHandler
+            client = ServerChat.Accept();
+            Console.WriteLine("Client Connected to Client 1");
+
+            client2 = ServerChat.Accept();
+            Console.WriteLine("Connected to Client 2");
+
+            Console.WriteLine("Client: {0}  Port: {1}", ChatEP.Address, ChatEP.Port);
+            //chat stuff
 
             Console.WriteLine("Waiting for data....");
             while (true)
@@ -94,6 +117,31 @@ public class ServerMidterm
                     buff = Encoding.ASCII.GetBytes(clients[i] + "," + posX[i] + "," + posY[i] + "," + posZ[i] + ",");
                     server.SendTo(buff, endPoints[clientNum]);
                 }
+
+                //chat stuff
+                buffer = new byte[512];
+                buffer2 = new byte[512];
+                userText = "<br>";
+                //userText += " -0";
+                byte[] userMSG = Encoding.ASCII.GetBytes(userText);
+                client.Send(userMSG);
+                client2.Send(userMSG);
+                client.Receive(buffer);
+                client2.Receive(buffer2);
+
+                string clMSG = Encoding.ASCII.GetString(buffer);
+                //Console.WriteLine(clMSG);
+                string clMSG2 = Encoding.ASCII.GetString(buffer2);
+                //Console.WriteLine(clMSG2);
+                byte[] receivedMSG = Encoding.ASCII.GetBytes(clMSG);
+                byte[] receivedMSG2 = Encoding.ASCII.GetBytes(clMSG2);
+
+                client.Send(receivedMSG2);
+                Console.WriteLine(clMSG);
+
+                client2.Send(receivedMSG);
+                Console.WriteLine(clMSG2);
+                //chat stuff
 
             }
             //shutdown

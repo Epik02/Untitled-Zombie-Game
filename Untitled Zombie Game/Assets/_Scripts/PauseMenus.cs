@@ -31,6 +31,21 @@ public class PauseMenus : MonoBehaviour
                 Pause();
             }
         }
+
+        //if (Input.GetKeyDown("1"))
+        //{
+        //    print("1 key was pressed");
+        //    Cursor.visible = true;
+        //    CurrentPlayer.GetComponent<StarterAssetsInputs>().OnApplicationFocus(false);
+        //    CurrentPlayer.SetActive(false);
+        //}
+        //else if (Input.GetKeyDown("2"))
+        //{
+        //    print("1 key was pressed");
+        //    Cursor.visible = true;
+        //    CurrentPlayer.GetComponent<StarterAssetsInputs>().OnApplicationFocus(true);
+        //    CurrentPlayer.SetActive(true);
+        //}
     }
 
     public void Resume()
