@@ -52,6 +52,10 @@ public class BazookaShoot : MonoBehaviour
     public AudioSource ShootSound;
     public AudioSource ReloadSound;
 
+    //Animator work
+    [Header("Animation")]
+    public Animator animator;
+
     public float Soundvolume;
 
     private void OnEnable()
@@ -151,8 +155,10 @@ public class BazookaShoot : MonoBehaviour
         isReloading = true;
         inputAction.PlayerShoot.Disable();
         ReloadSound.Play();
+        animator.SetBool("Reload", true);
         Debug.Log("Reloading...");
         yield return new WaitForSeconds(reloadTime);
+        animator.SetBool("Reload", false);
         Debug.Log("Reloading Done");
         newAddAmmo = maxAmmo - currentAmmo;
         currentAmmo += newAddAmmo;
