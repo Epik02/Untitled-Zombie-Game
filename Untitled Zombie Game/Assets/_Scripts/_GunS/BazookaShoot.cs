@@ -174,7 +174,7 @@ public class BazookaShoot : MonoBehaviour
     {
 
         ShootSound.Play();
-
+        
         if (currentAmmo > 0) // decrease current ammo by 1
         {
             currentAmmo--;
@@ -196,6 +196,7 @@ public class BazookaShoot : MonoBehaviour
 
         CornBulletRB.AddForce(transform.forward * -speed, ForceMode.Impulse);
         //bulletRb.AddForce(transform.up * 1f, ForceMode.Impulse);
+        
     }
 
     public void SetValue(int other)
