@@ -207,7 +207,7 @@ MonoBehaviour:
   Weapon: {fileID: 0}
   value: 0
   maxAmmo: 30
-  TotalAmmo: 200
+  TotalAmmo: 210
   reloadTime: 2.5
   isReloading: 0
   speed: -60
@@ -258,7 +258,7 @@ Transform:
   - {fileID: 4052618799258090475}
   - {fileID: 4052618800615577462}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90.499, z: 0}
 --- !u!114 &4052618800000285107
 MonoBehaviour:

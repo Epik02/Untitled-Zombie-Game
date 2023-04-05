@@ -58470,7 +58470,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1258237524
 Transform:
   m_ObjectHideFlags: 0
@@ -60737,7 +60737,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1305011388
 Transform:
   m_ObjectHideFlags: 0
@@ -76537,19 +76537,19 @@ MonoBehaviour:
     SpawnLocationIncrease: 0
   - WaveName: Wave2
     EnemyNumber: 4
-    MaxHealth: 100
-    EnemyDamageValue: 25
+    MaxHealth: 110
+    EnemyDamageValue: 20
     SpawnLocationIncrease: 1
   - WaveName: Wave3
-    EnemyNumber: 4
-    MaxHealth: 100
+    EnemyNumber: 6
+    MaxHealth: 110
     EnemyDamageValue: 35
-    SpawnLocationIncrease: 2
+    SpawnLocationIncrease: 1
   - WaveName: Wave4
     EnemyNumber: 6
     MaxHealth: 125
     EnemyDamageValue: 45
-    SpawnLocationIncrease: 3
+    SpawnLocationIncrease: 2
   - WaveName: Wave5
     EnemyNumber: 8
     MaxHealth: 125
@@ -83696,7 +83696,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1799125542
 Transform:
   m_ObjectHideFlags: 0
@@ -99595,7 +99595,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2112271536
 Transform:
   m_ObjectHideFlags: 0
