@@ -35,8 +35,16 @@ public class WeaponSwitch : MonoBehaviour
 
     void Update()
     {
-        guns[currentWeaponIndex].gameObject.tag = "CurrentGun";
-        guns[OtherWeaponIndex].gameObject.tag = "NotCurrentGun";
+        if (guns[currentWeaponIndex].gameObject != null)
+        {
+            guns[currentWeaponIndex].gameObject.tag = "CurrentGun";
+        }
+        
+        if (guns[OtherWeaponIndex].gameObject != null)
+        {
+            guns[OtherWeaponIndex].gameObject.tag = "NotCurrentGun";
+        }
+        
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             Swap();

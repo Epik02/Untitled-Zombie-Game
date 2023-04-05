@@ -98,7 +98,7 @@ MonoBehaviour:
   holder: {x: -0.02760111, y: -0.7351579, z: 9.747663}
   ScaleLocation: {x: 2.71143, y: 1.661173, z: 3.825502}
   ChangeY: 90
-  pickUpRange: 3
+  pickUpRange: 5
   dropForwardForce: 0.1
   dropUpwardForce: 0.05
   equipped: 0

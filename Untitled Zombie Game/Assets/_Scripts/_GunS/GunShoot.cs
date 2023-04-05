@@ -62,7 +62,7 @@ public class GunShoot : MonoBehaviour
     {
         //ShootSound.volume = Soundvolume;
         inputAction.Enable();
-        Weapon.GunType = 0;
+        //Weapon.GunType = 0;
     }
 
     private void OnDisable()
