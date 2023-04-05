@@ -54,7 +54,7 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         //Saves values between playthroughs, and thusly loads them at the beginning of the scene
-        MasterVolume = PlayerPrefs.GetFloat("volume");
+        MasterVolume = PlayerPrefs.GetFloat("masvolume");
         MusicVolume = PlayerPrefs.GetFloat("musVolume");
         SoundVolume = PlayerPrefs.GetFloat("souVolume");
         GunshotVolume = PlayerPrefs.GetFloat("gunVolume");
@@ -127,9 +127,9 @@ public class AudioManager : MonoBehaviour
     public void updateMaster( float volume)
     {
         MasterVolume = VolumeChanger(MasterVolume, volume);
-        PlayerPrefs.SetFloat("volume", MasterVolume);
+        PlayerPrefs.SetFloat("masvolume", MasterVolume);
 
-        Debug.Log(PlayerPrefs.GetFloat("volume"));
+        Debug.Log(PlayerPrefs.GetFloat("masvolume"));
 
         if (vidPlayer != null)
         {

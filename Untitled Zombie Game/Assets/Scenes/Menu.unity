@@ -2745,7 +2745,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1277633730}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: updateMaster
+        m_MethodName: updateGunVol
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3535,6 +3535,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Video: {fileID: 2070125988}
   _texture: {fileID: 625571670}
+  MainSound: {fileID: 1277633729}
+  MainSource: {fileID: 1332586431}
 --- !u!4 &1129852186
 Transform:
   m_ObjectHideFlags: 0
