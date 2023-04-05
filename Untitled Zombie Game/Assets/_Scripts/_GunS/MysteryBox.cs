@@ -20,6 +20,7 @@ public class MysteryBox : MonoBehaviour
     public float ChanceOfBazooka;
     public float ChanceOfAK47;
     public float ChanceOfDeagle;
+    public float ChanceOfDevBazooka;
 
     public int selectedGun;
     public Transform cubePosition;
@@ -156,11 +157,15 @@ public class MysteryBox : MonoBehaviour
     {
         float rand = Random.value;
         randomvalue = rand;
-        if (rand > ChanceOfBazooka)
+        if (rand > ChanceOfDevBazooka)
         {
-            selectedGun = 1;
+            selectedGun = 3;
             //guns[1].SetActive(true);
             //guns[1].transform.position = cubePosition.transform.position;
+        }
+        else if (rand > ChanceOfBazooka)
+        {
+            selectedGun = 1;
         }
         else if (rand > ChanceOfAK47)
         {
@@ -172,6 +177,7 @@ public class MysteryBox : MonoBehaviour
         {
             selectedGun = 2;
         }
+
 
     }
 }
