@@ -8,6 +8,8 @@ public class CutsceneScript : MonoBehaviour
     public VideoPlayer Video;
     public GameObject _texture;
     bool firstTime = true;
+    public GameObject MainSound;
+    public AudioSource MainSource;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +18,7 @@ public class CutsceneScript : MonoBehaviour
         if (firstTime == true)
         {
             PlayVid();
+            MainSound.SetActive(false);
         }
        
 
@@ -26,6 +29,9 @@ public class CutsceneScript : MonoBehaviour
     {
         if (Video.isPaused == true)
         {
+            MainSound.SetActive(true);
+            //MainSource.Play();
+            MainSource.UnPause();
             _texture.SetActive(false);
             firstTime = false;
         }
@@ -43,6 +49,7 @@ public class CutsceneScript : MonoBehaviour
 
     public void PlayVid()
     {
+        MainSource.Pause();
         Video.Stop();
         Video.Play();
     }
