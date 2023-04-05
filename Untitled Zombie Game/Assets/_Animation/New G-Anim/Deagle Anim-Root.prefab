@@ -118,11 +118,11 @@ MonoBehaviour:
   damageNumber: 0
   Weapon: {fileID: 0}
   value: 0
-  maxAmmo: 10
-  TotalAmmo: 50
+  maxAmmo: 7
+  TotalAmmo: 56
   reloadTime: 3
   isReloading: 0
-  speed: 75
+  speed: 70
   DefineWeapon: 1
   AmmoDone: 0
   ChangingAmmo: {fileID: 0}

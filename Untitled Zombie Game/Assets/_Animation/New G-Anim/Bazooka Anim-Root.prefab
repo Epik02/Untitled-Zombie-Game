@@ -71,7 +71,7 @@ Transform:
   - {fileID: 2576127441209318777}
   - {fileID: 2576127441608589975}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &2576127440704835980
 MonoBehaviour:
@@ -330,8 +330,8 @@ MonoBehaviour:
   GunHolder: {fileID: 0}
   Weapon: {fileID: 0}
   value: 0
-  maxAmmo: 5
-  TotalAmmo: 50
+  maxAmmo: 1
+  TotalAmmo: 10
   reloadTime: 4
   isReloading: 0
   speed: 90
