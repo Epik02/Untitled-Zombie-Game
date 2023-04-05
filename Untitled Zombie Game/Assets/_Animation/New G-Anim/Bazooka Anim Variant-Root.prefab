@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8839226685137778037, guid: d11d5a0f1cb93c048aba0417b0ce361b, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8839226685137778037, guid: d11d5a0f1cb93c048aba0417b0ce361b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8839226685137778038, guid: d11d5a0f1cb93c048aba0417b0ce361b, type: 3}
       propertyPath: m_Name
-      value: BazookaTests (1)
+      value: Bazooka Anim Variant-Root
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
