@@ -14,7 +14,7 @@ public class GunShoot : MonoBehaviour
 
     public GameObject[] projectile;
     public GameObject SmallBullet;
-    public GameObject BigBullet;
+    //public GameObject BigBullet;
     public GameObject GunHolder;
 
     public Transform projectilePos;
@@ -100,7 +100,7 @@ private void Awake()
         ChangingTotalAmmo = GameObject.FindWithTag("TotalAMMO").GetComponent<TMP_Text>();
 
         projectile[0] = SmallBullet;
-        projectile[1] = BigBullet;
+        //projectile[1] = BigBullet;
 
         ShootSounds = GameObject.FindWithTag("Shooting");
         ShootSound = ShootSounds.GetComponent<AudioSource>();
