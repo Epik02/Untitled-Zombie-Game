@@ -220,7 +220,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 85aa0c131d381504a902bdc0c78f206e, type: 2}
+  - {fileID: 2100000, guid: 9b35f20d82fbbfe45ba3abf1ed7d3523, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -32496,7 +32496,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8360307913838043289, guid: 3701faf1d65b353449fe8dbb49bb62f5, type: 3}
       propertyPath: m_text
-      value: Health Up
+      value: 'Health Up
+
+        2000 Points'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -97303,7 +97305,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9b35f20d82fbbfe45ba3abf1ed7d3523, type: 2}
+  - {fileID: 2100000, guid: 85aa0c131d381504a902bdc0c78f206e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -102589,7 +102591,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 85aa0c131d381504a902bdc0c78f206e, type: 2}
+  - {fileID: 2100000, guid: 9b35f20d82fbbfe45ba3abf1ed7d3523, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110676,7 +110678,7 @@ PrefabInstance:
       propertyPath: m_text
       value: 'PowerUp!
 
-        500 Points'
+        3000 Points'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -116682,7 +116684,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9b35f20d82fbbfe45ba3abf1ed7d3523, type: 2}
+  - {fileID: 2100000, guid: 85aa0c131d381504a902bdc0c78f206e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
