@@ -3535,6 +3535,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Video: {fileID: 2070125988}
   _texture: {fileID: 625571670}
+  MainSound: {fileID: 1277633729}
+  MainSource: {fileID: 1332586431}
 --- !u!4 &1129852186
 Transform:
   m_ObjectHideFlags: 0
