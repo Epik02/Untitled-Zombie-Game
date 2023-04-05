@@ -37227,9 +37227,9 @@ MonoBehaviour:
   - {fileID: 1439518786}
   - {fileID: 391885889}
   PreFabs:
-  - {fileID: 750138142165094432, guid: 41ddb709fd44d4e468cb121aff972bad, type: 3}
-  - {fileID: 5428857241698555298, guid: bf651ec7ba2edd04da2ca3d22f2c8e1e, type: 3}
-  - {fileID: 576364501386026048, guid: 89e19e68cf5cd684d990dda9dad76c40, type: 3}
+  - {fileID: 4052618800000285117, guid: 8c5832a16f4e5ee4e884b46b578a4291, type: 3}
+  - {fileID: 2576127440704835976, guid: 52703f0d0efc6ee49b8eeacb344d5223, type: 3}
+  - {fileID: 2326866936217513282, guid: 7aa7a02ffc16a8443ab1952a60bbba4c, type: 3}
   ChanceOfBazooka: 0.9
   ChanceOfAK47: 0.5
   ChanceOfDeagle: 0
@@ -105160,9 +105160,9 @@ MonoBehaviour:
   - {fileID: 1439518786}
   - {fileID: 391885889}
   PreFabs:
-  - {fileID: 750138142165094432, guid: 41ddb709fd44d4e468cb121aff972bad, type: 3}
-  - {fileID: 5428857241698555298, guid: bf651ec7ba2edd04da2ca3d22f2c8e1e, type: 3}
-  - {fileID: 576364501386026048, guid: 89e19e68cf5cd684d990dda9dad76c40, type: 3}
+  - {fileID: 4052618800000285117, guid: 8c5832a16f4e5ee4e884b46b578a4291, type: 3}
+  - {fileID: 2576127440704835976, guid: 52703f0d0efc6ee49b8eeacb344d5223, type: 3}
+  - {fileID: 2326866936217513282, guid: 7aa7a02ffc16a8443ab1952a60bbba4c, type: 3}
   ChanceOfBazooka: 0.9
   ChanceOfAK47: 0.5
   ChanceOfDeagle: 0
