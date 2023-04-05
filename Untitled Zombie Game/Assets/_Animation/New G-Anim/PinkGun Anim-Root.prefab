@@ -144,7 +144,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   SmallBullet: {fileID: 2369002665294184600, guid: 8f8b07b7600fac442b908c1710e813c5, type: 3}
-  BigBullet: {fileID: 0}
   GunHolder: {fileID: 0}
   projectilePos: {fileID: 5165718919268461257}
   damageNumber: 0
@@ -289,7 +288,7 @@ MonoBehaviour:
   holder: {x: -0.04, y: 0.1919821, z: 4.24}
   ScaleLocation: {x: 1.322984, y: 0.8105334, z: 1.866571}
   ChangeY: 90
-  pickUpRange: 1.5
+  pickUpRange: 5
   dropForwardForce: 0.1
   dropUpwardForce: 0.05
   equipped: 1
