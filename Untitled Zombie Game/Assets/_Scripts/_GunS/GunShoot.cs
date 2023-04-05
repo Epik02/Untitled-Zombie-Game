@@ -54,6 +54,10 @@ public class GunShoot : MonoBehaviour
 
     //public float Soundvolume;
 
+    //Animator work
+    [Header ("Animation")]
+    public Animator animator;
+
     private void OnEnable()
     {
         //ShootSound.volume = Soundvolume;
@@ -76,6 +80,8 @@ private void Awake()
 
     private void Start()
     {
+        //animator = GetComponent<Animator>();
+
         //Soundvolume = PlayerPrefs.GetFloat("volume");
         //ShootSound.volume = Soundvolume;
         currentAmmo = maxAmmo;
@@ -151,8 +157,10 @@ private void Awake()
         isReloading = true;
         inputAction.PlayerShoot.Disable();
         ReloadSound.Play();
+        animator.SetBool("Reload", true);
         Debug.Log("Reloading...");
         yield return new WaitForSeconds(reloadTime);
+        animator.SetBool("Reload", false);
         Debug.Log("Reloading Done");
         newAddAmmo = maxAmmo - currentAmmo;
         currentAmmo += newAddAmmo;
