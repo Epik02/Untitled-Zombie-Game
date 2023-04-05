@@ -35,6 +35,10 @@ public class MysteryBox : MonoBehaviour
     public float ResetCooldown = 6;
     public float randomvalue;
 
+    //Animator work
+    [Header("Animation")]
+    public Animator animator;
+
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "Capsule")
@@ -55,17 +59,24 @@ public class MysteryBox : MonoBehaviour
     void Update()
     {
         Cooldown += Time.deltaTime;
+
+        if (Cooldown > 6)
+        {
+            animator.SetBool("Open", false);
+        }
+
         if (RandomStartingSoon == true)
         {
             timer += Time.deltaTime;
             
 
-            if (timer < 4.0f && counter < counterCompare)
+            if (timer < 2.0f && counter < counterCompare)
             {
                 counter++;
             }
             else if (counter == counterCompare)
             {
+                animator.SetBool("Open", true);
                 counter = 0;
                 //RandomizeWeapon();
                 RandomizeWeapon2();
@@ -80,11 +91,13 @@ public class MysteryBox : MonoBehaviour
             //guns[selectedGun].transform.SetParent(null);
             //else RandomStartingSoon = false;
         }
-        if (timer >= 4 && SelectGun == true)
+        if (timer >= 2 && SelectGun == true)
         {
+            //Animator -> Go to idleForPickupw
             //PreFabs[selectedGun].SetActive(true);
             Instantiate(PreFabs[selectedGun], cubePosition.transform.position, Quaternion.identity);
             SelectGun = false;
+            
         }
         if (intrigger == true)
         {
