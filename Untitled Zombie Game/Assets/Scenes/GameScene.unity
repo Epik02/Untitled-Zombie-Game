@@ -10984,7 +10984,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WeaponSold: {fileID: 2326866936217513282, guid: 7aa7a02ffc16a8443ab1952a60bbba4c, type: 3}
-  PurchaseCost: 100
+  PurchaseCost: 500
   Cost: {fileID: 1128369503}
   CostText: {fileID: 1128369501}
   WeaponName: Desert Eagle
@@ -32584,7 +32584,7 @@ PrefabInstance:
       objectReference: {fileID: 2304259841010768941}
     - target: {fileID: 5489921097023402643, guid: 3701faf1d65b353449fe8dbb49bb62f5, type: 3}
       propertyPath: DecreaseScore
-      value: 1
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 5489921097023402643, guid: 3701faf1d65b353449fe8dbb49bb62f5, type: 3}
       propertyPath: JugHeathValue
@@ -37434,7 +37434,7 @@ MonoBehaviour:
   cubePosition: {fileID: 466239003}
   MysteryBoxText: {fileID: 1578163866}
   MysteryTextPrompt: {fileID: 1578163864}
-  PointsToBuy: 1
+  PointsToBuy: 950
   Cooldown: 6
   ResetCooldown: 6
   randomvalue: 0
@@ -105718,7 +105718,7 @@ MonoBehaviour:
   cubePosition: {fileID: 731422084}
   MysteryBoxText: {fileID: 1849470515}
   MysteryTextPrompt: {fileID: 1849470512}
-  PointsToBuy: 1
+  PointsToBuy: 950
   Cooldown: 6
   ResetCooldown: 6
   randomvalue: 0
@@ -106088,7 +106088,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WeaponSold: {fileID: 2576127440704835976, guid: 52703f0d0efc6ee49b8eeacb344d5223, type: 3}
-  PurchaseCost: 100
+  PurchaseCost: 1500
   Cost: {fileID: 1900559744}
   CostText: {fileID: 1900559741}
   WeaponName: Bazooka
@@ -110268,7 +110268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WeaponSold: {fileID: 4052618800000285117, guid: 8c5832a16f4e5ee4e884b46b578a4291, type: 3}
-  PurchaseCost: 100
+  PurchaseCost: 750
   Cost: {fileID: 1698998396}
   CostText: {fileID: 1698998394}
   WeaponName: AK47
@@ -110743,7 +110743,7 @@ PrefabInstance:
       objectReference: {fileID: 1865150806}
     - target: {fileID: 4783616304876060481, guid: ac1b063a295dedc4b90807478056cdf8, type: 3}
       propertyPath: decreaseScore
-      value: 500
+      value: 3000
       objectReference: {fileID: 0}
     - target: {fileID: 4783616304876060482, guid: ac1b063a295dedc4b90807478056cdf8, type: 3}
       propertyPath: m_Height
