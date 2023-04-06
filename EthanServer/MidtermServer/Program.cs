@@ -39,6 +39,12 @@ public class ServerMidterm
         List<string> posZ = new List<string>();
         List<EndPoint> endPoints = new List<EndPoint>();
 
+        List<string> zombies = new List<string>();
+        List<string> zombX = new List<string>();
+        List<string> zombY = new List<string>();
+        List<string> zombZ = new List<string>();
+        List<string> zombHP = new List<string>();
+
         String userText;
         String fo = "hello";
         String fo2 = "there";
@@ -51,19 +57,19 @@ public class ServerMidterm
         {
             server.Bind(localEP); // may need to move down
 
-            //chat stuff
-            ServerChat.Bind(ChatEP);
-            ServerChat.Listen(1);
-            Console.WriteLine("Waiting for Chat Connections...");
+            ////chat stuff
+            //ServerChat.Bind(ChatEP);
+            //ServerChat.Listen(1);
+            //Console.WriteLine("Waiting for Chat Connections...");
 
-            // socketHandler
-            client = ServerChat.Accept();
-            Console.WriteLine("Client Connected to Client 1");
+            //// socketHandler
+            //client = ServerChat.Accept();
+            //Console.WriteLine("Client Connected to Client 1");
 
-            client2 = ServerChat.Accept();
-            Console.WriteLine("Connected to Client 2");
+            //client2 = ServerChat.Accept();
+            //Console.WriteLine("Connected to Client 2");
 
-            Console.WriteLine("Client: {0}  Port: {1}", ChatEP.Address, ChatEP.Port);
+            //Console.WriteLine("Client: {0}  Port: {1}", ChatEP.Address, ChatEP.Port);
             //chat stuff
 
             Console.WriteLine("Waiting for data....");
@@ -77,73 +83,131 @@ public class ServerMidterm
                 string clientName = splitPosData[0];
 
                 int clientNum = -1;
-                for (int i = 0; i < clients.Count; ++i)
+                int zombieNum = -1;
+                if (clientName.StartsWith("zomb") == true)
                 {
-                    if (clients[i] == clientName)
+                    for (int i = 0; i < zombies.Count; ++i)
                     {
-                        clientNum = -1;
+                        if (zombies[i] == clientName)
+                        {
+                            zombieNum = i;
+                        }
                     }
+
+                    if (zombieNum == -1)
+                    {
+                        zombies.Add(clientName);
+                        zombX.Add(splitPosData[1]);
+                        zombY.Add(splitPosData[2]);
+                        zombZ.Add(splitPosData[3]);
+                        zombHP.Add(splitPosData[4]);
+                        zombieNum = zombies.Count - 1;
+                    }
+                    else
+                    {
+                        zombX[zombieNum] = splitPosData[1];
+                        zombY[zombieNum] = splitPosData[2];
+                        zombZ[zombieNum] = splitPosData[3];
+                        zombHP[zombieNum] = splitPosData[4];
+                    }
+
+                    Console.WriteLine(zombies[zombieNum]);
+                    Console.WriteLine(zombX[zombieNum]);
+                    Console.WriteLine(zombY[zombieNum]);
+                    Console.WriteLine(zombZ[zombieNum]);
+                    Console.WriteLine(zombHP[zombieNum]);
+                }
+                else
+                {
+                    
+                    for (int i = 0; i < clients.Count; ++i)
+                    {
+                        if (clients[i] == clientName)
+                        {
+                            clientNum = i;
+                        }
+                    }
+
+                    if (clientNum == -1)
+                    {
+                        clients.Add(clientName);
+                        posX.Add(splitPosData[1]);
+                        posY.Add(splitPosData[2]);
+                        posZ.Add(splitPosData[3]);
+                        endPoints.Add(remoteClient);
+                        clientNum = clients.Count - 1;
+                    }
+                    else
+                    {
+                        posX[clientNum] = splitPosData[1];
+                        posY[clientNum] = splitPosData[2];
+                        posZ[clientNum] = splitPosData[3];
+                        endPoints[clientNum] = remoteClient;
+                    }
+
+                    Console.WriteLine(clients[clientNum]);
+                    Console.WriteLine(posX[clientNum]);
+                    Console.WriteLine(posY[clientNum]);
+                    Console.WriteLine(posZ[clientNum]);
+                    Console.WriteLine(endPoints[clientNum].ToString());
                 }
 
                 if (clientNum == -1)
                 {
-                    clients.Add(clientName);
-                    posX.Add(splitPosData[1]);
-                    posY.Add(splitPosData[2]);
-                    posZ.Add(splitPosData[3]);
-                    endPoints.Add(remoteClient);
-                    clientNum = clients.Count - 1;
+                    continue;
                 }
-                else
-                {
-                    posX[clientNum] = splitPosData[1];
-                    posY[clientNum] = splitPosData[2];
-                    posZ[clientNum] = splitPosData[3];
-                    endPoints[clientNum] = remoteClient;
-                }
-
-                Console.WriteLine(clients[clientNum]);
-                Console.WriteLine(posX[clientNum]);
-                Console.WriteLine(posY[clientNum]);
-                Console.WriteLine(posZ[clientNum]);
-                Console.WriteLine(endPoints[clientNum].ToString());
 
                 buff = new byte[1024];
-                buff = Encoding.ASCII.GetBytes(clients.Count.ToString() + ",");
+                buff = Encoding.ASCII.GetBytes(clients.Count.ToString() + "," + zombies.Count.ToString() + ",");
                 server.SendTo(buff, endPoints[clientNum]);
 
                 for (int i = 0; i < clients.Count; ++i)
                 {
+                    buff = new byte[1024];
                     buff = Encoding.ASCII.GetBytes(clients[i] + "," + posX[i] + "," + posY[i] + "," + posZ[i] + ",");
                     server.SendTo(buff, endPoints[clientNum]);
                 }
 
-                //chat stuff
-                buffer = new byte[512];
-                buffer2 = new byte[512];
-                userText = "<br>";
-                //userText += " -0";
-                byte[] userMSG = Encoding.ASCII.GetBytes(userText);
-                client.Send(userMSG);
-                client2.Send(userMSG);
-                client.Receive(buffer);
-                client2.Receive(buffer2);
+                for (int i = 0; i < zombies.Count; ++i)
+                {
+                    buff = new byte[1024];
+                    buff = Encoding.ASCII.GetBytes(zombies[i] + "," + zombX[i] + "," + zombY[i] + "," + zombZ[i] + "," + zombHP[i] + ",");
+                    server.SendTo(buff, endPoints[clientNum]);
+                }
 
-                string clMSG = Encoding.ASCII.GetString(buffer);
+                //if (clientName.StartsWith("HPzomb") == true)
+                //{
+                //    int zombID = Convert.ToInt32(splitPosData[1]);
+                //    string zombNewHp = splitPosData[2];
+                //    zombHP[zombID] = zombNewHp;
+                //}
+
+                ////chat stuff
+                //buffer = new byte[512];
+                //buffer2 = new byte[512];
+                //userText = "<br>";
+                ////userText += " -0";
+                //byte[] userMSG = Encoding.ASCII.GetBytes(userText);
+                //client.Send(userMSG);
+                //client2.Send(userMSG);
+                //client.Receive(buffer);
+                //client2.Receive(buffer2);
+
+                //string clMSG = Encoding.ASCII.GetString(buffer);
+                ////Console.WriteLine(clMSG);
+                //string clMSG2 = Encoding.ASCII.GetString(buffer2);
+                ////Console.WriteLine(clMSG2);
+                //byte[] receivedMSG = Encoding.ASCII.GetBytes(clMSG);
+                //byte[] receivedMSG2 = Encoding.ASCII.GetBytes(clMSG2);
+
+                //client.Send(receivedMSG2);
                 //Console.WriteLine(clMSG);
-                string clMSG2 = Encoding.ASCII.GetString(buffer2);
+
+                //client2.Send(receivedMSG);
                 //Console.WriteLine(clMSG2);
-                byte[] receivedMSG = Encoding.ASCII.GetBytes(clMSG);
-                byte[] receivedMSG2 = Encoding.ASCII.GetBytes(clMSG2);
-
-                client.Send(receivedMSG2);
-                Console.WriteLine(clMSG);
-
-                client2.Send(receivedMSG);
-                Console.WriteLine(clMSG2);
                 //chat stuff
 
-            }
+                }
             //shutdown
         }
         catch (Exception e)

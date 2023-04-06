@@ -25,6 +25,8 @@ public class PrefabEnemies : MonoBehaviour
     public Health healthchange;
     public EnemyController EnemyDamage;
 
+    public bool masterMPGame = false;
+
     IEnumerator EnemyDrop()
     {
         while (enemyCount < MaxEnemy)
@@ -34,10 +36,14 @@ public class PrefabEnemies : MonoBehaviour
             //zPos = Random.Range(1, 10);
 
             //EnemyPool.Spawn(Enemy1, new Vector3(Random.Range(Placement[Spawn].Xcoor1, Placement[Spawn].Xcoor2), yValue, Random.Range(Placement[Spawn].Zcoor1, Placement[Spawn].Zcoor2)), Quaternion.identity);
-            for (int i = 0; i <= GetValue.SpawnNumber; i++)
+
+            if (masterMPGame == true)
             {
-                EnemyPool.Spawn(Enemy1, new Vector3(Random.Range(Placement[i].L1.transform.position.x, Placement[i].L2.transform.position.x),
-                yValue, Random.Range(Placement[i].L1.transform.position.z, Placement[i].L2.transform.position.z)), Quaternion.identity);
+                for (int i = 0; i <= GetValue.SpawnNumber; i++)
+                {
+                    EnemyPool.Spawn(Enemy1, new Vector3(Random.Range(Placement[i].L1.transform.position.x, Placement[i].L2.transform.position.x),
+                    yValue, Random.Range(Placement[i].L1.transform.position.z, Placement[i].L2.transform.position.z)), Quaternion.identity);
+                }
             }
             //EnemyPool.Spawn(Enemy1, new Vector3(Random.Range(Placement[Spawn].Xcoor1, Placement[Spawn].Xcoor2), yValue, Random.Range(Placement[Spawn].Zcoor1, Placement[Spawn].Zcoor2)), Quaternion.identity);
 

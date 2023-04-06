@@ -29470,6 +29470,8 @@ MonoBehaviour:
   myCube: {fileID: 8616685848234661045}
   osText: {fileID: 153420364}
   CubeObject: {fileID: 8616685848234661045}
+  prefabSpawner: {fileID: 1632400681}
+  waveManager: {fileID: 1632400682}
 --- !u!4 &574647780
 Transform:
   m_ObjectHideFlags: 0
@@ -76849,6 +76851,7 @@ MonoBehaviour:
   damageValue: 0
   healthchange: {fileID: 0}
   EnemyDamage: {fileID: 0}
+  masterMPGame: 0
 --- !u!114 &1632400682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76921,6 +76924,7 @@ MonoBehaviour:
   ListIncrease: 0
   SpawnNumber: 0
   TimerText: {fileID: 582596891}
+  masterMPGame: 0
   TextSet: {fileID: 582596889}
 --- !u!1 &1632904679
 GameObject:

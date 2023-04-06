@@ -43,6 +43,9 @@ public class ClientScript : MonoBehaviour
 
     private Vector3 LastPos;
 
+    public PrefabEnemies prefabSpawner;
+    public WaveTest waveManager;
+
     public static void StartClient()
     {
         try
@@ -161,23 +164,31 @@ public class ClientScript : MonoBehaviour
         myCube = GameObject.Find("Cube");
 
 
-        chatThread = new Thread(StartChatClient);
-        chatThread.Start();
+        //chatThread = new Thread(StartChatClient);
+        //chatThread.Start();
 
 
-        posThread = new Thread(StartClient);
-        posThread.Start();
+        //posThread = new Thread(StartClient);
+        //posThread.Start();
         StartClient();
         Console.ReadKey();
         //StartChatClient();
     }
 
     // Update is called once per frame
+
+    public bool masterGame = false;
+
+    float timeTick = 0;
+    float tickRate = 1; //1 per second
+
     void Update()
     {
         tmp.text = clMSG;
 
         outBuffer = new byte[1024];
+
+        timeTick += Time.deltaTime;
 
 
         string clientName = "CLIENT1";
@@ -191,9 +202,23 @@ public class ClientScript : MonoBehaviour
         int1 = clientSoc.ReceiveFrom(buf, ref remoteClient);
 
         int numClients = 0;
+        int numZombs = 0;
         string num = Encoding.ASCII.GetString(buf);
         string[] numClient = num.Split(",");
+
+        if (numClient.Length > 3)
+        {
+            return;
+        }
         numClients = Convert.ToInt32(numClient[0]);
+        numZombs = Convert.ToInt32(numClient[1]);
+
+        if (numClients == 1 && masterGame == false)
+        {
+            masterGame = true;
+            prefabSpawner.masterMPGame = true;
+            waveManager.masterMPGame = true;
+        }
 
         for (int i = 0; i < numClients; ++i)
         {
@@ -202,21 +227,122 @@ public class ClientScript : MonoBehaviour
 
             string positionData1 = Encoding.ASCII.GetString(buf);
             string[] splitPosData1 = positionData1.Split(",");
+
+
+            if (splitPosData1.Length < 4)
+            {
+                continue;
+            }
+
             string clientName1 = splitPosData1[0];
             string posX = splitPosData1[1];
             string posY = splitPosData1[2];
             string posZ = splitPosData1[3];
-            if (GameObject.Find(clientName1) == null && clientName1 != clientName)
+            try
             {
-                GameObject cube = Instantiate(GameObject.Find("MultiplayerCapsule"));
-                cube.transform.name = clientName1;
-                cube.transform.position = new Vector3(float.Parse(posX), float.Parse(posY), float.Parse(posZ));
+                if (GameObject.Find(clientName1) == null && clientName1 != clientName)
+                {
+                    GameObject cube = Instantiate(GameObject.Find("MultiplayerCapsule"));
+                    cube.transform.name = clientName1;
+                    cube.transform.position = new Vector3(float.Parse(posX), float.Parse(posY), float.Parse(posZ));
+                }
+                else if (clientName1 != clientName)
+                {
+                    GameObject client = GameObject.Find(clientName1);
+                    client.transform.position = new Vector3(float.Parse(posX), float.Parse(posY), float.Parse(posZ));
+                }
             }
-            else if (clientName1 != clientName)
+            catch (Exception e)
             {
-                GameObject client = GameObject.Find(clientName1);
-                client.transform.position = new Vector3(float.Parse(posX), float.Parse(posY), float.Parse(posZ));
+                ;
             }
+        }
+
+        for (int i = 0; i < numZombs; ++i)
+        {
+            buf = new byte[1024];
+            int1 = clientSoc.ReceiveFrom(buf, ref remoteClient);
+
+            string positionData1 = Encoding.ASCII.GetString(buf);
+            string[] splitPosData1 = positionData1.Split(",");
+
+            if (splitPosData1.Length < 5)
+            {
+                continue;
+            }
+
+            string zombName1 = splitPosData1[0];
+            string posX = splitPosData1[1];
+            string posY = splitPosData1[2];
+            string posZ = splitPosData1[3];
+            string zombHP = splitPosData1[4];
+
+            if (zombName1.StartsWith("zomb") == true)
+            {
+                GameObject zombPool = GameObject.Find("OnionZombie2 1_POOL");
+                if (zombPool == null)
+                {
+                    GameObject newZomb = EnemyPool.Spawn(prefabSpawner.Enemy1, new Vector3(Convert.ToSingle(posX), Convert.ToSingle(posY), Convert.ToSingle(posZ)), Quaternion.identity);
+                }
+                else if (zombPool.transform.childCount < numZombs)
+                {
+                    GameObject newZomb = EnemyPool.Spawn(prefabSpawner.Enemy1, new Vector3(Convert.ToSingle(posX), Convert.ToSingle(posY), Convert.ToSingle(posZ)), Quaternion.identity);
+                }
+                else
+                {
+                    if (zombPool != null)
+                    {
+                        if (timeTick > 0.15f)
+                        {
+                            zombPool.transform.GetChild(i).transform.position = new Vector3(float.Parse(posX), float.Parse(posY), float.Parse(posZ));
+                            Health zombHP1 = zombPool.transform.GetChild(i).transform.gameObject.GetComponent<Health>();
+                            zombHP1.currentHealth = Convert.ToInt32(zombHP);
+                        }
+                    }
+                }
+            }
+        }
+
+        if (masterGame == true)
+        {
+            GameObject zombPool = GameObject.Find("OnionZombie2 1_POOL");
+            if (zombPool != null)
+            {
+                for (int i = 0; i < zombPool.transform.childCount; ++i)
+                {
+                    GameObject zomb = zombPool.transform.GetChild(i).gameObject;
+                    Health zombHP = zombPool.transform.GetChild(i).gameObject.GetComponent<Health>();
+
+                    string zombName = "zomb" + i.ToString();
+                    string zombSend = zombName + "," + zomb.transform.position.x.ToString() + "," + zomb.transform.position.y.ToString() + "," + zomb.transform.position.z.ToString() + "," + zombHP.currentHealth.ToString() + ", END";
+
+                    outBuffer = Encoding.ASCII.GetBytes(zombSend);
+                    clientSoc.SendTo(outBuffer, remoteEP);
+                }
+            }
+        }
+        else
+        {
+            //GameObject zombPool = GameObject.Find("OnionZombie2 1_POOL");
+            //if (zombPool != null && timeTick > 0.15f)
+            //{
+            //    for (int i = 0; i < zombPool.transform.childCount; ++i)
+            //    {
+            //        GameObject zomb = zombPool.transform.GetChild(i).gameObject;
+            //        Health zombHP = zombPool.transform.GetChild(i).gameObject.GetComponent<Health>();
+
+            //        string zombName = "HPzomb" + "," + i.ToString();
+            //        string zombSend = zombName + "," + zombHP.currentHealth.ToString() + ", END";
+
+            //        outBuffer = Encoding.ASCII.GetBytes(zombSend);
+            //        clientSoc.SendTo(outBuffer, remoteEP);
+            //    }
+            //}
+        }
+
+        if (timeTick > 0.15f)
+        {
+            timeTick = 0;
         }
 
         //int1 = clientSoc.ReceiveFrom(buf, ref remoteClient);

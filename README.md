@@ -27,3 +27,7 @@ key E - interact with Objects
 Shift - sprint
 
 Key F - melee attack
+
+To play Multiplayer (ALT-ENTER to exit fullscreen)
+-launch server exe
+-launch client exes

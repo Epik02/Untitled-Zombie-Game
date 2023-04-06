@@ -12,7 +12,7 @@ public static class EnemyPool
         Debug.Log(pools.Count);
     }
 
-    public static void Spawn(GameObject go, Vector3 pos, Quaternion rot)
+    public static GameObject Spawn(GameObject go, Vector3 pos, Quaternion rot)
     {
         GameObject obj;
         string key = go.name.Replace("(Clone)", "");
@@ -21,7 +21,7 @@ public static class EnemyPool
         {
             if(pools[key].inactive.Count == 0)
             {
-                Object.Instantiate(go, pos, rot, pools[key].Enemy.transform);
+                return Object.Instantiate(go, pos, rot, pools[key].Enemy.transform);
             }
             else
             {
@@ -29,6 +29,7 @@ public static class EnemyPool
                 obj.transform.position = pos;
                 obj.transform.rotation = rot;
                 obj.SetActive(true);
+                return obj;
             }
         }
         else
@@ -37,6 +38,7 @@ public static class EnemyPool
             Object.Instantiate(go, pos, rot, newEnemy.transform);
             Pools newPools = new Pools(newEnemy);
             pools.Add(key, newPools);
+            return newEnemy;
         }
     }
 
