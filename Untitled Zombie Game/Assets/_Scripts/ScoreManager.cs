@@ -11,6 +11,7 @@ public class ScoreManager : MonoBehaviour
 
     public int EnemyCounter = 0;
     public int WaveCounter = 0;
+    public int TotalScore = 0;
 
     public TMP_Text ChangingText;
     public TMP_Text EnemyCountText;
@@ -23,13 +24,16 @@ public class ScoreManager : MonoBehaviour
         if(!instance)
         {
             instance = this;
+            TotalScore = score;
         }
     }
 
     public void ChangeScore(int killValue)
     {
         score += killValue;
+        TotalScore += killValue;
         Debug.Log(score);
+        Debug.Log(TotalScore);
     }
 
     public void DecreaseScore(int decrease)

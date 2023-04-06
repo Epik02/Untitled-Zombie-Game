@@ -20,6 +20,7 @@ public class MysteryBox : MonoBehaviour
     public float ChanceOfBazooka;
     public float ChanceOfAK47;
     public float ChanceOfDeagle;
+    public float ChanceOfDevBazooka;
 
     public int selectedGun;
     public Transform cubePosition;
@@ -34,6 +35,10 @@ public class MysteryBox : MonoBehaviour
 
     public float ResetCooldown = 6;
     public float randomvalue;
+
+    //Animator work
+    [Header("Animation")]
+    public Animator animator;
 
     void OnTriggerEnter(Collider other)
     {
@@ -55,17 +60,24 @@ public class MysteryBox : MonoBehaviour
     void Update()
     {
         Cooldown += Time.deltaTime;
+
+        if (Cooldown > 6)
+        {
+            animator.SetBool("Open", false);
+        }
+
         if (RandomStartingSoon == true)
         {
             timer += Time.deltaTime;
             
 
-            if (timer < 4.0f && counter < counterCompare)
+            if (timer < 2.0f && counter < counterCompare)
             {
                 counter++;
             }
             else if (counter == counterCompare)
             {
+                animator.SetBool("Open", true);
                 counter = 0;
                 //RandomizeWeapon();
                 RandomizeWeapon2();
@@ -80,11 +92,13 @@ public class MysteryBox : MonoBehaviour
             //guns[selectedGun].transform.SetParent(null);
             //else RandomStartingSoon = false;
         }
-        if (timer >= 4 && SelectGun == true)
+        if (timer >= 2 && SelectGun == true)
         {
+            //Animator -> Go to idleForPickupw
             //PreFabs[selectedGun].SetActive(true);
             Instantiate(PreFabs[selectedGun], cubePosition.transform.position, Quaternion.identity);
             SelectGun = false;
+            
         }
         if (intrigger == true)
         {
@@ -143,11 +157,15 @@ public class MysteryBox : MonoBehaviour
     {
         float rand = Random.value;
         randomvalue = rand;
-        if (rand > ChanceOfBazooka)
+        if (rand > ChanceOfDevBazooka)
         {
-            selectedGun = 1;
+            selectedGun = 3;
             //guns[1].SetActive(true);
             //guns[1].transform.position = cubePosition.transform.position;
+        }
+        else if (rand > ChanceOfBazooka)
+        {
+            selectedGun = 1;
         }
         else if (rand > ChanceOfAK47)
         {
@@ -159,6 +177,7 @@ public class MysteryBox : MonoBehaviour
         {
             selectedGun = 2;
         }
+
 
     }
 }

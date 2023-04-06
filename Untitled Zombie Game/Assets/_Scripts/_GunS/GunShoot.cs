@@ -14,7 +14,7 @@ public class GunShoot : MonoBehaviour
 
     public GameObject[] projectile;
     public GameObject SmallBullet;
-    public GameObject BigBullet;
+    //public GameObject BigBullet;
     public GameObject GunHolder;
 
     public Transform projectilePos;
@@ -54,11 +54,15 @@ public class GunShoot : MonoBehaviour
 
     //public float Soundvolume;
 
+    //Animator work
+    [Header ("Animation")]
+    public Animator animator;
+
     private void OnEnable()
     {
         //ShootSound.volume = Soundvolume;
         inputAction.Enable();
-        Weapon.GunType = 0;
+        //Weapon.GunType = 0;
     }
 
     private void OnDisable()
@@ -76,6 +80,8 @@ private void Awake()
 
     private void Start()
     {
+        //animator = GetComponent<Animator>();
+
         //Soundvolume = PlayerPrefs.GetFloat("volume");
         //ShootSound.volume = Soundvolume;
         currentAmmo = maxAmmo;
@@ -94,7 +100,7 @@ private void Awake()
         ChangingTotalAmmo = GameObject.FindWithTag("TotalAMMO").GetComponent<TMP_Text>();
 
         projectile[0] = SmallBullet;
-        projectile[1] = BigBullet;
+        //projectile[1] = BigBullet;
 
         ShootSounds = GameObject.FindWithTag("Shooting");
         ShootSound = ShootSounds.GetComponent<AudioSource>();
@@ -151,8 +157,10 @@ private void Awake()
         isReloading = true;
         inputAction.PlayerShoot.Disable();
         ReloadSound.Play();
+        animator.SetBool("Reload", true);
         Debug.Log("Reloading...");
         yield return new WaitForSeconds(reloadTime);
+        animator.SetBool("Reload", false);
         Debug.Log("Reloading Done");
         newAddAmmo = maxAmmo - currentAmmo;
         currentAmmo += newAddAmmo;

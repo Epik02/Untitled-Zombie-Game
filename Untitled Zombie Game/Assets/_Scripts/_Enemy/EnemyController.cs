@@ -35,7 +35,8 @@ public class EnemyController : MonoBehaviour
             if (health.currentHealth <= 0)
             {
                 other.gameObject.GetComponent<StarterAssetsInputs>().OnApplicationFocus(false);
-                SceneManager.LoadScene(0);
+                PlayerPrefs.SetFloat("Score", ScoreManager.instance.TotalScore);
+                SceneManager.LoadScene(2);
             }
             //other.gameObject.GetComponent<EnemyController>().OnTakeDamages(25);
             //Destroy(other.gameObject);

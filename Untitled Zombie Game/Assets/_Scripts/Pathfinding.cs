@@ -20,7 +20,7 @@ public class Pathfinding : MonoBehaviour
         //if (player.gameObject != null && gameObject.activeSelf)
         //{
             agent.SetDestination(player.transform.position);
-            Debug.Log("THIS IS 69");
+            //Debug.Log("THIS IS 69");
         //}
     }
 }

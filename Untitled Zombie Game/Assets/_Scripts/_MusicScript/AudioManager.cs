@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Runtime.InteropServices;
+using UnityEngine.Video;
 
 public class AudioManager : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource GunShotPlayer;
     [SerializeField] private AudioSource ReloadPlayer;
     [SerializeField] private AudioSource ExplodePlayer;
+    [SerializeField] private VideoPlayer vidPlayer;
 
     //options menu
     public Slider masterSlider;
@@ -32,7 +34,7 @@ public class AudioManager : MonoBehaviour
     public Slider ExplodeSlider;
 
     //Base Values
-    private float MasterVolume = 1.00f;
+    public float MasterVolume = 1.00f;
     private float MusicVolume = 1.00f;
     private float SoundVolume = 1.00f;
     private float GunshotVolume = 1.00f;
@@ -52,7 +54,7 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         //Saves values between playthroughs, and thusly loads them at the beginning of the scene
-        MasterVolume = PlayerPrefs.GetFloat("volume");
+        MasterVolume = PlayerPrefs.GetFloat("masvolume");
         MusicVolume = PlayerPrefs.GetFloat("musVolume");
         SoundVolume = PlayerPrefs.GetFloat("souVolume");
         GunshotVolume = PlayerPrefs.GetFloat("gunVolume");
@@ -82,7 +84,6 @@ public class AudioManager : MonoBehaviour
         ExplodeSlider.value = ExplodeVolume;
 
         // Debug.Log("Ran Start");
-
 
 
     }
@@ -126,18 +127,26 @@ public class AudioManager : MonoBehaviour
     public void updateMaster( float volume)
     {
         MasterVolume = VolumeChanger(MasterVolume, volume);
-        PlayerPrefs.SetFloat("volume", MasterVolume);
+        PlayerPrefs.SetFloat("masvolume", MasterVolume);
+
+        Debug.Log(PlayerPrefs.GetFloat("masvolume"));
+
+        if (vidPlayer != null)
+        {
+            Debug.Log("Master Volume Changed");
+            vidPlayer.SetDirectAudioVolume(0, MasterVolume);
+        }
     }
 
     public void updateMusic( float volume)
     {
-        MusicVolume = VolumeModified(MusicVolume, MasterVolume, volume);
+        MusicVolume = VolumeChanger(MusicVolume, volume);
         PlayerPrefs.SetFloat("musVolume", MusicVolume);
     }
 
     public void updateSound ( float volume)
     {
-        SoundVolume = VolumeModified(SoundVolume, MasterVolume, volume);
+        SoundVolume = VolumeChanger(SoundVolume, volume);
         PlayerPrefs.SetFloat("souVolume", SoundVolume);
     }
 

@@ -12,6 +12,9 @@ ModelImporter:
   - first:
       74: 4146074846902175465
     second: Armature|Swaying
+  - first:
+      74: 6930953905572187931
+    second: Armature|Shooting (1)
   externalObjects: {}
   materials:
     materialImportMode: 2

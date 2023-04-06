@@ -71,7 +71,7 @@ public class Melee : MonoBehaviour
             health?.TakeDamage(valueDamage);
             if (health.currentHealth <= 0)
             {
-                ScoreManager.instance.ChangeScore(150);
+                ScoreManager.instance.ChangeScore(300);
                 ScoreManager.instance.DecreaseEnemy();
             }
             //other.gameObject.GetComponent<EnemyController>().OnTakeDamages(25);
