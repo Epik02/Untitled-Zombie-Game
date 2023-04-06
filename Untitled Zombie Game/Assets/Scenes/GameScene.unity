@@ -14280,8 +14280,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.0006225, y: 2, z: 2.0935726}
-  m_Center: {x: -0.0003092884, y: 0.00000035762818, z: -0.046785295}
+  m_Size: {x: 2.0006225, y: 2, z: 3.9335067}
+  m_Center: {x: -0.0003092886, y: 0.00000035961344, z: 0.87318265}
 --- !u!1 &271063736
 GameObject:
   m_ObjectHideFlags: 0
@@ -82680,6 +82680,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyCounter: 0
   WaveCounter: 0
+  TotalScore: 0
   ChangingText: {fileID: 1923009224}
   EnemyCountText: {fileID: 1326575877}
   WaveCounterText: {fileID: 783360975}
