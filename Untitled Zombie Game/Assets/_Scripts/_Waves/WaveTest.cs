@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Linq;
 
 public class WaveTest : MonoBehaviour
 {
@@ -15,6 +16,17 @@ public class WaveTest : MonoBehaviour
     public int TimeText;
     public bool TimerDone;
 
+    public int WaveEnemyNumbers = 2;
+    public int WaveEnemyIncrease = 0;
+
+    public int WaveHealthIncrease = 200;
+    public int WaveEnemyHealth;
+
+    public int WaveDamageIncrease = 100;
+    public int WaveEnemyDamage;
+
+    public int WaveCounterPrivate = 1;
+
     // EnemySummon Script
     public PrefabEnemies enemyspawner;
 
@@ -22,6 +34,8 @@ public class WaveTest : MonoBehaviour
     public int ListIncrease;
 
     public int SpawnNumber;
+
+    public bool Wave10Other = false;
 
     //text
     public TMP_Text TimerText;
@@ -35,6 +49,9 @@ public class WaveTest : MonoBehaviour
         TimerDone = false;
         enemyspawner.SetNewHealth(100);
         TimeLeft = TimeAdder;
+        WaveEnemyIncrease = WaveEnemyNumbers;
+        WaveEnemyHealth = WaveHealthIncrease;
+        WaveEnemyDamage = WaveDamageIncrease;
     }
 
     void Update()
@@ -56,6 +73,7 @@ public class WaveTest : MonoBehaviour
 
         if (TimerDone == false && ActiveEnemyWave == false)
         {
+            RenderSettings.fog = false;
             TimeLeft -= Time.deltaTime;
             TimeText = (int)TimeLeft;
             TimerText.text = TimeText.ToString();
@@ -64,6 +82,7 @@ public class WaveTest : MonoBehaviour
             if (TimeLeft <= 0)
             {
                 //Detect when timer is done
+                RenderSettings.fog = true;
                 TimerDone = true;
                 TimeLeft = 2;
                 TextSet.SetActive(false);
@@ -84,16 +103,37 @@ public class WaveTest : MonoBehaviour
 
         if (TimerDone == true && ActiveEnemyWave == false)
         {
-            //Start New Wave
-            ScoreManager.instance.SetWaveCounter(1);
-            Debug.Log("Start New Wave");
-            WaveCounter(WaveList[ListIncrease].EnemyNumber);
-            enemyspawner.SetNewHealth(WaveList[ListIncrease].MaxHealth);
-            enemyspawner.SetNewDamage(WaveList[ListIncrease].EnemyDamageValue);
-            SpawnNumber = WaveList[ListIncrease].SpawnLocationIncrease;
-            ListIncrease++;
-            //Enable ActiveEnemyWave
-            ActiveEnemyWave = true;
+            if (Wave10Other == true)
+            {
+                WaveEnemyIncrease = WaveEnemyIncrease + WaveEnemyNumbers;
+                WaveEnemyHealth = WaveEnemyHealth + WaveHealthIncrease;
+                WaveEnemyDamage = WaveEnemyDamage + WaveDamageIncrease;
+            }
+            if (ListIncrease <= 9)
+            {
+                //Start New Wave
+                ScoreManager.instance.SetWaveCounter(1);
+                Debug.Log("Start New Wave");
+                WaveCounter(WaveList[ListIncrease].EnemyNumber);
+                enemyspawner.SetNewHealth(WaveList[ListIncrease].MaxHealth);
+                enemyspawner.SetNewDamage(WaveList[ListIncrease].EnemyDamageValue);
+                SpawnNumber = WaveList[ListIncrease].SpawnLocationIncrease;
+                ListIncrease++;
+                //Enable ActiveEnemyWave
+                ActiveEnemyWave = true;
+            }
+            else
+            {
+                Wave10Other = true;
+                ScoreManager.instance.SetWaveCounter(1);
+                WaveCounter(WaveList[9].EnemyNumber + WaveEnemyIncrease);
+                enemyspawner.SetNewHealth(WaveList[9].MaxHealth + WaveEnemyHealth);
+                enemyspawner.SetNewDamage(WaveList[9].EnemyDamageValue + WaveEnemyDamage);
+                SpawnNumber = WaveList[9].SpawnLocationIncrease;
+                ActiveEnemyWave = true;
+                Debug.Log("NewWaveAdded");
+            }
+            
         }
 
         

@@ -23,6 +23,10 @@ public class TopMenu : Menu
         startButton.onClick.AddListener(() => Time.timeScale = 1f);
 
         quitButton.onClick.AddListener(() => Application.Quit());
+    }
 
+    public void SwitchToScoreScene()
+    {
+        SceneManager.LoadScene(2);
     }
 }

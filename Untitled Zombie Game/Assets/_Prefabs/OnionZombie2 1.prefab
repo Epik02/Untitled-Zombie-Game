@@ -329,6 +329,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   informationValues: {fileID: 11400000, guid: 4bf7a1db7387bbd48a142917a2886570, type: 2}
   damages: 0
+  EnemyHealth: {fileID: 3898572152964292293}
 --- !u!195 &5012175171411674218
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1968,11 +1969,11 @@ GameObject:
   - component: {fileID: 1282946140386408947}
   m_Layer: 0
   m_Name: EnemyHealth
-  m_TagString: Untagged
+  m_TagString: EnemyHealth
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1282946140386408947
 Transform:
   m_ObjectHideFlags: 0
@@ -3793,7 +3794,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &830969203038485084
 RectTransform:
   m_ObjectHideFlags: 0

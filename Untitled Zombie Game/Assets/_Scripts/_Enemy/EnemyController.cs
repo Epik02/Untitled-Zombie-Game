@@ -13,8 +13,11 @@ public class EnemyController : MonoBehaviour
     // public GameObject EnemyHealth;
     public int damages;
 
+    public GameObject EnemyHealth;
+
     private void OnEnable()
     {
+        EnemyHealth.SetActive(false);
         ScoreManager.instance.AddEnemy();
         damages = informationValues.damage._EnemyDamage;
         transform.GetComponent<Rigidbody>().WakeUp();

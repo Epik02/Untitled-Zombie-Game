@@ -47,7 +47,6 @@ public class GrabScore : MonoBehaviour
 
         //Any text that is still in the input field will be sent to the score text file
         File.AppendAllText(textDocumentName, "Name: " + Inputholder.text + " Score: " + Score.ToString() + "\n");
-
     }
     // Update is called once per frame
     void Update()
@@ -59,6 +58,7 @@ public class GrabScore : MonoBehaviour
     {
         PanelSwitch.SetActive(true);
         PanelSwitch2.SetActive(false);
+
         //Get the file from its directory or path
         string readFromFilePath = Application.streamingAssetsPath + "/Score_Logs/" + "Score" + ".txt";
 
@@ -74,6 +74,8 @@ public class GrabScore : MonoBehaviour
         }
         GameObject New = Instantiate(recalltextObject, contentWindow.transform);
         recalltextObject.GetComponent<TMP_Text>().text = "Name: " + Inputholder.text + " Score: " + Score.ToString();
+        PlayerPrefs.SetString("CurrentScoreName", Inputholder.text);
+        PlayerPrefs.SetFloat("CurrentScore", Score);
 
         recalltextObject.GetComponent<TMP_Text>().text = "";
         //UpdateScore();
@@ -82,10 +84,5 @@ public class GrabScore : MonoBehaviour
     public void MainMenuPress()
     {
         SceneManager.LoadScene(0);
-    }
-
-    public void UpdateScore()
-    {
-
     }
 }
