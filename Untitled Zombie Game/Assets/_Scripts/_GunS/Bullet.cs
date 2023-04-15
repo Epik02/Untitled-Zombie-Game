@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Bullet : MonoBehaviour
 {
+    public float bulletLifetime = 5f; // The amount of time the bullet should live before being disabled
+    private float elapsedTime = 0f; // The amount of time that has elapsed since the bullet was spawned
 
     private void OnEnable()
     {
@@ -17,7 +19,10 @@ public class Bullet : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision other) {
+        
+        
         gameObject.SetActive(false);
+
         //Rigidbody bulletRb = gameObject.GetComponent<Rigidbody>();
         //bulletRb.AddForce(-bulletRb.velocity, ForceMode.Impulse);
         GameObject Gun = GameObject.FindWithTag("GunHolderScript");
@@ -42,8 +47,16 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    //private void Update()
-    // {
-    // Destroy(gameObject, 3);
-    // }
+    private void Update()
+    {
+        // Increment the elapsed time
+        elapsedTime += Time.deltaTime;
+
+        // Check if the elapsed time has exceeded the bullet lifetime
+        if (elapsedTime >= bulletLifetime)
+        {
+            // Disable the game object
+            gameObject.SetActive(false);
+        }
+    }
 }
