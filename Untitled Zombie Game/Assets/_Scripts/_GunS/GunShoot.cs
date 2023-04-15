@@ -154,6 +154,7 @@ private void Awake()
 
     IEnumerator Reloads()
     {
+
         isReloading = true;
         inputAction.PlayerShoot.Disable();
         ReloadSound.Play();
@@ -162,11 +163,22 @@ private void Awake()
         yield return new WaitForSeconds(reloadTime);
         animator.SetBool("Reload", false);
         Debug.Log("Reloading Done");
-        newAddAmmo = maxAmmo - currentAmmo;
-        currentAmmo += newAddAmmo;
-        ChangingAmmo.text = currentAmmo.ToString();
-        TotalMaxAmmo -= newAddAmmo;
-        ChangingTotalAmmo.text = "/" + TotalMaxAmmo.ToString();
+        if (TotalMaxAmmo <= maxAmmo)
+        {
+            newAddAmmo = TotalMaxAmmo;
+            currentAmmo += newAddAmmo;
+            ChangingAmmo.text = currentAmmo.ToString();
+            TotalMaxAmmo -= TotalMaxAmmo;
+            ChangingTotalAmmo.text = "/" + TotalMaxAmmo.ToString();
+        }
+        else if (TotalMaxAmmo > maxAmmo)
+        {
+            newAddAmmo = maxAmmo - currentAmmo;
+            currentAmmo += newAddAmmo;
+            ChangingAmmo.text = currentAmmo.ToString();
+            TotalMaxAmmo -= newAddAmmo;
+            ChangingTotalAmmo.text = "/" + TotalMaxAmmo.ToString();
+        }
         //Debug.Log("Ammo Reload:" + currentAmmo);
         inputAction.PlayerShoot.Enable();
         isReloading = false;
