@@ -18,16 +18,17 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision other) {
         gameObject.SetActive(false);
-
+        //Rigidbody bulletRb = gameObject.GetComponent<Rigidbody>();
+        //bulletRb.AddForce(-bulletRb.velocity, ForceMode.Impulse);
         GameObject Gun = GameObject.FindWithTag("GunHolderScript");
 
         GunShoot damage = Gun.GetComponentInChildren<GunShoot>();
 
-        if (other.collider.tag == "Player")
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        } 
-        else if(other.collider.tag == "Enemy")
+        //if (other.collider.tag == "Player")
+        //{
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //} 
+        if(other.collider.tag == "Enemy")
         {
             Health health = other.gameObject.GetComponent<Health>();
             health?.TakeDamage(damage.damageNumber);

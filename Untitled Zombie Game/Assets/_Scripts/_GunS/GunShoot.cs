@@ -212,9 +212,30 @@ private void Awake()
             else damageNumber = informationValues.damage._BigAK47Damage;
         }
 
-        Rigidbody bulletRb = ObjectPooler.instance.SpawnFromPool("Bullet", projectilePos.position, Quaternion.identity).GetComponent<Rigidbody>();
+        //Was testing RayCastHit - works cool right? - Justin Lee
+        RaycastHit hit;
+        transform.rotation = Quaternion.LookRotation(transform.forward.normalized);
+        if (Physics.Raycast(projectilePos.position, projectilePos.forward, out hit))
+        {
+
+            ObjectPooler.instance.SpawnFromPool("Bullet", hit.point, Quaternion.identity);
+        }
+        //else
+        //{
+            //float maxDistance = 100f;
+            //Vector3 spawnPosition = projectilePos.position + projectilePos.forward * maxDistance;
+            //ObjectPooler.instance.SpawnFromPool("Bullet", spawnPosition, Quaternion.identity);
+        //}
+        //Vector3 SpawnBulletLocation = projectilePos.localPosition;
+
+        //Rigidbody bulletRb = ObjectPooler.instance.SpawnFromPool("Bullet", projectilePos.position, Quaternion.identity).GetComponent<Rigidbody>();
         
-        bulletRb.AddForce(transform.forward * -speed, ForceMode.Impulse);
+        //Debug.Log(projectilePos.localPosition);
+        //Vector3 direction = (projectilePos.position - transform.position).normalized;
+
+        //transform.rotation = Quaternion.LookRotation(transform.forward.normalized);
+
+        //bulletRb.AddForce(transform.forward.normalized * -speed, ForceMode.Impulse);
         //bulletRb.AddForce(transform.up * 1f, ForceMode.Impulse);
     }
 
