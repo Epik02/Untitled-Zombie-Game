@@ -17,7 +17,7 @@ public class EnemyController : MonoBehaviour
     public GameObject Player;
 
     public float maxDistance = 0.5f; // The distance at which the zombie sound is at maximum volume
-    public float minDistance = 20f; // The distance at which the zombie sound is at minimum volume
+    public float minDistance = 30f; // The distance at which the zombie sound is at minimum volume
 
     // public GameObject EnemyHealth;
     public int damages;
