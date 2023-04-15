@@ -15,6 +15,7 @@ public class Purchase : MonoBehaviour
 
     public WeaponSwitch ShootScript;
 
+    public GameObject currentGuns;
     //int EarnPoints = 0;
     private void OnCollisionEnter(Collision other)
     {
@@ -25,6 +26,9 @@ public class Purchase : MonoBehaviour
                 StartCoroutine(TextAnimation());
                 ScoreManager.instance.DecreaseScore(decreaseScore);
                 Object.material.color = Color.blue;
+                currentGuns = GameObject.FindWithTag("CurrentGun");
+                Renderer renderer = currentGuns.GetComponentInChildren<Renderer>();
+                renderer.material.color = Color.red;
                 ShootScript.Setvalue(1);
 
             }
